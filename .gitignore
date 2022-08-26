@@ -2,6 +2,7 @@
 .classpath
 .factorypath
 .settings
+.class
 application.properties
 ecommerce/target/*
 
