@@ -10,6 +10,14 @@ export class UserDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+  onEdit(item: any, field: string){
+    debugger;
+    item.editFieldName = field;
+  }
+  close(item: any){
+    item.editFieldName = '';
   }
 
 }
