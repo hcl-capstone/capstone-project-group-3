@@ -16,4 +16,8 @@ export class ProductService {
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl);
   }
+
+  findByProductName(productName: any): Observable<Product[]>  {
+    return this.http.get<Product[]>(`http://localhost:8082/product/get/byName?name=${productName}`);
+  }
 }
