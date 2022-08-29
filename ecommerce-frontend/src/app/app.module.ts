@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductListComponent } from './components/product-search/product-list/product-list.component';
 import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [ProductService],
