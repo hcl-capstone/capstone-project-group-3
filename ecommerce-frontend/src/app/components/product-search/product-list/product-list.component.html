@@ -1,0 +1,22 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.productName }}</td>
+            <td>{{ product.stockCount }}</td>
+            <td>{{ product.unitPrice }}</td>
+            <td>{{ product.image_url }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
