@@ -16,4 +16,9 @@ export class ProductService {
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl);
   }
+
+  delete(data: any): void {
+    this.http.delete('http://localhost:8082/product/delete/'+ data.productId);
+  }
+
 }

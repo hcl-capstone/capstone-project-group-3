@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { ProductListComponent } from './components/product-search/product-list/product-list.component';
 import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
+import { ProductDeleteComponent } from './components/product-delete/product-delete.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HomeComponent } from './home/home.component';
     ProductDetailsComponent,
     HeaderComponent,
     HomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
