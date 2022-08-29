@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/common/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-details',
@@ -7,7 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor() { }
+  @Input() viewmode = false;
+
+  @Input() currentUser: User ={
+    firstName: '',
+    lastName: '',
+    
+  } 
+
+  message = '';
+
+  constructor(
+    private userservice: UserService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
 
@@ -18,6 +35,19 @@ export class UserDetailsComponent implements OnInit {
   }
   close(item: any){
     item.editFieldName = '';
+  }
+
+  updateUserDetails(): void {
+    this.message = '';
+
+    this.userservice.update(this.currentUser.id, this.currentUser)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.message = res.message ? res.message : 'The user was updated successfully!';
+        },
+        error: (e) => console.error(e)
+      });
   }
 
 }
