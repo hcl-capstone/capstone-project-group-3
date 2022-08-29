@@ -11,6 +11,9 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { HeaderComponent } from './header/header.component';
+
+import { ProductListComponent } from './components/product-search/product-list/product-list.component';
+import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -23,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     UserDetailsComponent,
     ProductDetailsComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
