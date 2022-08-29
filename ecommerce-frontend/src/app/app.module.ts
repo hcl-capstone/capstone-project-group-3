@@ -14,6 +14,10 @@ import { HeaderComponent } from './header/header.component';
 import { ProductListComponent } from './components/product-search/product-list/product-list.component';
 import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
+import { NotificationLoginComponent } from './components/notification-login/notification-login.component';
+import { NotificationCheckoutComponent } from './components/notification-checkout/notification-checkout.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,16 @@ import { HomeComponent } from './home/home.component';
     ProductDetailsComponent,
     HeaderComponent,
     HomeComponent,
-    ProductListComponent
+    ProductListComponent,
+    NotificationLoginComponent,
+    NotificationCheckoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
