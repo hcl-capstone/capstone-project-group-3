@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotificationCheckoutComponent } from './components/notification-checkout/notification-checkout.component';
+import { NotificationLoginComponent } from './components/notification-login/notification-login.component';
 import { ProductComponent } from './components/product-search/product/product.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -19,6 +21,7 @@ import { HomeComponent } from './home/home.component';
 
 
 
+
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path: 'product-search/products/:id', component:ProductComponent},
@@ -28,8 +31,9 @@ const routes: Routes = [
   {path:'invoice-search',component:OrderDetailsComponent},
   {path: 'product-details-add', component:ProductDetailsAddComponent},
   {path: 'product-details-edit', component:ProductDetailsEditComponent},
+  {path: 'notification-login', component:NotificationLoginComponent},
+  {path: 'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent}
-
 
 ];
 
