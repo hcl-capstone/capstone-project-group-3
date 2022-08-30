@@ -47,7 +47,7 @@ export class ProductDetailsEditComponent implements OnInit {
       category: this.currentProduct.category
     }
 
-    this.productService.update(this.currentProduct.productId, this.currentProduct)
+    this.productService.update(this.currentProduct.productId, data)
     .subscribe({
       next: (res) => {
         console.log(res);
