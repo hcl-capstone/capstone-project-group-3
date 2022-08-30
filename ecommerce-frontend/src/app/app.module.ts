@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import {CloudinaryModule} from '@cloudinary/ng';
 
 
 import { AppComponent } from './app.component';
@@ -39,7 +38,7 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     UserDetailsComponent,
     ProductDetailsComponent,
     NotificationLoginComponent,
-    NotificationCheckoutComponent
+    NotificationCheckoutComponent,
     ProductComponent,
     OrderDetailsComponent,
     HeaderComponent,
@@ -54,9 +53,9 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     FormsModule,
-    CloudinaryModule
+    ToastrModule.forRoot()
+
   ],
   providers: [ProductService, InvoiceService],
   bootstrap: [AppComponent]

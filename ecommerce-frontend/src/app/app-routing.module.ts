@@ -5,8 +5,6 @@ import { NotificationLoginComponent } from './components/notification-login/noti
 import { ProductComponent } from './components/product-search/product/product.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { ProductListComponent } from './components/product-search/product-list/product-list.component';
-import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ProductListComponent } from './components/product-search/product-list/product-list.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
@@ -14,10 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailsDeleteComponent } from './product-details-delete/product-details-delete.component';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
-import { ProductListComponent } from './components/product-search/product-list/product-list.component';
-import { ProductSearchComponent } from './components/product-search/product-search.component';
-import { HomeComponent } from './home/home.component';
-
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 
 
@@ -33,7 +28,8 @@ const routes: Routes = [
   {path: 'product-details-edit', component:ProductDetailsEditComponent},
   {path: 'notification-login', component:NotificationLoginComponent},
   {path: 'notification-checkout', component:NotificationCheckoutComponent},
-  {path:'checkout', component:CheckoutComponent}
+  {path:'checkout', component:CheckoutComponent},
+  {path: 'user-details', component:UserDetailsComponent}
 
 ];
 
