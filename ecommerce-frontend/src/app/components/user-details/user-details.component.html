@@ -1,83 +1,48 @@
-<p>user-details works!</p>
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
 
-<div class="row">
-    <div class="col-12">
-        <table class="table  table-striped table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>User ID</th>
-                    <th>Name</th>
-                    <th>User Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>website</th> 
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="firstName" 
+          required 
+          [(ngModel)]="currentUser.firstName"
+          name="firstName" 
+        />
+      </div>
 
-                    <th>User ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let user of usersArray;let i= index">
-                    <td>{{i+1}}</td>
-                    <td (dblclick)="onEdit(user,'firstname')">
-                        <div class="row" *ngIf="user.editFieldName == 'firstname'">
-                            <div class="col-9">
-                                <input type="text" [(ngModel)]="user.firstname" class="form-control"/>
-                            </div>
-                            <div class="col-3 text-center">
-                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                <i class="fa fa-times ml-2 " aria-hidden="true" (click)="close(user)"></i>
-                            </div>
-                        </div> 
-                        <div *ngIf="user.editFieldName !== 'first name'">
-                            {{user.name}}
-                        </div> 
-                    </td>
-                    <td (dblclick)="onEdit(user,'last name')">
-                        <div class="row" *ngIf="user.editFieldName == 'lastname'">
-                            <div class="col-9">
-                                <input type="text" [(ngModel)]="user.lastname" class="form-control"/>
-                            </div>
-                            <div class="col-3 text-center">
-                                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                                <i class="fa fa-times ml-2 " aria-hidden="true" (click)="close(user)"></i>
-                            </div>
-                        </div> 
-                        <div *ngIf="user.editFieldName !== 'lastname'">
-                            {{user.name}}
-                        </div> 
-                    </td>
-                    <td (dblclick)="onEdit(user,'email')">
-                        <div *ngIf="user.editFieldName == 'email'">
-                            <input type="text" [(ngModel)]="user.email" class="form-control"/>
-                        </div>
-                        <div *ngIf="user.editFieldName !== 'email'">
-                            {{user.email}}
-                        </div> 
-                    </td>
-                    <td (dblclick)="onEdit(user,'username')">
-                        <div *ngIf="user.editFieldName == 'username'">
-                            <input type="text" [(ngModel)]="user.username" class="form-control"/>
-                        </div>
-                        <div *ngIf="user.editFieldName !== 'username'">
-                            {{user.website}}
-                        </div>  
-                    </td>
-                    <td (dblclick)="onEdit(user,'name')">
-                        <div *ngIf="user.editFieldName == 'username'">
-                            <input type="text" [(ngModel)]="user.username" class="form-control"/>
-                        </div>
-                        <div *ngIf="user.editFieldName !== 'username'">
-                            {{user.website}}
-                        </div>  
-                    </td>
-                    
-                </tr>
-            </tbody> 
-        </table>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="lastName" 
+          required 
+          [(ngModel)]="currentUser.lastName"
+          name="lastName" 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" 
+          class="form-control" 
+          id="email" 
+          required 
+          [(ngModel)]="currentUser.email" 
+          name="email" 
+        />
+      </div>
+
+      <button (click) = updateUserDetails() class="btn btn-success">Submit</button>
+    
     </div>
+
+    <div *ngIf="submitted">
+      <h4>User details were edited successfully!</h4>
+      <button class="btn btn-success" (click)="newUser()">Update</button>
+    </div>
+
+  </div>
 </div>

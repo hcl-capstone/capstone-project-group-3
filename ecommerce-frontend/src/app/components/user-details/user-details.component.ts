@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/common/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,21 +9,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserDetailsComponent implements OnInit {
 
-  @Input() viewmode = false;
-
   @Input() currentUser: User ={
     firstName: '',
     lastName: '',
-    
+    email: '',
   } 
+  submitted = false;
 
   message = '';
 
   constructor(
     private userservice: UserService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) { }
+    ) { }
 
   ngOnInit(): void {
 
@@ -44,10 +40,21 @@ export class UserDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
+          this.submitted=true;
           this.message = res.message ? res.message : 'The user was updated successfully!';
         },
         error: (e) => console.error(e)
       });
+  }
+
+  newUser(): void{
+    this.submitted = false;
+    this.currentUser = {
+      firstName: '',
+      lastName: '',
+      email: ''
+    }
+    
   }
 
 }
