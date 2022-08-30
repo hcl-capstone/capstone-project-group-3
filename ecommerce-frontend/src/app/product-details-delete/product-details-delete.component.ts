@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-product-delete',
-  templateUrl: './product-delete.html',
-  styleUrls: ['./product-delete.css']
+  selector: 'app-product-details-delete',
+  templateUrl: './product-details-delete.component.html',
+  styleUrls: ['./product-details-delete.component.css']
 })
-export class ProductDeleteComponent implements OnInit {
+export class ProductDetailsDeleteComponent implements OnInit {
 
   productId: 0 | undefined;
 
