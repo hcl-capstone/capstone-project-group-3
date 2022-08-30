@@ -9,16 +9,19 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   private productUrl: string;
+
   private productAddUrl: string;
   constructor(private http:HttpClient) {
     this.productUrl = 'http://localhost:8082/product/all';
     this.productAddUrl = 'http://localhost:8082/product/add';
+
 
   }
 
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl);
   }
+
 
 
 
@@ -39,6 +42,5 @@ export class ProductService {
   update(id: any, data: any): Observable<any> {
     return this.http.post(`http://localhost:8082/product/update/${id}`, data)
   }
-
 
 }

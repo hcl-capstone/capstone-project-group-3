@@ -1,16 +1,17 @@
 header{
 
-    background-color: lightblue;
     padding: 0;
     border-bottom: 1px solid navy;
 }
 a{
+
 
     color: black;
 }
 a:hover {
     background: lightsteelblue;
     color: navy;
+
 }
 .container{
     margin: 0 auto;

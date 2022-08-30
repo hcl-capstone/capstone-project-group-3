@@ -37,6 +37,7 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
     ProductDetailsEditComponent
+
   ],
   imports: [
     BrowserModule,
@@ -45,6 +46,7 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     FormsModule
   ],
   providers: [ProductService, InvoiceService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

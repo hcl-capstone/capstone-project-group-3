@@ -12,14 +12,13 @@ export class ProductSearchComponent implements OnInit {
   currentTutorial: Product = {};
   currentIndex = -1;
   productName = '';
+
   constructor(private productService: ProductService) {
     this.products = [];
   }
 
   ngOnInit(): void {
 
-  }
-  
   doSearch(): void {
     this.currentTutorial = {};
     this.currentIndex = -1;
