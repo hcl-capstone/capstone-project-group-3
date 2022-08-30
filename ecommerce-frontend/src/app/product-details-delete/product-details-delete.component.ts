@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class ProductDetailsDeleteComponent implements OnInit {
 
-  productId: 0 | undefined;
+  //productId: 0 | undefined;
+  product : Product = {
+    productId:0
+  };
 
   submitted = false;
   
@@ -21,8 +24,15 @@ export class ProductDetailsDeleteComponent implements OnInit {
   }
 
   deleteProduct(): void {
-    this.productService.delete(this.productId)
-;
+    console.log(typeof this.product.productId);
+    this.productService.delete(this.product.productId)
+    .subscribe({
+      next: (res) => {
+        console.log(res);
+        
+      },
+      error: (e) => console.error(e)
+    });
 }
 
 

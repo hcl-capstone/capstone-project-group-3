@@ -17,8 +17,9 @@ export class ProductService {
     return this.http.get<Product[]>(this.productUrl);
   }
 
-  delete(data: any): void {
-    this.http.delete(`http://localhost:8082/product/delete/${data}`);
+  delete(data: any): Observable<Product> {
+    console.log(`http://localhost:8082/product/delete/${data}`);
+    return this.http.delete(`http://localhost:8082/product/delete/${data}`);
   }
 
 }

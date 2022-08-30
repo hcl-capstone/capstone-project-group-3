@@ -15,6 +15,8 @@ import { ProductListComponent } from './components/product-search/product-list/p
 import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailsDeleteComponent } from './product-details-delete/product-details-delete.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

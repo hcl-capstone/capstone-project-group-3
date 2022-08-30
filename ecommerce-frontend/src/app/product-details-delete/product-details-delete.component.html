@@ -4,9 +4,12 @@
       <div *ngIf="!submitted">
           <label for="productId">Product ID</label>
           <input
-            type="number"
-            id="productId"
-            name="productId"
+          type="number"
+          class="form-control"
+          id="productId"
+          required
+          [(ngModel)]="product.productId"
+          name="productId"
           />
         <button (click)= deleteProduct() class="btn btn-success">Submit</button>
       </div>
