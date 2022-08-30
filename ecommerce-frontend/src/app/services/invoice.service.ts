@@ -1,9 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Invoice } from '../common/invoice';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceService {
 
-  constructor() { }
+
+  constructor(private http:HttpClient) {
+    
+   }
+
+   getCheckout(id: any): Observable<Invoice> {
+    return this.http.post<Invoice>(`http://localhost:8082/invoice/checkout/${id}`, id);
+   }
+
+
 }
