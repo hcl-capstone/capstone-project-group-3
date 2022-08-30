@@ -1,0 +1,86 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+
+        <div class="form-group">
+            <label for="productId">Product Id</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productId"
+              required
+              [(ngModel)]="currentProduct.productId"
+              name="productId"
+            />
+          </div>
+
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="productName"
+            required
+            [(ngModel)]="currentProduct.productName"
+            name="productName"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="stockCount">Stock Count</label>
+          <input
+            type = "number"
+            class="form-control"
+            id="stockCount"
+            required
+            [(ngModel)]="currentProduct.stockCount"
+            name="stockCount"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="unitPrice">Unit Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="unitPrice"
+              required
+              [(ngModel)]="currentProduct.unitPrice"
+              name="unitPrice"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="image_url">Image URL</label>
+            <input
+              type="text"
+              class="form-control"
+              id="image_url"
+              required
+              [(ngModel)]="currentProduct.image_url"
+              name="image_url"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="image_url">Category</label>
+            <input
+              type="number"
+              class="form-control"
+              id="category"
+              required
+              [(ngModel)]="currentProduct.category"
+              name="category"
+            />
+          </div>
+
+        <button (click) = updateProductDetails() class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Product was updated successfully!</h4>
+        <button class="btn btn-success" (click)= newProduct()>Add</button>
+      </div>
+    </div>
+  </div>
+

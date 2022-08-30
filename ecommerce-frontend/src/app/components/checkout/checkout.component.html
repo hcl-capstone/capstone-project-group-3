@@ -1,1 +1,45 @@
-<p>checkout works!</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-dark my-5">
+          <div class="card-body">
+            <h2 class="card-title text-center text-white py-3">Invoice</h2>
+            <ul class="text-center list-inline py-3">
+              <li class="list-inline-item">
+              
+              <input #myInput type="text" placeholder="Search for products ..." [(ngModel)]="id"
+                class="au-input au-input-xl" (keyup.enter)="doCheckout()" />
+  
+              <button class="list-inline-item" (click)="doCheckout()" >Search 
+           
+  
+              </button>
+  
+            </ul>
+          </div>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Total Price</th>
+            <th scope="col">Date Ordered</th>
+            <th scope="col">Delivery Address</th>
+            <th scope="col">Order Status</th>
+          </tr>
+        </thead>
+        <tbody>
+            <td>{{ invoice.totalPrice }}</td>
+            <td>{{ invoice.dateOrdered }}</td>
+            <td>{{ invoice.deliveryAddress?.street }}</td>
+            <td>{{ invoice.orderStatus }}</td>
+        </tbody>
+      </table>
+    </div>
+  </div>
