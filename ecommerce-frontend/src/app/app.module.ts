@@ -15,6 +15,7 @@ import { ProductListComponent } from './components/product-search/product-list/p
 import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [ProductService],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
