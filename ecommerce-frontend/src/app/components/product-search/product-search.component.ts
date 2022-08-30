@@ -18,13 +18,7 @@ export class ProductSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-  }
-  
-  // doSearch(value: string) {
-  //   console.log(`product-search/searchTerm`);
-  //   this.router.navigateByUrl(`product-search/searchTerm`);
-  // }
+
   doSearch(): void {
     this.currentTutorial = {};
     this.currentIndex = -1;
