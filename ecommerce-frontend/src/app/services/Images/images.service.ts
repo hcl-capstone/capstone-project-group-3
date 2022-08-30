@@ -9,8 +9,7 @@ export class ImagesService {
 
   getAll():String[] {
     return [
-      '/assets/images/Images/background.jpg'
-    
+      '/assets/images/Images/farmbackgroundv2.jpg'
     ]
   }
 }

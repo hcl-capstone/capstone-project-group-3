@@ -7,6 +7,7 @@
             <th scope="col">Stock</th>
             <th scope="col">Price</th>
             <th scope="col">Image</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
         <tbody>
@@ -15,6 +16,12 @@
             <td>{{ product.stockCount }}</td>
             <td>{{ product.unitPrice }}</td>
             <td>{{ product.image_url }}</td>
+            <td>
+              <button color="primary" [routerLink]="[product.productId]">
+                  Details
+              </button>
+              <!--<app-product [id]="product.productId"></app-product> -->
+            </td>
           </tr>
         </tbody>
       </table>
