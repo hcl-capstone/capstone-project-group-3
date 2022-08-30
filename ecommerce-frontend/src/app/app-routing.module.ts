@@ -10,10 +10,12 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'product-search', component:ProductSearchComponent},
+
   {path: 'product-search/products', component:ProductListComponent},
   {path: 'product-details-add', component:ProductDetailsAddComponent},
   {path: 'product-details-edit', component:ProductDetailsEditComponent}
 //  {path: 'product-search/productName',component:ProductSearchComponent}
+
 ];
 
 @NgModule({

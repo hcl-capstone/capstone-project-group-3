@@ -5,10 +5,11 @@ ul{
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
+    background-color: whitesmoke;
 }
-/* li a{
-    height: 20rem;
-    width: 20rem;
+ li a{
+    height: 50rem;
+    width: 90rem;
     border: 1px solid whitesmoke;
     border-radius: 1rem;
     margin: .5rem;
@@ -16,4 +17,5 @@ ul{
     flex-direction: column;
     overflow: hidden;
     color: navy;
-} */
+} 
+
