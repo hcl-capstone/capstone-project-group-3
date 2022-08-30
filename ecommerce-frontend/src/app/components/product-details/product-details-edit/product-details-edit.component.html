@@ -1,6 +1,19 @@
 <div>
     <div class="submit-form">
       <div *ngIf="!submitted">
+
+        <div class="form-group">
+            <label for="productId">Product Id</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productId"
+              required
+              [(ngModel)]="currentProduct.productId"
+              name="productId"
+            />
+          </div>
+
         <div class="form-group">
           <label for="productName">Product Name</label>
           <input
