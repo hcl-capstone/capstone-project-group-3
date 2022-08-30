@@ -30,7 +30,7 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     RegisterUserComponent,
     UserDetailsComponent,
     ProductDetailsComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
     HeaderComponent,
     HomeComponent,
     ProductListComponent,
