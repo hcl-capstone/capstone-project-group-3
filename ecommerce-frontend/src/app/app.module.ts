@@ -14,8 +14,13 @@ import { HeaderComponent } from './header/header.component';
 import { ProductListComponent } from './components/product-search/product-list/product-list.component';
 import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
+
 import { ProductDetailsDeleteComponent } from './product-details-delete/product-details-delete.component';
 import { FormsModule } from '@angular/forms';
+
+import { FormsModule } from '@angular/forms';
+import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
+import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 
 
 @NgModule({
@@ -30,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     HomeComponent,
     ProductListComponent,
-    ProductDetailsDeleteComponent
+    ProductDetailsDeleteComponent,
+    ProductDetailsAddComponent,
+    ProductDetailsEditComponent
   ],
   imports: [
     BrowserModule,
