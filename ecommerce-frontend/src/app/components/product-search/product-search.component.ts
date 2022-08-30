@@ -32,5 +32,23 @@ export class ProductSearchComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+  
+  // doSearch(value: string) {
+  //   console.log(`product-search/searchTerm`);
+  //   this.router.navigateByUrl(`product-search/searchTerm`);
+  // }
+  doSearch(): void {
+    this.currentTutorial = {};
+    this.currentIndex = -1;
+
+    this.productService.findByProductName(this.productName)
+      .subscribe({
+        next: (data) => {
+          this.products = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
+  }
 
 }
