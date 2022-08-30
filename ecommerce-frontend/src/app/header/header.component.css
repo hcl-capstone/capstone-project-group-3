@@ -1,9 +1,11 @@
 header{
+
     background-color: lightblue;
     padding: 0;
     border-bottom: 1px solid navy;
 }
 a{
+
     color: black;
 }
 a:hover {
@@ -24,7 +26,6 @@ nav ul{
     margin: 0;
 }
 nav ul li a{
-    font-weight: bold;
     padding: 1em;
     display: inline-block;
 }

@@ -19,6 +19,7 @@ export class ProductSearchComponent implements OnInit {
 
   ngOnInit(): void {
     
+
   }
   
   doSearch(): void {
@@ -33,6 +34,7 @@ export class ProductSearchComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+
   }
 
 }

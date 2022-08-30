@@ -23,6 +23,7 @@ export class ProductListComponent implements OnInit {
     for (let i = 0; i < this.products.length; i++) {
       console.log(this.products[i].productName);
     }
+
   }
 
 }
