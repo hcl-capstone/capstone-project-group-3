@@ -62,7 +62,5 @@ export class UserDetailsComponent implements OnInit {
       lastName: '',
       email: ''
     }
-    
   }
-
 }
