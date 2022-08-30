@@ -12,7 +12,8 @@ export class UserService {
   }
 
   update (id: any, data: any): Observable<any> {
-    return this.http.post(`${baseUrl}/${id}`, data);
+   // console.log(http://localhost:8082/user/update/${id})
+    return this.http.post(`http://localhost:8082/user/update/${id}`, data);
   }
 
 }

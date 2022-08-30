@@ -1,6 +1,16 @@
 <div>
   <div class="submit-form">
     <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="id">User ID</label>
+        <input type="text" 
+          class="form-control" 
+          id="id" 
+          required 
+          [(ngModel)]="currentUser.id"
+          name="id" 
+        />
+      </div>
 
       <div class="form-group">
         <label for="firstName">First Name</label>
