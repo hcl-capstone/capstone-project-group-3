@@ -16,6 +16,7 @@ import { ProductService } from './services/product.service';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
+import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProductDetailsAddComponent } from './components/product-details/product
     HeaderComponent,
     HomeComponent,
     ProductListComponent,
-    ProductDetailsAddComponent
+    ProductDetailsAddComponent,
+    ProductDetailsEditComponent
   ],
   imports: [
     BrowserModule,

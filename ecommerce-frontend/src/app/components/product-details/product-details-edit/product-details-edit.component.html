@@ -8,7 +8,7 @@
             class="form-control"
             id="productName"
             required
-            [(ngModel)]="product.productName"
+            [(ngModel)]="currentProduct.productName"
             name="productName"
           />
         </div>
@@ -20,7 +20,7 @@
             class="form-control"
             id="stockCount"
             required
-            [(ngModel)]="product.stockCount"
+            [(ngModel)]="currentProduct.stockCount"
             name="stockCount"
           />
         </div>
@@ -32,7 +32,7 @@
               class="form-control"
               id="unitPrice"
               required
-              [(ngModel)]="product.unitPrice"
+              [(ngModel)]="currentProduct.unitPrice"
               name="unitPrice"
             />
           </div>
@@ -44,28 +44,30 @@
               class="form-control"
               id="image_url"
               required
-              [(ngModel)]="product.image_url"
+              [(ngModel)]="currentProduct.image_url"
               name="image_url"
             />
           </div>
 
           <div class="form-group">
-            <label for="category">Category</label>
+            <label for="image_url">Category</label>
             <input
               type="number"
               class="form-control"
               id="category"
               required
-              [(ngModel)]="product.category"
+              [(ngModel)]="currentProduct.category"
               name="category"
             />
           </div>
-        <button (click) = saveProduct() class="btn btn-success">Submit</button>
+
+        <button (click) = updateProductDetails() class="btn btn-success">Submit</button>
       </div>
   
       <div *ngIf="submitted">
-        <h4>Product was submitted successfully!</h4>
+        <h4>Product was updated successfully!</h4>
         <button class="btn btn-success" (click)= newProduct()>Add</button>
       </div>
     </div>
   </div>
+
