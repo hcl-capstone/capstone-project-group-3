@@ -35,6 +35,11 @@ export class UserDetailsComponent implements OnInit {
 
   updateUserDetails(): void {
     this.message = '';
+    const data = {
+      firstName: this.currentUser.firstName,
+      lastName: this.currentUser.lastName,
+      email:this.currentUser.email
+    }
 
     this.userservice.update(this.currentUser.id, this.currentUser)
       .subscribe({
