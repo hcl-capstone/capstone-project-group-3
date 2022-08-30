@@ -18,7 +18,7 @@ export class ProductService {
   }
 
   delete(data: any): void {
-    this.http.delete('http://localhost:8082/product/delete/'+ data.productId);
+    this.http.delete(`http://localhost:8082/product/delete/${data}`);
   }
 
 }
