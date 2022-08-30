@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductDetailsEditComponent implements OnInit {
 
   @Input() currentProduct: Product = {
+    productId: 0,
     productName: '',
     stockCount: 0,
     dateLastUpdated: new Date(),
@@ -37,6 +38,7 @@ export class ProductDetailsEditComponent implements OnInit {
   updateProductDetails(): void {
     
     const data = {
+      productId: this.currentProduct.productId,
       productName: this.currentProduct.productName,
       stockCount: this.currentProduct.stockCount,
       dateLastUpdated: Date.now,
@@ -58,6 +60,7 @@ export class ProductDetailsEditComponent implements OnInit {
   newProduct(): void{
      this.submitted = false;
      this.currentProduct = {
+      productId: 0,
       productName: '',
       stockCount: 0,
       dateLastUpdated: new Date(),
