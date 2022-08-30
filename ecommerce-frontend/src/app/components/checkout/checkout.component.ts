@@ -12,7 +12,7 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 export class CheckoutComponent implements OnInit {
 
   invoice:Invoice = {}; 
-  address:Address = {}; 
+  address:Address; 
   id = ''; 
 
   constructor(private invoiceService: InvoiceService, private addressService: AddressService) { 
@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.invoice = data;
-          console.log(data); 
+          console.log(this.invoice); 
         },
         error: (e) => console.error(e)
 
