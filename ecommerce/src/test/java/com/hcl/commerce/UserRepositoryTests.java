@@ -1,5 +1,8 @@
 package com.hcl.commerce;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +31,41 @@ public class UserRepositoryTests {
 		Assertions.assertThat(user.getUserId()).isGreaterThan(0);
 		
 	}
+	
+	@Test
+	void getUserListTest() {
+		Users user = new Users();
+		user.setFirstName("First");
+		user.setLastName("Last");
+		user.setEmail("email@email.com");
+		user.setUsername("username");
+		user.setPassword("password");
+		
+		userRepo.save(user);
+		
+		List<Users> users = userRepo.findAll();
+		Assertions.assertThat(users.size()).isGreaterThan(0);
+	}
+	
+	@Test
+	void getUserTest() {
+		Users user = new Users();
+		user.setFirstName("First");
+		user.setLastName("Last");
+		user.setEmail("email@email.com");
+		user.setUsername("username");
+		user.setPassword("password");
+		userRepo.save(user);
+		
+		List<Users> users = userRepo.findAll();
+		
+		Users user1 = userRepo.findById(1L).get();
+		Assertions.assertThat(user1.getUserId()).isEqualTo(1L);
+		
+		//List<Users> users = userRepo.findAll();
+		//Assertions.assertThat(users.size()).isGreaterThan(0);
+		
+	}
+	
+	
 }
