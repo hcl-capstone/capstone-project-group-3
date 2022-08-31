@@ -63,4 +63,16 @@ public class ProductServiceImplementation implements ProductService{
 		return product;
 	}
 
+	@Override
+	public List<Product> getByName(String productName) {
+		
+		return productRepository.findByProductNameContains(productName);
+		
+//		Optional<Product> product = productRepository.findByProductNameContaining(productName);
+//		if (product.isPresent()) {
+//			return (List<Product>) product.get();
+//		}
+//		return null;
+	}
+
 }
