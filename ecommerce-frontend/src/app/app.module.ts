@@ -9,6 +9,11 @@ import { ProductSearchComponent } from './components/product-search/product-sear
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ShoppingCartService } from './services/shopping-cart.service';
+
 
 @NgModule({
   declarations: [
@@ -18,13 +23,17 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     ProductSearchComponent,
     RegisterUserComponent,
     UserDetailsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ShoppingCartComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
