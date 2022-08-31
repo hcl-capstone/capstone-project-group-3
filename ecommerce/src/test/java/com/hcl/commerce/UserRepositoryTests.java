@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import com.hcl.commerce.entity.User;
+import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.repository.UserRepository;
 
 @DataJpaTest
@@ -16,7 +16,7 @@ public class UserRepositoryTests {
 	
 	@Test
 	void saveUserTest() {
-		User user = new User();
+		Users user = new Users();
 		user.setFirstName("First");
 		user.setLastName("Last");
 		user.setEmail("email@email.com");

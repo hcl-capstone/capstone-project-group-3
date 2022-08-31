@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.commerce.Email;
 import com.hcl.commerce.dto.user.UserInputDTO;
-import com.hcl.commerce.entity.User;
+import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.repository.UserRepository;
 import com.hcl.commerce.service.role.RoleService;
 
@@ -27,16 +27,16 @@ public class UserServiceImplementation implements UserService {
 	private JavaMailSender javaMailSender;
 
 	@Override
-	public User registerUser(UserInputDTO dto) {
-		User user = new User();
+	public Users registerUser(UserInputDTO dto) {
+		Users user = new Users();
 		BeanUtils.copyProperties(dto, user);
 		Email.sendRegistrationMail(javaMailSender, user.getEmail(), user.getFirstName());
 		return userRepository.save(user);
 	}
 
 	@Override
-	public User getUser(Long userId) {
-		Optional<User> user = userRepository.findById(userId);
+	public Users getUser(Long userId) {
+		Optional<Users> user = userRepository.findById(userId);
 		if (user.isPresent()) {
 			return user.get();
 		}
@@ -44,8 +44,8 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public User deleteUser(Long userId) {
-		User user = getUser(userId);
+	public Users deleteUser(Long userId) {
+		Users user = getUser(userId);
 		System.out.println("Deleting");
 		userRepository.delete(user);
 		System.out.println("Delete Success");
@@ -53,18 +53,18 @@ public class UserServiceImplementation implements UserService {
 	}
 
 	@Override
-	public List<User> getAllUser() {
+	public List<Users> getAllUser() {
 		return userRepository.findAll();
 	}
 
 	@Override
-	public User getUser(String username, String password) {
+	public Users getUser(String username, String password) {
 		return userRepository.findByUsernameAndPassword(username, password);
 	}
 
 	@Override
-	public User updateUser(Long userId, UserInputDTO dto) {
-		User user = getUser(userId);
+	public Users updateUser(Long userId, UserInputDTO dto) {
+		Users user = getUser(userId);
 		if (user != null) {
 			BeanUtils.copyProperties(dto, user);
 			return userRepository.save(user);
