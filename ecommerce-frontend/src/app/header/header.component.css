@@ -1,14 +1,13 @@
 header{
-    background-color: white;
     padding: 0;
     border-bottom: 1px solid navy;
 }
 a{
-    color: #af1313;
+    color: black;
 }
 a:hover {
-    background: navy;
-    color: white;
+    background: lightsteelblue;
+    color: navy;
 }
 .container{
     margin: 0 auto;
@@ -20,6 +19,7 @@ a.logo{
     padding: 1em;
 }
 nav ul{
+    color: lightcyan;
     list-style-type: none;
     margin: 0;
 }

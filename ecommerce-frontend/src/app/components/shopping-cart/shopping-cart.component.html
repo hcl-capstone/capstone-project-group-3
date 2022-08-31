@@ -1,0 +1,49 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+
+        <div class="form-group">
+            <label for="invoice">Invoice ID</label>
+            <input
+              type = "text"
+              class="form-control"
+              id="invoice"
+              required
+              [(ngModel)]="shoppingCart.invoiceId"
+              name="invoice"
+            />
+          </div>
+
+        <div class="form-group">
+          <label for="product">Product ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="product"
+            required
+            [(ngModel)]="shoppingCart.productId"
+            name="product"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="productQuantity">Product Quantity</label>
+          <input
+            type = "text"
+            class="form-control"
+            id="productQuantity"
+            required
+            [(ngModel)]="shoppingCart.productQuantity"
+            name="productQuantity"
+          />
+        </div>
+
+        <button (click)= saveShoppingCart() class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>Added to Cart</h4>
+        <button class="btn btn-success" (click)= newShoppingCart()>Add</button>
+      </div>
+    </div>
+  </div>

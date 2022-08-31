@@ -1,0 +1,27 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Order</th>
+            <th scope="col">Ordered Date</th>
+            <th scope="col">Order Status</th>
+            <th scope="col">Total Price</th>
+        
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let invoice of invoices">
+            <td>{{ invoice.invoiceId }}</td>
+            <td>{{ invoice.dateOrdered }}</td>
+            <td>{{ invoice.orderStatus }}</td>
+            <td>{{ invoice.totalPrice }}</td>
+            
+            
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

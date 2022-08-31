@@ -1,1 +1,61 @@
-<p>user-details works!</p>
+<div>
+
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      
+      <div class="form-group">
+        <label for="id">User ID</label>
+        <input type="text" 
+          class="form-control" 
+          id="id" 
+          required 
+          [(ngModel)]="currentUser.id"
+          name="id" 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="firstName" 
+          required 
+          [(ngModel)]="currentUser.firstName"
+          name="firstName" 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="lastName" 
+          required 
+          [(ngModel)]="currentUser.lastName"
+          name="lastName" 
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" 
+          class="form-control" 
+          id="email" 
+          required 
+          [(ngModel)]="currentUser.email" 
+          name="email" 
+        />
+      </div>
+
+      <button (click) = updateUserDetails() class="btn btn-success">Submit</button>
+    
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>User details were edited successfully!</h4>
+      <button class="btn btn-success" (click)="newUser()">Update</button>
+    </div>
+
+  </div>
+</div>
+
