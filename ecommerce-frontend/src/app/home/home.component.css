@@ -5,8 +5,7 @@ ul{
     flex-wrap: wrap;
     list-style-type: none;
     padding: 0;
-
-    border: 1px solid whitesmoke;
+    border: 1px solid white;
     border-radius: 1rem;
     margin: .5rem;
     display: flex;
@@ -14,3 +13,14 @@ ul{
     overflow: hidden;
     color: navy;
 } 
+li a{
+    height: 60rem;
+    width: 90rem;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    margin: .5rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: navy;
+}

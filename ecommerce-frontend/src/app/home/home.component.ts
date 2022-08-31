@@ -10,12 +10,9 @@ export class HomeComponent implements OnInit {
 
   images:String[] = [];
 
-
-
   constructor(private imageService:ImagesService) { }  
 
   ngOnInit(): void {
-
     this.images = this.imageService.getAll();
   }
 

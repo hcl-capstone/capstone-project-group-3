@@ -9,20 +9,16 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   private productUrl: string;
-
   private productAddUrl: string;
+  
   constructor(private http:HttpClient) {
     this.productUrl = 'http://localhost:8082/product/all';
     this.productAddUrl = 'http://localhost:8082/product/add';
-
-
   }
 
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl);
   }
-
-
 
   delete(data: any): Observable<Product> {
     console.log(`http://localhost:8082/product/delete/${data}`);

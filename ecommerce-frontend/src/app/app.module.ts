@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import {CloudinaryModule} from '@cloudinary/ng';
 
 
 import { AppComponent } from './app.component';
@@ -12,6 +11,10 @@ import { ProductSearchComponent } from './components/product-search/product-sear
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { NotificationLoginComponent } from './components/notification-login/notification-login.component';
+import { NotificationCheckoutComponent } from './components/notification-checkout/notification-checkout.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductComponent } from './components/product-search/product/product.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { InvoiceService } from './services/invoice.service';
@@ -25,7 +28,6 @@ import { ProductDetailsAddComponent } from './components/product-details/product
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,8 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     RegisterUserComponent,
     UserDetailsComponent,
     ProductDetailsComponent,
+    NotificationLoginComponent,
+    NotificationCheckoutComponent,
     ProductComponent,
     OrderDetailsComponent,
     HeaderComponent,
@@ -48,11 +52,12 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
-    CloudinaryModule
+    ToastrModule.forRoot()
+
   ],
   providers: [ProductService, InvoiceService],
-
   bootstrap: [AppComponent]
 })
 export class AppModule { }
