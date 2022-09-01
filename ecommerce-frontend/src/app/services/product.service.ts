@@ -10,6 +10,7 @@ export class ProductService {
 
   private productUrl: string;
   private productAddUrl: string;
+  
   constructor(private http:HttpClient) {
     this.productUrl = 'http://localhost:8082/product/all';
     this.productAddUrl = 'http://localhost:8082/product/add';
@@ -19,8 +20,18 @@ export class ProductService {
     return this.http.get<Product[]>(this.productUrl);
   }
 
+  delete(data: any): Observable<Product> {
+    console.log(`http://localhost:8082/product/delete/${data}`);
+    return this.http.delete(`http://localhost:8082/product/delete/${data}`);
+  }
+
   findByProductName(productName: any): Observable<Product[]>  {
     return this.http.get<Product[]>(`http://localhost:8082/product/get/byName?name=${productName}`);
+  }
+
+
+  findByProductId(productId: any): Observable<Product>{
+    return this.http.get<Product>(`http://localhost:8082/product/get/${productId}`);
   }
 
   add(data: any): Observable<Product> {

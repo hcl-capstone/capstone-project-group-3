@@ -1,13 +1,21 @@
 
 <app-header></app-header>
 <router-outlet></router-outlet>
+
+
 <nav class = "navbar navbar-default">
     <div class = "container-fluid">
         <ul>
+            <li routerLinkActive="active"><a routerLink="product-search">ALL PRODUCTS</a></li>
+            <li routerLinkActive="active"><a routerLink="checkout">Checkout</a></li>
+            <li routerLinkActive="active"><a routerLink="product-details-delete">DELETE PRODUCT</a></li>
+            <li routerLinkActive="active"><a routerLink="invoice-search">View Orders</a></li>
+            <li routerLinkActive="active"><a routerLink="notification-login">Login Notification</a></li>
+            <li routerLinkActive="active"><a routerLink="notification-checkout">Checkout Notification</a></li>
+            <li routerLinkActive="active"><a routerLink="user-details">Edit Users</a></li>
         </ul>
     </div>
 </nav>
-
 
 <router-outlet></router-outlet>
 
