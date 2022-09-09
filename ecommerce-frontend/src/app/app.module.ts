@@ -37,12 +37,9 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     RegisterUserComponent,
     UserDetailsComponent,
     ProductDetailsComponent,
-<<<<<<< HEAD
-=======
     NotificationLoginComponent,
     NotificationCheckoutComponent,
     ProductComponent,
->>>>>>> main
     OrderDetailsComponent,
     HeaderComponent,
     HomeComponent,

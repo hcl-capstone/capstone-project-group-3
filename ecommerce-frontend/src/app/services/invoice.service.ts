@@ -9,14 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class InvoiceService {
 
-<<<<<<< HEAD
-=======
-   getCheckout(id: any): Observable<Invoice> {
-    return this.http.post<Invoice>(`http://localhost:8082/invoice/checkout/${id}`, id);
-   }
-
-
->>>>>>> main
 
   private invoiceUrl: string;
   constructor(private http:HttpClient) {

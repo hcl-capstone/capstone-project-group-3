@@ -10,11 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { ProductDetailsDeleteComponent } from './product-details-delete/product-details-delete.component';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
-<<<<<<< HEAD
-
-=======
 import { UserDetailsComponent } from './components/user-details/user-details.component';
->>>>>>> main
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { ProductListComponent } from './components/product-search/product-list/product-list.component';
 
 
 
@@ -28,14 +26,12 @@ const routes: Routes = [
   {path:'invoice-search',component:OrderDetailsComponent},
   {path: 'product-details-add', component:ProductDetailsAddComponent},
   {path: 'product-details-edit', component:ProductDetailsEditComponent},
-<<<<<<< HEAD
-  {path:'checkout', component:CheckoutComponent}
-=======
+  {path:'checkout', component:CheckoutComponent},
   {path: 'notification-login', component:NotificationLoginComponent},
   {path: 'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent},
   {path: 'user-details', component:UserDetailsComponent}
->>>>>>> main
+
 
 ];
 
