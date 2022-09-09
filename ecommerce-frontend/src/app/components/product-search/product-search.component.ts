@@ -18,8 +18,14 @@ export class ProductSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+<<<<<<< HEAD
   }
 
+=======
+    
+  }
+  
+>>>>>>> main
   doSearch(): void {
     this.currentTutorial = {};
     this.currentIndex = -1;
