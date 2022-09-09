@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -9,6 +11,11 @@ import { ProductSearchComponent } from './components/product-search/product-sear
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { NotificationLoginComponent } from './components/notification-login/notification-login.component';
+import { NotificationCheckoutComponent } from './components/notification-checkout/notification-checkout.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductComponent } from './components/product-search/product/product.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { InvoiceService } from './services/invoice.service';
 import { HeaderComponent } from './header/header.component'
@@ -19,6 +26,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 
 @NgModule({
@@ -30,22 +39,30 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     RegisterUserComponent,
     UserDetailsComponent,
     ProductDetailsComponent,
+    NotificationLoginComponent,
+    NotificationCheckoutComponent,
+    ProductComponent,
     OrderDetailsComponent,
     HeaderComponent,
     HomeComponent,
     ProductListComponent,
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
-    ProductDetailsEditComponent
+    ProductDetailsEditComponent,
+    ShoppingCartComponent
+    
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ToastrModule.forRoot()
+
   ],
-  providers: [ProductService, InvoiceService],
+  providers: [ProductService, InvoiceService,ShoppingCartService],
 
   bootstrap: [AppComponent]
 })
