@@ -18,6 +18,7 @@ export class ProductSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
 
   doSearch(): void {
     this.currentTutorial = {};
