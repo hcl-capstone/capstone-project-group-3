@@ -13,6 +13,7 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductListComponent } from './components/product-search/product-list/product-list.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 
@@ -30,11 +31,10 @@ const routes: Routes = [
   {path: 'notification-login', component:NotificationLoginComponent},
   {path: 'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent},
-  {path: 'user-details', component:UserDetailsComponent}
 
-
-];
-
+  {path: 'user-details', component:UserDetailsComponent},
+  {path: 'shopping-cart', component:ShoppingCartComponent}
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

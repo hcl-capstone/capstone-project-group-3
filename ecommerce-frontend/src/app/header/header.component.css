@@ -19,6 +19,7 @@ a.logo{
     padding: 1em;
 }
 nav ul{
+    color: lightcyan;
     list-style-type: none;
     margin: 0;
 }

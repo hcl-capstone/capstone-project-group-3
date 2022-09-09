@@ -9,8 +9,11 @@ html{
 body{
     margin: 0;
     font-family: sans-serif;
-    font-size: 19px;
+    font-size: 12px;
 }
 a{
     text-decoration: none;
+}
+header{
+    background-color: lightskyblue;
 }
