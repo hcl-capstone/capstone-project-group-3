@@ -9,30 +9,29 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   private productUrl: string;
-
   private productAddUrl: string;
+  
   constructor(private http:HttpClient) {
     this.productUrl = 'http://localhost:8082/product/all';
     this.productAddUrl = 'http://localhost:8082/product/add';
-
-
   }
 
   getProductList(): Observable<Product[]> {
     return this.http.get<Product[]>(this.productUrl);
   }
 
-
-
-
   delete(data: any): Observable<Product> {
     console.log(`http://localhost:8082/product/delete/${data}`);
     return this.http.delete(`http://localhost:8082/product/delete/${data}`);
   }
 
-
   findByProductName(productName: any): Observable<Product[]>  {
     return this.http.get<Product[]>(`http://localhost:8082/product/get/byName?name=${productName}`);
+  }
+
+
+  findByProductId(productId: any): Observable<Product>{
+    return this.http.get<Product>(`http://localhost:8082/product/get/${productId}`);
   }
 
   add(data: any): Observable<Product> {
@@ -42,5 +41,4 @@ export class ProductService {
   update(id: any, data: any): Observable<any> {
     return this.http.post(`http://localhost:8082/product/update/${id}`, data)
   }
-
 }
