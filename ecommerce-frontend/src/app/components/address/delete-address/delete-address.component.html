@@ -1,0 +1,16 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+          <label for="id">Address ID</label>
+          <input
+            type="number"
+            class="form-control"
+            id="id"
+            required
+            [(ngModel)]="currentAddress.id"
+            name="id"
+          />
+        <button (click)= deleteAddressDetails() class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </div>

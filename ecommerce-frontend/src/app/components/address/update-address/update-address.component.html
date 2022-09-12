@@ -1,0 +1,76 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <label for="id">Address ID</label>
+        <input
+        type="number"
+        class="form-control"
+        id="id"
+        required
+        [(ngModel)]="currentAddress.id"
+        name="id"
+        />
+        
+        <label for="street">Street</label>
+          <input
+            type="text"
+            class="form-control"
+            id="street"
+            required
+            [(ngModel)]="currentAddress.street"
+            name="street"
+          />
+
+          <label for="secondary">Secondary</label>
+          <input
+            type="text"
+            class="form-control"
+            id="secondary"
+            required
+            [(ngModel)]="currentAddress.secondary"
+            name="secondary"
+          />
+          
+          <label for="city">City</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            required
+            [(ngModel)]="currentAddress.city"
+            name="city"
+          />
+
+          <label for="state">State</label>
+          <input
+            type="text"
+            class="form-control"
+            id="state"
+            required
+            [(ngModel)]="currentAddress.state"
+            name="state"
+          />
+
+          <label for="country">Country</label>
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            required
+            [(ngModel)]="currentAddress.country"
+            name="country"
+          />
+
+          <label for="zipCode">Zip Code</label>
+          <input
+            type="text"
+            class="form-control"
+            id="zipCode"
+            required
+            [(ngModel)]="currentAddress.zipCode"
+            name="zipCode"
+          />
+        <button (click)= updateAddressDetails() class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </div>

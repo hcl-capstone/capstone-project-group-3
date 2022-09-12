@@ -14,6 +14,10 @@ import { ProductDetailsAddComponent } from './components/product-details/product
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { AddAddressComponent } from './components/address/add-address/add-address.component';
+import { ReadAddressComponent } from './components/address/read-address/read-address.component';
+import { UpdateAddressComponent } from './components/address/update-address/update-address.component';
+import { DeleteAddressComponent } from './components/address/delete-address/delete-address.component';
 
 
 
@@ -30,7 +34,11 @@ const routes: Routes = [
   {path: 'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent},
   {path: 'user-details', component:UserDetailsComponent},
-  {path: 'shopping-cart', component: ShoppingCartComponent}
+  {path: 'shopping-cart', component: ShoppingCartComponent},
+  {path: 'address/add-address', component:AddAddressComponent},
+  {path: 'address/update-address', component:UpdateAddressComponent},
+  {path: 'address/read-address', component:ReadAddressComponent},
+  {path: 'address/delete-address', component:DeleteAddressComponent}
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
