@@ -1,1 +1,49 @@
-<p>product-search works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-5">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">PRODUCT LIST</h2>
+          <ul class="text-center list-inline py-3">
+            <li class="list-inline-item">
+
+              <a routerLink="products">List Products</a>
+
+            </li>
+            <input #myInput type="text" placeholder="Search for products ..." [(ngModel)]="productName"
+              class="au-input au-input-xl" (keyup.enter)="doSearch()" />
+
+            <button class="list-inline-item" (click)="doSearch()" >Search 
+         
+
+            </button>
+
+          </ul>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Price</th>
+          <th scope="col">Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.productName }}</td>
+          <td>{{ product.stockCount }}</td>
+          <td>{{ product.unitPrice }}</td>
+          <td>{{ product.image_url }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { ProductCategory } from "./product-category";
 
 export class Product{
+    productId?: number;
     productName?: string;
     stockCount?: number;
     dateCreated?: Date;
