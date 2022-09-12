@@ -26,6 +26,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 
 @NgModule({
@@ -46,7 +48,10 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     ProductListComponent,
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
-    ProductDetailsEditComponent
+    ProductDetailsEditComponent,
+    ShoppingCartComponent
+    
+
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     ToastrModule.forRoot()
 
   ],
-  providers: [ProductService, InvoiceService],
+  providers: [ProductService, InvoiceService,ShoppingCartService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

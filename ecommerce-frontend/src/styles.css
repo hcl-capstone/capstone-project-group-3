@@ -9,8 +9,16 @@ html{
 body{
     margin: 0;
     font-family: sans-serif;
-    font-size: 19px;
+    font-size: 12px;
 }
 a{
     text-decoration: none;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background-color: #E3E6F3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
 }

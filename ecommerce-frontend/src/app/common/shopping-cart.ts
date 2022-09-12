@@ -1,6 +1,8 @@
+import { Invoice } from "./invoice";
 import { Product } from "./product";
 
 export class ShoppingCart{
     productQuantity?: number;
-    product?: Product;
+    productId?: number;
+    invoiceId?: number;
 }
