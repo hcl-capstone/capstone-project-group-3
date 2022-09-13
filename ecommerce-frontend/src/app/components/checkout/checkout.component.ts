@@ -4,6 +4,7 @@ import { Invoice } from 'src/app/common/invoice';
 import { ShoppingCart } from 'src/app/common/shopping-cart';
 import { AddressService } from 'src/app/services/address.service';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -12,16 +13,16 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  invoice:Invoice = {}; 
+  invoice:Invoice; 
   address:Address | undefined; 
-  cart:ShoppingCart | undefined; 
+  carts?:ShoppingCart[];  
   id = ''; 
 
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService) { 
-    this.invoice = {}; 
+  constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService) { 
+    this.invoice; 
     this.address = {}; 
-    this.cart = {}; 
+    this.carts = []; 
   }
 
   ngOnInit(): void {
@@ -33,8 +34,7 @@ export class CheckoutComponent implements OnInit {
         next: (data) => {
           this.invoice = data;
           this.address = { ...this.invoice.address };
-          this.cart = { ...this.invoice.carts};
-          console.log(this.invoice, this.address, this.cart); 
+          console.log(this.invoice, this.address); 
         },
         error: (e) => console.error(e)
 
@@ -48,8 +48,8 @@ export class CheckoutComponent implements OnInit {
         next: (data) => {
           this.invoice = data;
           this.address = { ...this.invoice.address };
-          this.cart = { ...this.invoice.carts };
-          console.log(this.invoice, this.address, this.cart); 
+          this.carts = data.carts; 
+          console.log(this.invoice, this.address, this.carts); 
         },
         error: (e) => console.error(e)
     })
