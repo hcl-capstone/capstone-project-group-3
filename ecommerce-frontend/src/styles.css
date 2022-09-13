@@ -104,7 +104,7 @@ body{
 }
 #hero h1{
     color: #088178;
-    
+
 }
 #hero button{
     background-image: url("assets/images/Images/Brush.png");
@@ -112,4 +112,55 @@ body{
     color: #088178;
     border: 0;
     padding: 14px 80px 14px 65px;
+}
+
+/* Shop Page */
+#product-hero{
+    background-image: url(assets/images/Images/fruits-header.jpeg);
+    width: 100%;
+    height: 25vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+
+#product-hero h4{
+    color: #fff;
+    font-size: large;
+}
+#product-hero p{
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+#search-bar{
+    width: 100%;
+    height: 8vh;
+    background-size: cover;
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    /* flex-direction: column; */
+    padding: 14px;
+}
+#search-bar input[type=text]{
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid black;
+    float: left;
+    width: 50%;
+    background: #f1f1f1;
+}
+#search-bar button{
+    float: left;
+    width: 8%;
+    font-size: 15px;
+    background: rgb(29, 60, 118);
+    color: white;
+    cursor: pointer;
 }
