@@ -11,8 +11,6 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailsAddComponent implements OnInit {
 
-  uploadedUrl: string = "";
-
   product: Product = {
     productId: 0,
     productName: '',
@@ -77,7 +75,7 @@ export class ProductDetailsAddComponent implements OnInit {
     this.http.post('https://api.cloudinary.com/v1_1/du6vcjz7b/auto/upload', fd).subscribe(
       (data: any) => {
         console.log(data, data.url);
-        this.uploadedUrl= data.url;
+        this.product.image_url=data.url;
       }
     );
   }
