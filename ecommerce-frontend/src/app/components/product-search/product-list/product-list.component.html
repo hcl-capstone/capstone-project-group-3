@@ -1,3 +1,4 @@
+<!--
 <div class="card my-5">
     <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -25,37 +26,29 @@
         </tbody>
       </table>
     </div>
-  </div>
+</div>
+-->
 
-  <!-- <div class="main-content">
-    <div class="section-content section-content-p30">
-        <div class="container-fluid">
-            <div class="row">
-
-                
-                <div *ngFor="let tempProduct of products" class="col-md-3">
-
-                    <div class="product-box">
-
-                        <a routerLink="/products/{{ tempProduct.id }}">
-                            <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
-                        </a>
-
-                        <a routerLink="/products/{{ tempProduct.id }}">
-                            <h1>{{ tempProduct.name }}</h1>
-                        </a>
-                        
-                        <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
-                        <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
-                    </div>
-
-                </div>
-
-                
-
-            </div>
-
-
+<body>
+  <section id = "product1" class = "section-p1">
+    <h2> Product List </h2>
+    <p>Tropical Fruits on Sale!</p>
+    <div class = "product-container">
+      <div class = "product-display" *ngFor = "let product of products">
+        <img src = "{{product.image_url}}">
+        <div class = "product-detail">
+          <h5>{{product.productName}}</h5>
+          <h4>{{product.unitPrice}}</h4>
         </div>
+        <a href = "#"><i class="fal fa-shopping-cart cart"></i></a>
+      </div>
     </div>
-</div> -->
+  </section>
+
+  <!-- <section id = "pagination" class = "section-p1">
+    <a href = "#">1</a>
+    <a href = "#">2</a>
+    <a href = "#"><i class="fal fa-long-arrow-alt-right"></i></a>
+  </section> -->
+
+</body>

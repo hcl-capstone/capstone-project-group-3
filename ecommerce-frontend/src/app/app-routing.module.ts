@@ -20,20 +20,19 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
-  {path: 'product-search/products/:id', component:ProductComponent},
-  {path: 'product-details-delete', component:ProductDetailsDeleteComponent},
+  {path:'product-search/products/:id', component:ProductComponent},
+  {path:'product-details-delete', component:ProductDetailsDeleteComponent},
   {path:'product-search',component:ProductSearchComponent},
   {path:'product-search/products',component:ProductListComponent},
   {path:'invoice-search',component:OrderDetailsComponent},
-  {path: 'product-details-add', component:ProductDetailsAddComponent},
-  {path: 'product-details-edit', component:ProductDetailsEditComponent},
+  {path:'product-details-add', component:ProductDetailsAddComponent},
+  {path:'product-details-edit', component:ProductDetailsEditComponent},
   {path:'checkout', component:CheckoutComponent},
-  {path: 'notification-login', component:NotificationLoginComponent},
-  {path: 'notification-checkout', component:NotificationCheckoutComponent},
+  {path:'notification-login', component:NotificationLoginComponent},
+  {path:'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent},
-
-  {path: 'user-details', component:UserDetailsComponent},
-  {path: 'shopping-cart', component:ShoppingCartComponent}
+  {path:'user-details', component:UserDetailsComponent},
+  {path:'shopping-cart', component:ShoppingCartComponent}
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
