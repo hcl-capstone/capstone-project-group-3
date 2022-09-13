@@ -6,15 +6,15 @@
             <h2 class="card-title text-center text-white py-3">Invoice</h2>
             <ul class="text-center list-inline py-3">
               <li class="list-inline-item">
-              
-              <input #myInput type="text" placeholder="Search for products ..." [(ngModel)]="id"
+
+              <input #myInput type="text" placeholder="Search for invoice ..." [(ngModel)]="id"
                 class="au-input au-input-xl" (keyup.enter)="doCheckout()" />
-  
-              <button class="list-inline-item" (click)="doCheckout()" >Search 
-           
-  
+
+              <button class="list-inline-item" (click)="doCheckout()" >Search
+
+
               </button>
-  
+
             </ul>
           </div>
         </div>
@@ -37,7 +37,7 @@
         <tbody>
             <td>{{ invoice.totalPrice }}</td>
             <td>{{ invoice.dateOrdered }}</td>
-            <td>{{ invoice.deliveryAddress?.street }}</td>
+            <td>{{ address?.state }}</td>
             <td>{{ invoice.orderStatus }}</td>
         </tbody>
       </table>

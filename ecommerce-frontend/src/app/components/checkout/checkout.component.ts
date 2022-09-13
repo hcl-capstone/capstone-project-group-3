@@ -11,13 +11,13 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 })
 export class CheckoutComponent implements OnInit {
 
-  invoice:Invoice = {}; 
-  address:Address; 
-  id = ''; 
+  invoice:Invoice = {};
+  address:Address;
+  id = '';
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService) { 
-    this.invoice = {}; 
-    this.address = {}; 
+  constructor(private invoiceService: InvoiceService, private addressService: AddressService) {
+    this.invoice = {};
+    this.address = {};
   }
 
 
@@ -25,11 +25,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   doCheckout(): void {
-    this.invoiceService.getCheckout(this.id) 
+    this.invoiceService.getCheckout(this.id)
       .subscribe({
         next: (data) => {
           this.invoice = data;
-          console.log(this.invoice); 
+          console.log(this.invoice);
         },
         error: (e) => console.error(e)
 

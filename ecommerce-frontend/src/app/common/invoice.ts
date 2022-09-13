@@ -7,12 +7,5 @@ export class Invoice{
     orderStatus?: string;
     dateOrdered?: Date;
     carts?: ShoppingCart;
-    deliveryAddress?: {
-        street?: string;
-        secondary?: string;
-        city?: string;
-        state?: string;
-        country?: string;
-        zipCode?: string;
-    };
+    address?: Address;
 }

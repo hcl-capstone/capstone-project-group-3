@@ -24,6 +24,7 @@ import lombok.Setter;
 @Setter
 public class Invoice {
 	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "invoice_id")
