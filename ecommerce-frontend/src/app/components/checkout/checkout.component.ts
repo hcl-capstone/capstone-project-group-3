@@ -29,12 +29,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   doCheckout(): void {
-    this.invoiceService.getCheckout(this.id) 
+    this.invoiceService.getCheckout(this.id)
       .subscribe({
         next: (data) => {
           this.invoice = data;
-          this.address = { ...this.invoice.address };
-          console.log(this.invoice, this.address); 
+          console.log(this.invoice);
         },
         error: (e) => console.error(e)
 
