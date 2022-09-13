@@ -15,7 +15,6 @@ export class CheckoutComponent implements OnInit {
   invoice:Invoice = {}; 
   address:Address | undefined; 
   cart:ShoppingCart | undefined; 
-  //carts:ShoppingCart = Array<ShoppingCart>; 
   id = ''; 
 
 
@@ -34,7 +33,7 @@ export class CheckoutComponent implements OnInit {
         next: (data) => {
           this.invoice = data;
           this.address = { ...this.invoice.address };
-          this.cart = { ...this.invoice.carts };
+          this.cart = { ...this.invoice.carts};
           console.log(this.invoice, this.address, this.cart); 
         },
         error: (e) => console.error(e)
