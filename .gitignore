@@ -6,3 +6,4 @@
 application.properties
 ecommerce/target/*
 
+/.metadata/

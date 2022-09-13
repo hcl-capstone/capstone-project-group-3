@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -28,7 +28,17 @@ import { ProductDetailsAddComponent } from './components/product-details/product
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProtectedComponent } from './components/protected/protected.component';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+import { AuthInterceptor } from './auth.interceptor';
 
+const oktaAuth = new OktaAuth({
+  issuer: 'https://dev-71392619.okta.com/oauth2/default',
+  clientId: '0oa6bfvpn0VTGBPcG5d7',
+  redirectUri: window.location.origin + '/login/callback',
+});
 
 @NgModule({
   declarations: [
@@ -49,7 +59,9 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
     ProductDetailsEditComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ProfileComponent,
+    ProtectedComponent
     
 
   ],
@@ -59,10 +71,13 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    OktaAuthModule,
     ToastrModule.forRoot()
 
   ],
-  providers: [ProductService, InvoiceService,ShoppingCartService],
+  providers: [ProductService, InvoiceService,ShoppingCartService,
+    { provide: OKTA_CONFIG, useValue: { oktaAuth } },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 
   bootstrap: [AppComponent]
 })

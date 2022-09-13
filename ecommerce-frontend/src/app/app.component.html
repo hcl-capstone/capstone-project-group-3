@@ -1,14 +1,15 @@
 
-
 <app-header></app-header>
 <router-outlet></router-outlet>
-
-
 <nav class = "navbar navbar-default">
     <div class = "container-fluid">
         <ul>
+            <li routerLinkActive="active"><a routerLink="product-search">ALL PRODUCTS</a></li>
+            <li routerLinkActive="active"><a routerLink="register-user">REGISTER</a></li>
         </ul>
     </div>
 </nav>
+<app-register-user></app-register-user>
 
 <router-outlet></router-outlet>
+
