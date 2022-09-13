@@ -1,3 +1,4 @@
+<!--
 <div class="card my-5">
     <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -20,10 +21,34 @@
               <button color="primary" [routerLink]="[product.productId]">
                   Details
               </button>
-              <!--<app-product [id]="product.productId"></app-product> -->
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
+</div>
+-->
+
+<body>
+  <section id = "product1" class = "section-p1">
+    <h2> Product List </h2>
+    <p>Tropical Fruits on Sale!</p>
+    <div class = "product-container">
+      <div class = "product-display" *ngFor = "let product of products">
+        <img src = "{{product.image_url}}">
+        <div class = "product-detail">
+          <h5>{{product.productName}}</h5>
+          <h4>{{product.unitPrice}}</h4>
+        </div>
+        <a href = "#"><i class="fal fa-shopping-cart cart"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section id = "pagination" class = "section-p1">
+    <a href = "#">1</a>
+    <a href = "#">2</a>
+    <a href = "#"><i class="fal fa-long-arrow-alt-right"></i></a>
+  </section> -->
+
+</body>
