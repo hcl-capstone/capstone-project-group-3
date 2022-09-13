@@ -29,7 +29,6 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { Address } from './common/address';
-//import { AddressComponent } from './components/address/address.component';
 import { AddAddressComponent } from './components/address/add-address/add-address.component';
 import { ReadAddressComponent } from './components/address/read-address/read-address.component';
 import { UpdateAddressComponent } from './components/address/update-address/update-address.component';
@@ -56,7 +55,6 @@ import { DeleteAddressComponent } from './components/address/delete-address/dele
     ProductDetailsAddComponent,
     ProductDetailsEditComponent,
     ShoppingCartComponent,
-    AddressComponent,
     AddAddressComponent,
     ReadAddressComponent,
     UpdateAddressComponent,
