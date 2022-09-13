@@ -31,7 +31,6 @@ const routes: Routes = [
   {path: 'notification-login', component:NotificationLoginComponent},
   {path: 'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent},
-
   {path: 'user-details', component:UserDetailsComponent},
   {path: 'shopping-cart', component:ShoppingCartComponent}
 ]
