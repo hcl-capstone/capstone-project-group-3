@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/product';
 import { ProductCategory } from 'src/app/common/product-category';
@@ -9,6 +10,8 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./product-details-add.component.css']
 })
 export class ProductDetailsAddComponent implements OnInit {
+
+  uploadedUrl: string = "";
 
   product: Product = {
     productId: 0,
@@ -22,7 +25,7 @@ export class ProductDetailsAddComponent implements OnInit {
   };
   submitted = false;
   
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -46,19 +49,37 @@ export class ProductDetailsAddComponent implements OnInit {
       },
       error: (e) => console.error(e)
     });
-}
+  }
   
-newProduct(): void {
-  this.submitted = false;
-  this.product = {
-    productId: 0,
-    productName: '',
-    stockCount: 0,
-    dateCreated: new Date(),
-    unitPrice: 0,
-    image_url: '',
-    category: new ProductCategory
-  };
-}
+  newProduct(): void {
+    this.submitted = false;
+    this.product = {
+      productId: 0,
+      productName: '',
+      stockCount: 0,
+      dateCreated: new Date(),
+      unitPrice: 0,
+      image_url: '',
+      category: new ProductCategory
+    };
+  }
+
+  selectedFile = '';
+  onFileSelected(event: any){
+    this.selectedFile = event.target.files[0];
+    //console.log(event);
+  }
+
+  onUpload(){
+    const fd = new FormData();
+    fd.append('file', this.selectedFile);
+    fd.append('upload_preset', "nz2scxg7")
+    this.http.post('https://api.cloudinary.com/v1_1/du6vcjz7b/auto/upload', fd).subscribe(
+      (data: any) => {
+        console.log(data, data.url);
+        this.uploadedUrl= data.url;
+      }
+    );
+  }
 
 }
