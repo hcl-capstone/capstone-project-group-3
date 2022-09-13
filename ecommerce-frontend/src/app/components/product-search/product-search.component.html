@@ -1,4 +1,17 @@
-<div class="container">
+<body>
+  <section id="product-hero">
+      <p>Fresh, Tropical, Exotic</p>
+      <h4>Sourced In-House.</h4>
+  </section>
+  <section id="search-bar">
+    <input type="text" placeholder="Search for products ..." [(ngModel)]="productName" 
+      class="au-input au-input-xl" (keyup.enter)="doSearch()" />
+    <!-- <button class="list-inline-item" (click)="doSearch()" >Search </button> -->
+    <button type="button" class="fas fa-search" (click)="doSearch()"></button>
+  </section>
+</body>
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-md-12">
       <div class="card bg-dark my-5">
@@ -14,7 +27,10 @@
               class="au-input au-input-xl" (keyup.enter)="doSearch()" />
 
             <button class="list-inline-item" (click)="doSearch()" >Search 
-         
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search For Products" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form> 
 
             </button>
 
@@ -46,4 +62,4 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> -->
