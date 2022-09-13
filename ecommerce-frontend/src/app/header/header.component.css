@@ -1,4 +1,4 @@
-header{
+/* header{
     padding: 0;
     border-bottom: 1px solid navy;
 }
@@ -19,10 +19,11 @@ a.logo{
     padding: 1em;
 }
 nav ul{
+    color: lightcyan;
     list-style-type: none;
     margin: 0;
 }
 nav ul li a{
     padding: 1em;
     display: inline-block;
-}
+} */

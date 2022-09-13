@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
+import { MatSliderModule } from '@angular/material/slider';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -26,7 +26,19 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProtectedComponent } from './components/protected/protected.component';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+import { AuthInterceptor } from './auth.interceptor';
 
+const oktaAuth = new OktaAuth({
+  issuer: 'https://dev-71392619.okta.com/oauth2/default',
+  clientId: '0oa6bfvpn0VTGBPcG5d7',
+  redirectUri: window.location.origin + '/login/callback',
+});
 
 @NgModule({
   declarations: [
@@ -46,7 +58,12 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     ProductListComponent,
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
-    ProductDetailsEditComponent
+    ProductDetailsEditComponent,
+    ShoppingCartComponent,
+    ProfileComponent,
+    ProtectedComponent
+    
+
   ],
   imports: [
     BrowserModule,
@@ -54,10 +71,18 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ToastrModule.forRoot()
+
+    OktaAuthModule,
+
+    ToastrModule.forRoot(),
+    MatSliderModule
+
 
   ],
-  providers: [ProductService, InvoiceService],
+  providers: [ProductService, InvoiceService,ShoppingCartService,
+    { provide: OKTA_CONFIG, useValue: { oktaAuth } },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

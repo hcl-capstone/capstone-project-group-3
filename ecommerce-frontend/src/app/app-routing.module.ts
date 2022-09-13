@@ -10,7 +10,10 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -26,10 +29,13 @@ const routes: Routes = [
   {path: 'notification-login', component:NotificationLoginComponent},
   {path: 'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent},
-  {path: 'user-details', component:UserDetailsComponent}
-
-];
-
+  {path: 'user-details', component:UserDetailsComponent},
+  {path: 'shopping-cart', component: ShoppingCartComponent},
+  {path: 'register-user', component: RegisterUserComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [OktaAuthGuard] },
+  { path: 'protected', loadChildren: () => import('./components/protected/protected.module').then(m => m.ProtectedModule), canActivate: [OktaAuthGuard] },
+  { path: 'login/callback', component: OktaCallbackComponent }
+]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
