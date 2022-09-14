@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
+import { MatSliderModule } from '@angular/material/slider';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -33,7 +33,17 @@ import { AddAddressComponent } from './components/address/add-address/add-addres
 import { ReadAddressComponent } from './components/address/read-address/read-address.component';
 import { UpdateAddressComponent } from './components/address/update-address/update-address.component';
 import { DeleteAddressComponent } from './components/address/delete-address/delete-address.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProtectedComponent } from './components/protected/protected.component';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+import { AuthInterceptor } from './auth.interceptor';
 
+const oktaAuth = new OktaAuth({
+  issuer: 'https://dev-71392619.okta.com/oauth2/default',
+  clientId: '0oa6bfvpn0VTGBPcG5d7',
+  redirectUri: window.location.origin + '/login/callback',
+});
 
 @NgModule({
   declarations: [
@@ -59,9 +69,8 @@ import { DeleteAddressComponent } from './components/address/delete-address/dele
     ReadAddressComponent,
     UpdateAddressComponent,
     DeleteAddressComponent,
-    
-    
-
+    ProfileComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule,
@@ -69,10 +78,17 @@ import { DeleteAddressComponent } from './components/address/delete-address/dele
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ToastrModule.forRoot()
+
+    OktaAuthModule,
+
+    ToastrModule.forRoot(),
+    MatSliderModule
+
 
   ],
-  providers: [ProductService, InvoiceService,ShoppingCartService],
+  providers: [ProductService, InvoiceService,ShoppingCartService,
+    { provide: OKTA_CONFIG, useValue: { oktaAuth } },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
 
   bootstrap: [AppComponent]
 })

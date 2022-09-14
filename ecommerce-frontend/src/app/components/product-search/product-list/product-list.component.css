@@ -1,0 +1,149 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+h1 {
+    font-size: 50px;
+    color: #222;
+}
+
+h2 {
+    font-size: 46px;
+    color: #222;
+}
+
+h3 {
+    font-size: 32px;
+    color: #222;
+}
+
+h4 {
+    font-size: 20px;
+    color: #222;
+}
+
+h5 {
+    font-size: 18px;
+    color: #222;
+}
+
+h6 {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+p {
+    font-size: 16px;
+    color: #465b52;
+    margin: 15px 0 20px 0;
+}
+
+.section-p1 {
+    padding: 40px 80px;
+}
+
+.section-m1 {
+    margin: 40px 0;
+}
+
+body {
+    width: 100%;
+} */
+
+
+#product1{
+    text-align: center;
+
+}
+
+#product1 .product-container{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    
+    flex-wrap: wrap;
+}
+
+#product1 .product-display{
+    width: 23%;
+    min-width: 250px;
+    padding: 10px 12px;
+    border: 1px solid #cce7d0;
+    border-width: 25px;
+
+    cursor: pointer;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.02);
+
+    margin: 15px 0;
+
+    transition: 0.2s ease;
+
+    position:relative;
+}
+
+#product1 .product-display:hover{
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.1);
+}
+
+#product1 .product-display img{
+    width: 100%;
+    border-width: 20px;
+}
+
+#product1 .product-display .product-detail{
+    text-align: start;
+    padding: 10px 0;
+}
+
+#product1 .product-display .product-detail h5{
+    padding-top: 5px;
+    color: #1a1a1a;
+    font-size: 14px;
+}
+
+#product1 .product-display .product-detail h4{
+    padding-top: 5px;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 700;
+    color: #088178;
+}
+
+#product1 .product-display .cart{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #8ef6ea;
+    font-weight: 500;
+    color: #088178;
+    border: 1px solid #cce7d0;
+
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+
+#pagination{
+    text-align:center;
+
+}
+
+#pagination a{
+    text-decoration: none;
+    background-color:rgb(11, 112, 196);
+    padding: 15px 20px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+}
+
+#pagination a i{
+    font-size: 16px;
+    font-weight: 600;
+}

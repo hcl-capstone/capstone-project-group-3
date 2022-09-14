@@ -18,6 +18,9 @@ import { AddAddressComponent } from './components/address/add-address/add-addres
 import { ReadAddressComponent } from './components/address/read-address/read-address.component';
 import { UpdateAddressComponent } from './components/address/update-address/update-address.component';
 import { DeleteAddressComponent } from './components/address/delete-address/delete-address.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -38,7 +41,11 @@ const routes: Routes = [
   {path: 'address/add-address', component:AddAddressComponent},
   {path: 'address/update-address', component:UpdateAddressComponent},
   {path: 'address/read-address', component:ReadAddressComponent},
-  {path: 'address/delete-address', component:DeleteAddressComponent}
+  {path: 'address/delete-address', component:DeleteAddressComponent},
+  {path: 'register-user', component: RegisterUserComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [OktaAuthGuard] },
+  { path: 'protected', loadChildren: () => import('./components/protected/protected.module').then(m => m.ProtectedModule), canActivate: [OktaAuthGuard] },
+  { path: 'login/callback', component: OktaCallbackComponent }
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
