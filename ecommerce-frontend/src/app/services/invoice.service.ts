@@ -24,4 +24,8 @@ export class InvoiceService {
     return this.http.get<Invoice[]>(this.invoiceUrl);
   }
 
+  getInvoice(id: any): Observable<Invoice> {
+    return this.http.get<Invoice>(`http://localhost:8082/invoice/get/${id}`);
+  }
+
 }
