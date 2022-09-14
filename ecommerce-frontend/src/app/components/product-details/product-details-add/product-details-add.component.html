@@ -60,6 +60,13 @@
               name="category"
             />
           </div>
+
+          <div class = "file-upload">
+            <input type = "file" (change)="onFileSelected($event)">
+            <button type = "submit-button" (click)="onUpload()">Upload</button>
+          </div>
+
+
         <button (click) = saveProduct() class="btn btn-success">Submit</button>
       </div>
   
