@@ -1,6 +1,6 @@
-<!--<input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id"  
+<input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id"  
   class="au-input au-input-xl" (keyup.enter)="getInvoice()" />
-  <button class="list-inline-item" (click)="getInvoice()" >Search </button>-->
+  <button class="list-inline-item" (click)="getInvoice()" >Search </button>
 
 
   <section class="py-5">
@@ -84,6 +84,10 @@
             <output>{{address?.secondary}}</output>
           </div>
           <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="country" class="form-label">City</label>
+              <output>{{address?.city}}</output>
+            </div>
             <div class="col-md-5 mb-3">
               <label for="country" class="form-label">Country</label>
               <output>{{address?.country}}</output>
