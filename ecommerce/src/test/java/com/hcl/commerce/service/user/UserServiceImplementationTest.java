@@ -8,7 +8,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.hcl.commerce.dto.user.UserInputDTO;
-import com.hcl.commerce.entity.User;
 import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.repository.UserRepository;
 import com.hcl.commerce.service.role.RoleService;
@@ -55,7 +54,7 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        when(userRepository.save((User) any())).thenReturn(user);
+        when(userRepository.save((Users) any())).thenReturn(user);
         UserInputDTO userInputDTO = new UserInputDTO();
         userInputDTO.setEmail("jane.doe@example.org");
         userInputDTO.setFirstName("Jane");
@@ -100,7 +99,7 @@ class UserServiceImplementationTest {
      */
     @Test
     void testGetUser3() {
-        User user = new Users();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -119,7 +118,7 @@ class UserServiceImplementationTest {
      */
     @Test
     void testUpdateUser() {
-        User user = new Users();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -130,7 +129,7 @@ class UserServiceImplementationTest {
         user.setUserId(123L);
         user.setUsername("janedoe");
         Optional<Users> ofResult = Optional.of(user);
-        User user1 = new Users();
+        Users user1 = new Users();
         user1.setAddresses(new HashSet<>());
         user1.setEmail("jane.doe@example.org");
         user1.setFirstName("Jane");
@@ -221,7 +220,7 @@ class UserServiceImplementationTest {
      */
     @Test
     void testDeleteUser() {
-        User user = new Users();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -231,7 +230,7 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        Optional<User> ofResult = Optional.of(user);
+        Optional<Users> ofResult = Optional.of(user);
         when(userRepository.findById((Long) any())).thenReturn(ofResult);
         doNothing().when(userRepository).delete((Users) any());
         assertSame(user, userServiceImplementation.deleteUser(123L));
