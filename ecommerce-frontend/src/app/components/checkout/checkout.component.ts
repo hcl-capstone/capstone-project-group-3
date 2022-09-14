@@ -16,7 +16,7 @@ export class CheckoutComponent implements OnInit {
   invoice:Invoice; 
   address:Address | undefined; 
   carts?:ShoppingCart[];  
-  id = ''; 
+  id:string; 
 
 
   constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService) { 
