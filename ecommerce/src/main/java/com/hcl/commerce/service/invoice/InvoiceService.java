@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.hcl.commerce.Email;
 import com.hcl.commerce.dto.invoice.InvoiceReceiptDTO;
 import com.hcl.commerce.entity.Invoice;
-import com.hcl.commerce.entity.User;
+import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.repository.InvoiceRepository;
 import com.hcl.commerce.service.address.AddressService;
 import com.hcl.commerce.service.product.ProductService;
@@ -44,7 +44,7 @@ public class InvoiceService {
 	public Invoice addInvoice(Long user_id) {
 		Invoice invoice = new Invoice();
 		invoice.setOrderStatus("Not Checked Out");
-		User user = userService.getUser(user_id);
+		Users user = userService.getUser(user_id);
 		if(user != null) {
 			user.addInvoice(invoice);
 			return repo.save(invoice);
@@ -91,7 +91,7 @@ public class InvoiceService {
 			InvoiceReceiptDTO receipt = new InvoiceReceiptDTO();
 			BeanUtils.copyProperties(invoice, receipt);
 			
-			User user = getUserFromInvoice(id);
+			Users user = getUserFromInvoice(id);
 			
 			Email.sendCheckoutMail(javaMailSender, user.getEmail(), user.getFirstName(),receipt);
 			
@@ -100,9 +100,9 @@ public class InvoiceService {
 		return null;
 	}
 	
-	private User getUserFromInvoice(Long invoice_id) {
-		List<User> ulist = userService.getAllUser();
-		for(User user : ulist) {
+	private Users getUserFromInvoice(Long invoice_id) {
+		List<Users> ulist = userService.getAllUser();
+		for(Users user : ulist) {
 			List<Invoice> ilist = user.getInvoices();
 			for(Invoice invoice : ilist) {
 				if(invoice.getInvoiceId().equals(invoice_id)) {

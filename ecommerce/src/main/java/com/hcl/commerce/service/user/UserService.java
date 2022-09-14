@@ -5,21 +5,21 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.hcl.commerce.dto.user.UserInputDTO;
-import com.hcl.commerce.entity.User;
+import com.hcl.commerce.entity.Users;
 
 @Service
 public interface UserService {
 
-	User registerUser(UserInputDTO dto);
+	Users registerUser(UserInputDTO dto);
 
-	User getUser(Long userId);
+	Users getUser(Long userId);
 
-	User deleteUser(Long userId);
+	Users deleteUser(Long userId);
 
-	List<User> getAllUser();
+	List<Users> getAllUser();
 
-	User getUser(String username, String password);
+	Users getUser(String username, String password);
 
-	User updateUser(Long userId, UserInputDTO dto);
+	Users updateUser(Long userId, UserInputDTO dto);
 
 }

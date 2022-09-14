@@ -6,13 +6,6 @@ export class Invoice{
     totalPrice?: number;
     orderStatus?: string;
     dateOrdered?: Date;
-    carts?: ShoppingCart;
-    deliveryAddress?: {
-        street?: string;
-        secondary?: string;
-        city?: string;
-        state?: string;
-        country?: string;
-        zipCode?: string;
-    };
+    carts?: ShoppingCart[];
+    address?: Address;
 }
