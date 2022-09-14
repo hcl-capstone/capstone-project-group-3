@@ -8,7 +8,7 @@ import static org.mockito.Mockito.when;
 import com.hcl.commerce.entity.Address;
 import com.hcl.commerce.entity.Invoice;
 import com.hcl.commerce.entity.Role;
-import com.hcl.commerce.entity.User;
+import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.repository.UserRepository;
 import com.hcl.commerce.service.address.AddressService;
 import com.hcl.commerce.service.invoice.InvoiceService;
@@ -47,7 +47,7 @@ class UserSupportServiceTest {
      */
     @Test
     void testGetAddress() {
-        User user = new User();
+        Users user = new Users();
         HashSet<Address> addressSet = new HashSet<>();
         user.setAddresses(addressSet);
         user.setEmail("jane.doe@example.org");
@@ -69,7 +69,7 @@ class UserSupportServiceTest {
      */
     @Test
     void testGetInvoices() {
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -91,7 +91,7 @@ class UserSupportServiceTest {
      */
     @Test
     void testGetRoles() {
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -117,7 +117,7 @@ class UserSupportServiceTest {
         role.setRoleId(123L);
         role.setRoleName("Role Name");
         when(roleService.getRole((Long) any())).thenReturn(role);
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -127,8 +127,8 @@ class UserSupportServiceTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        when(userRepository.save((User) any())).thenReturn(user);
-        User user1 = new User();
+        when(userRepository.save((Users) any())).thenReturn(user);
+        Users user1 = new Users();
         user1.setAddresses(new HashSet<>());
         user1.setEmail("jane.doe@example.org");
         user1.setFirstName("Jane");
@@ -141,7 +141,7 @@ class UserSupportServiceTest {
         when(userServiceImplementation.getUser((Long) any())).thenReturn(user1);
         assertSame(user, userSupportService.addRole(1L, 1L));
         verify(roleService).getRole((Long) any());
-        verify(userRepository).save((User) any());
+        verify(userRepository).save((Users) any());
         verify(userServiceImplementation).getUser((Long) any());
     }
     /**
@@ -158,7 +158,7 @@ class UserSupportServiceTest {
         address.setStreet("Street");
         address.setZip("21654");
         when(addressService.getAddress((Long) any())).thenReturn(address);
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -168,8 +168,8 @@ class UserSupportServiceTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        when(userRepository.save((User) any())).thenReturn(user);
-        User user1 = new User();
+        when(userRepository.save((Users) any())).thenReturn(user);
+        Users user1 = new Users();
         user1.setAddresses(new HashSet<>());
         user1.setEmail("jane.doe@example.org");
         user1.setFirstName("Jane");
@@ -182,7 +182,7 @@ class UserSupportServiceTest {
         when(userServiceImplementation.getUser((Long) any())).thenReturn(user1);
         assertSame(user, userSupportService.addAddress(1L, 1L));
         verify(addressService).getAddress((Long) any());
-        verify(userRepository).save((User) any());
+        verify(userRepository).save((Users) any());
         verify(userServiceImplementation).getUser((Long) any());
     }
     /**
@@ -207,7 +207,7 @@ class UserSupportServiceTest {
         invoice.setTotalPrice(BigDecimal.valueOf(1L));
         invoice.updateTotalPrice();
         when(invoiceService.addInvoice((Long) any())).thenReturn(invoice);
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -223,4 +223,3 @@ class UserSupportServiceTest {
         verify(userServiceImplementation).getUser((Long) any());
     }
 }
-

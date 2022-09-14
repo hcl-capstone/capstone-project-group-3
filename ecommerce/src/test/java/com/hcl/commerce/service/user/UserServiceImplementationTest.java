@@ -8,7 +8,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.hcl.commerce.dto.user.UserInputDTO;
-import com.hcl.commerce.entity.User;
+import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.repository.UserRepository;
 import com.hcl.commerce.service.role.RoleService;
 
@@ -44,7 +44,7 @@ class UserServiceImplementationTest {
     @Test
     void testRegisterUser() throws MailException {
         doNothing().when(javaMailSender).send((SimpleMailMessage) any());
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -54,7 +54,7 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        when(userRepository.save((User) any())).thenReturn(user);
+        when(userRepository.save((Users) any())).thenReturn(user);
         UserInputDTO userInputDTO = new UserInputDTO();
         userInputDTO.setEmail("jane.doe@example.org");
         userInputDTO.setFirstName("Jane");
@@ -63,14 +63,14 @@ class UserServiceImplementationTest {
         userInputDTO.setUsername("janedoe");
         assertSame(user, userServiceImplementation.registerUser(userInputDTO));
         verify(javaMailSender).send((SimpleMailMessage) any());
-        verify(userRepository).save((User) any());
+        verify(userRepository).save((Users) any());
     }
     /**
      * Method under test: {@link UserServiceImplementation#getUser(Long)}
      */
     @Test
     void testGetUser() {
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -80,7 +80,7 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        Optional<User> ofResult = Optional.of(user);
+        Optional<Users> ofResult = Optional.of(user);
         when(userRepository.findById((Long) any())).thenReturn(ofResult);
         assertSame(user, userServiceImplementation.getUser(123L));
         verify(userRepository).findById((Long) any());
@@ -99,7 +99,7 @@ class UserServiceImplementationTest {
      */
     @Test
     void testGetUser3() {
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -118,7 +118,7 @@ class UserServiceImplementationTest {
      */
     @Test
     void testUpdateUser() {
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -128,8 +128,8 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        Optional<User> ofResult = Optional.of(user);
-        User user1 = new User();
+        Optional<Users> ofResult = Optional.of(user);
+        Users user1 = new Users();
         user1.setAddresses(new HashSet<>());
         user1.setEmail("jane.doe@example.org");
         user1.setFirstName("Jane");
@@ -139,7 +139,7 @@ class UserServiceImplementationTest {
         user1.setRoles(new HashSet<>());
         user1.setUserId(123L);
         user1.setUsername("janedoe");
-        when(userRepository.save((User) any())).thenReturn(user1);
+        when(userRepository.save((Users) any())).thenReturn(user1);
         when(userRepository.findById((Long) any())).thenReturn(ofResult);
         UserInputDTO userInputDTO = new UserInputDTO();
         userInputDTO.setEmail("jane.doe@example.org");
@@ -148,7 +148,7 @@ class UserServiceImplementationTest {
         userInputDTO.setPassword("iloveyou");
         userInputDTO.setUsername("janedoe");
         assertSame(user1, userServiceImplementation.updateUser(123L, userInputDTO));
-        verify(userRepository).save((User) any());
+        verify(userRepository).save((Users) any());
         verify(userRepository).findById((Long) any());
     }
     /**
@@ -169,7 +169,7 @@ class UserServiceImplementationTest {
         //   methods that make it easier to construct fully initialized objects used in
         //   updateUser(Long, UserInputDTO).
         //   See https://diff.blue/R013 to resolve this issue.
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -179,7 +179,7 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        when(userRepository.save((User) any())).thenReturn(user);
+        when(userRepository.save((Users) any())).thenReturn(user);
         when(userRepository.findById((Long) any())).thenReturn(null);
         UserInputDTO userInputDTO = new UserInputDTO();
         userInputDTO.setEmail("jane.doe@example.org");
@@ -194,7 +194,7 @@ class UserServiceImplementationTest {
      */
     @Test
     void testUpdateUser3() {
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -204,7 +204,7 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        when(userRepository.save((User) any())).thenReturn(user);
+        when(userRepository.save((Users) any())).thenReturn(user);
         when(userRepository.findById((Long) any())).thenReturn(Optional.empty());
         UserInputDTO userInputDTO = new UserInputDTO();
         userInputDTO.setEmail("jane.doe@example.org");
@@ -220,7 +220,7 @@ class UserServiceImplementationTest {
      */
     @Test
     void testDeleteUser() {
-        User user = new User();
+        Users user = new Users();
         user.setAddresses(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
@@ -230,12 +230,12 @@ class UserServiceImplementationTest {
         user.setRoles(new HashSet<>());
         user.setUserId(123L);
         user.setUsername("janedoe");
-        Optional<User> ofResult = Optional.of(user);
+        Optional<Users> ofResult = Optional.of(user);
         when(userRepository.findById((Long) any())).thenReturn(ofResult);
-        doNothing().when(userRepository).delete((User) any());
+        doNothing().when(userRepository).delete((Users) any());
         assertSame(user, userServiceImplementation.deleteUser(123L));
         verify(userRepository).findById((Long) any());
-        verify(userRepository).delete((User) any());
+        verify(userRepository).delete((Users) any());
     }
     /**
      * Method under test: {@link UserServiceImplementation#deleteUser(Long)}
@@ -243,19 +243,19 @@ class UserServiceImplementationTest {
     @Test
     void testDeleteUser2() {
         when(userRepository.findById((Long) any())).thenReturn(Optional.empty());
-        doNothing().when(userRepository).delete((User) any());
+        doNothing().when(userRepository).delete((Users) any());
         assertNull(userServiceImplementation.deleteUser(123L));
         verify(userRepository).findById((Long) any());
-        verify(userRepository).delete((User) any());
+        verify(userRepository).delete((Users) any());
     }
     /**
      * Method under test: {@link UserServiceImplementation#getAllUser()}
      */
     @Test
     void testGetAllUser() {
-        ArrayList<User> userList = new ArrayList<>();
+        ArrayList<Users> userList = new ArrayList<>();
         when(userRepository.findAll()).thenReturn(userList);
-        List<User> actualAllUser = userServiceImplementation.getAllUser();
+        List<Users> actualAllUser = userServiceImplementation.getAllUser();
         assertSame(userList, actualAllUser);
         assertTrue(actualAllUser.isEmpty());
         verify(userRepository).findAll();
