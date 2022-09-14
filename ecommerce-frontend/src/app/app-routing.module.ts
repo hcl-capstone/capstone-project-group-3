@@ -17,6 +17,9 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { ProductListComponent } from './components/product-search/product-list/product-list.component';
+import { HomeComponent } from './home/home.component';
 
 
 
