@@ -15,7 +15,7 @@ export class UpdateAddressComponent implements OnInit {
     city: '',
     state: '',
     country: '',
-    zipCode: '',
+    zip: ''
   }
   submitted = false;
 
@@ -35,7 +35,7 @@ export class UpdateAddressComponent implements OnInit {
   close(item: any) {
     item.editFieldName = '';
   }
-  
+
   //Update Addresses
   updateAddressDetails(): void {
     this.message = '';
@@ -46,7 +46,7 @@ export class UpdateAddressComponent implements OnInit {
       city: this.currentAddress.city,
       state: this.currentAddress.state,
       country: this.currentAddress.country,
-      zipCode: this.currentAddress.zipCode,
+      zip: this.currentAddress.zip
     }
     this.addressservice.update(this.currentAddress.id, data)
       .subscribe({

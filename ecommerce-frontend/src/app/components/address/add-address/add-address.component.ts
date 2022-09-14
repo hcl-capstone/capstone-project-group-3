@@ -16,7 +16,7 @@ export class AddAddressComponent implements OnInit {
     city: '',
     state: '',
     country: '',
-    zipCode: '',
+    zip: '',
   }
   submitted = false;
 
@@ -46,7 +46,7 @@ export class AddAddressComponent implements OnInit {
       city: this.currentAddress.city,
       state: this.currentAddress.state,
       country: this.currentAddress.country,
-      zipCode: this.currentAddress.zipCode,
+      zipCode: this.currentAddress.zip
     }
     this.addressservice.add(data)
       .subscribe({

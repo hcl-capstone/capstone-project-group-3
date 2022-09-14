@@ -35,9 +35,9 @@ import { UpdateAddressComponent } from './components/address/update-address/upda
 import { DeleteAddressComponent } from './components/address/delete-address/delete-address.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProtectedComponent } from './components/protected/protected.component';
-import { OktaAuth } from '@okta/okta-auth-js';
 import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 import { AuthInterceptor } from './auth.interceptor';
+import { OktaAuth } from '@okta/okta-auth-js';
 
 const oktaAuth = new OktaAuth({
   issuer: 'https://dev-71392619.okta.com/oauth2/default',
@@ -78,9 +78,7 @@ const oktaAuth = new OktaAuth({
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-
     OktaAuthModule,
-
     ToastrModule.forRoot(),
     MatSliderModule
 

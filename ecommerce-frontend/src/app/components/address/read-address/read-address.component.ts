@@ -16,7 +16,7 @@ export class ReadAddressComponent implements OnInit {
     city: '',
     state: '',
     country: '',
-    zipCode: '',
+    zip: '',
   }
   submitted = false;
 
