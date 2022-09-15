@@ -9,7 +9,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let cart of carts">
-                <td>{{ productService.findByProductId(cart.productId).subscribe(val => val.productName) }}</td>
+                <td>{{ cart.productId }}</td>
+                <!-- <td>{{ productService.findByProductId(cart.productId).subscribe(val => val.productName) }}</td> -->
                 <td>{{ cart.productQuantity }}</td>
             </tr>
         </tbody>
