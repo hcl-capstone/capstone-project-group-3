@@ -17,6 +17,7 @@ export class CheckoutComponent implements OnInit {
   address:Address | undefined; 
   carts?:ShoppingCart[];  
   id:string; 
+  ImagePath: string;
 
   paymentHandler:any = null;
 
@@ -61,7 +62,7 @@ export class CheckoutComponent implements OnInit {
 
   
   
-  initializePayment(amount: number) {
+  initializePayment(amount: number | undefined) {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51LhETxEgAjpp2DzimLBoNsy75SlfLYDR9vRq2HfRKIncxa939QQM7a72SaTIofHqonNrhfwy8SFWy7KTP7gbV7Ze00qlTexV2u',
       locale: 'auto',
@@ -72,9 +73,10 @@ export class CheckoutComponent implements OnInit {
     });
   
     paymentHandler.open({
+      image: 'https://res.cloudinary.com/du6vcjz7b/image/upload/v1663189011/peach-removebg-preview_dyy9jx.png',
       name: 'Fruitilicious',
       description: 'Exotic fruits',
-      amount: amount * 100
+      amount: Number(amount) * 100
       
     });
   }
