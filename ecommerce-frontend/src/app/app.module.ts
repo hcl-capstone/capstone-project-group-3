@@ -80,7 +80,7 @@ const oktaAuth = new OktaAuth({
     FormsModule,
     OktaAuthModule,
     ToastrModule.forRoot(),
-    MatSliderModule
+    MatSliderModule 
 
 
   ],

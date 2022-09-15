@@ -1,6 +1,6 @@
-<!--<input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id"  
+<input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id"  
   class="au-input au-input-xl" (keyup.enter)="getInvoice()" />
-  <button class="list-inline-item" (click)="getInvoice()" >Search </button>-->
+  <button class="list-inline-item" (click)="getInvoice()" >Search </button>
 
 
   <section class="py-5">
@@ -85,6 +85,10 @@
           </div>
           <div class="row">
             <div class="col-md-5 mb-3">
+              <label for="country" class="form-label">City</label>
+              <output>{{address?.city}}</output>
+            </div>
+            <div class="col-md-5 mb-3">
               <label for="country" class="form-label">Country</label>
               <output>{{address?.country}}</output>
             </div>
@@ -107,7 +111,7 @@
             <label class="form-check-label" for="save-info">Save this information for next time</label>
           </div>
 
-          <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" (click)="doCheckout()">Proceed To Payment</button>
+          <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" (click)="initializePayment(invoice.totalPrice)">Proceed To Payment</button>
         </form>
       </div>
     </div>
