@@ -14,6 +14,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 
 
@@ -31,7 +33,9 @@ const routes: Routes = [
   {path: 'notification-checkout', component:NotificationCheckoutComponent},
   {path:'checkout', component:CheckoutComponent},
   {path: 'user-details', component:UserDetailsComponent},
-  {path: 'shopping-cart', component: ShoppingCartComponent}
+  {path: 'shopping-cart', component: ShoppingCartComponent},
+  {path: 'order-status', component: OrderStatusComponent},
+  {path: 'order-status/:id', component: CartDetailsComponent}
 
 ];
 

@@ -28,6 +28,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
     ProductListComponent,
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
-    ProductDetailsEditComponent
+    ProductDetailsEditComponent,
+    OrderStatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
