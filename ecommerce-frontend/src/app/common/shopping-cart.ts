@@ -3,8 +3,9 @@ import { Invoice } from "./invoice";
 import { Product } from "./product";
 
 export class ShoppingCart{
-    productQuantity?: number;
-    productId?: number;
-    invoiceId?: number;
-
+    productId?: number; 
+    productQuantity?: number; 
+    invoiceId?: number; 
+    productCost?: number; 
+    product?: Product; 
 }

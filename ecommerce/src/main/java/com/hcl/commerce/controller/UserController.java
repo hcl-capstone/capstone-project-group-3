@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.commerce.dto.user.UserInputDTO;
 import com.hcl.commerce.dto.user.UserLoginDTO;
-import com.hcl.commerce.entity.User;
+import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.service.user.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -23,32 +23,32 @@ public class UserController {
 	UserService userService;
 
 	@PostMapping("user/registration")
-	public User registerUser(@RequestBody UserInputDTO dto) {
+	public Users registerUser(@RequestBody UserInputDTO dto) {
 		return userService.registerUser(dto);
 	}
 
 	@GetMapping("user/get/{userId}") //read
-	public User getUser(@PathVariable Long userId) {
+	public Users getUser(@PathVariable Long userId) {
 		return userService.getUser(userId);
 	}
 	
 	@PostMapping("user/update/{userId}")
-	public User updateUser(@PathVariable Long userId, @RequestBody UserInputDTO dto) {
+	public Users updateUser(@PathVariable Long userId, @RequestBody UserInputDTO dto) {
 		return userService.updateUser(userId, dto);
 	}
 			
 	@DeleteMapping("user/delete/{userId}") //delete
-	public User deleteUser(@PathVariable Long userId) {
+	public Users deleteUser(@PathVariable Long userId) {
 		return userService.deleteUser(userId);
 	}
 
 	@GetMapping("user/all")
-	public List<User> getAllUsers() {
+	public List<Users> getAllUsers() {
 		return userService.getAllUser();
 	}
 
 	@PostMapping("user/login")
-	public User loginUser(@RequestBody UserLoginDTO dto) {
+	public Users loginUser(@RequestBody UserLoginDTO dto) {
 		return userService.getUser(dto.getUsername(), dto.getPassword());
 	}
 	

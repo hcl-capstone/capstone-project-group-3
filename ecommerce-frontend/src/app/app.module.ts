@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-
+import { MatSliderModule } from '@angular/material/slider';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,8 +11,6 @@ import { ProductSearchComponent } from './components/product-search/product-sear
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { ShoppingCartService } from './services/shopping-cart.service';
 import { NotificationLoginComponent } from './components/notification-login/notification-login.component';
 import { NotificationCheckoutComponent } from './components/notification-checkout/notification-checkout.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -30,7 +28,22 @@ import { ProductDetailsAddComponent } from './components/product-details/product
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 import { OrderStatusComponent } from './components/order-status/order-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProtectedComponent } from './components/protected/protected.component';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+import { AuthInterceptor } from './auth.interceptor';
+import { AdminProductDetailsComponent } from './components/admin-page/admin-product-details/admin-product-details.component';
+import { AdminProductListComponent } from './components/admin-page/admin-product-list/admin-product-list.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
+const oktaAuth = new OktaAuth({
+  issuer: 'https://dev-71392619.okta.com/oauth2/default',
+  clientId: '0oa6bfvpn0VTGBPcG5d7',
+  redirectUri: window.location.origin + '/login/callback',
+});
 
 @NgModule({
   declarations: [
@@ -41,7 +54,6 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
     RegisterUserComponent,
     UserDetailsComponent,
     ProductDetailsComponent,
-    ShoppingCartComponent,
     NotificationLoginComponent,
     NotificationCheckoutComponent,
     ProductComponent,
@@ -53,19 +65,33 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
     ProductDetailsAddComponent,
     ProductDetailsEditComponent,
     OrderStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    ShoppingCartComponent,
+    ProfileComponent,
+    ProtectedComponent,
+    AdminHomeComponent,
+    AdminProductDetailsComponent,
+    AdminProductListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ToastrModule.forRoot()
+
+    OktaAuthModule,
+
+    ToastrModule.forRoot(),
+    MatSliderModule
+
 
   ],
-  providers: [ProductService, InvoiceService, ShoppingCartService],
+
+  providers: [ProductService, InvoiceService,ShoppingCartService,
+    { provide: OKTA_CONFIG, useValue: { oktaAuth } },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

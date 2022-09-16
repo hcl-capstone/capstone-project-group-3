@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { NotificationCheckoutComponent } from './components/notification-checkout/notification-checkout.component';
 import { NotificationLoginComponent } from './components/notification-login/notification-login.component';
 import { ProductComponent } from './components/product-search/product/product.component';
@@ -16,6 +15,13 @@ import { ProductDetailsEditComponent } from './components/product-details/produc
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { OrderStatusComponent } from './components/order-status/order-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
+import { ProfileComponent } from './components/profile/profile.component';
+import { AdminProductListComponent } from './components/admin-page/admin-product-list/admin-product-list.component';
+import { AdminProductDetailsComponent } from './components/admin-page/admin-product-details/admin-product-details.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 
 
@@ -35,8 +41,17 @@ const routes: Routes = [
   {path: 'user-details', component:UserDetailsComponent},
   {path: 'shopping-cart', component: ShoppingCartComponent},
   {path: 'order-status', component: OrderStatusComponent},
-  {path: 'order-status/:id', component: CartDetailsComponent}
+  {path: 'order-status/:id', component: CartDetailsComponent},
 
+
+
+  {path: 'register-user', component: RegisterUserComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [OktaAuthGuard] },
+  {path: 'protected', loadChildren: () => import('./components/protected/protected.module').then(m => m.ProtectedModule), canActivate: [OktaAuthGuard] },
+  {path: 'login/callback', component: OktaCallbackComponent },
+  {path: 'admin/home', component:AdminHomeComponent},
+  {path: 'admin/product-list', component: AdminProductListComponent},
+  {path: 'admin/product-list/:id', component: AdminProductDetailsComponent}
 ];
 
 @NgModule({
