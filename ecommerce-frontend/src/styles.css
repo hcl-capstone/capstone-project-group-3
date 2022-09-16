@@ -184,6 +184,7 @@ body{
     color: white;
     cursor: pointer;
 }
+
 #banner{
     display: flex;
     flex-direction: column;
@@ -252,5 +253,56 @@ footer .install .row img{
 }
 footer .install img{
     margin: 10px 0 15px 0;
-    
+} 
+
+
+/* Admin Home */
+#admin-product{
+    background-image: url(assets/images/Images/fruits-header.jpeg);
+    width: 100%;
+    height: 25vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+
+#admin-product button{
+    /*background-image: url("assets/images/Images/Brush.png");*/
+    background-color: transparent;
+    color: white;
+    border: 0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 40px;
+
+}
+
+#admin-users{
+    background-image: url(assets/images/Images/users_home.png);
+    width: 100%;
+    height: 32vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+
+#admin-users button{
+    /*background-image: url("assets/images/Images/Brush.png");*/
+    background-color: transparent;
+    color: white;
+    border: 0;
+    padding: 200px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 40px;
+
 }
