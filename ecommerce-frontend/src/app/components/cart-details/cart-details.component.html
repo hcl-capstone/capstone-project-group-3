@@ -4,13 +4,14 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">Product</th>
+            <th scope="col">Unit Price</th>
             <th scope="col">Quantity</th>
           </tr>
         </thead>
         <tbody>
             <tr *ngFor="let cart of carts">
-                <td>{{ cart.productId }}</td>
-                <!-- <td>{{ productService.findByProductId(cart.productId).subscribe(val => val.productName) }}</td> -->
+                <td>{{ cart.product?.productName }}</td>
+                <td>{{ cart.productCost }}</td>
                 <td>{{ cart.productQuantity }}</td>
             </tr>
         </tbody>

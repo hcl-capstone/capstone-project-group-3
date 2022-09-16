@@ -28,17 +28,18 @@
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">Total Price</th>
             <th scope="col">Date Ordered</th>
-            <!-- <th scope="col">Delivery Address</th> -->
+            <th scope="col">Total Price</th>
             <th scope="col">Order Status</th>
+            <!-- <th scope="col">Delivery Address</th> -->
+            
+            <th scope="col">In Cart</th>
           </tr>
         </thead>
         <tbody>
             <tr *ngFor="let invoice of invoices">
-                <td>{{ invoice.totalPrice }}</td>
                 <td>{{ invoice.dateOrdered }}</td>
-                <!-- <td>{{ invoice.deliveryAddress?.street }}</td> -->
+                <td>{{ invoice.totalPrice }}</td>
                 <td>{{ invoice.orderStatus }}</td>
                 <td>
                     <button color="primary" [routerLink]="[invoice.invoiceId]">

@@ -13,11 +13,6 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 })
 export class OrderStatusComponent implements OnInit {
 
-  // carts?: ShoppingCart;
-  // productQuantity?: number;
-  // totalPrice: 0;
-  // address?: Address;
-  // dateOrdered?: Date;
   invoices:Invoice[];
   address:Address| undefined;
   id:string;
@@ -36,15 +31,6 @@ export class OrderStatusComponent implements OnInit {
     this.orderStatusService.getInvoices(this.id).subscribe(data => {
       this.invoices = data;
     })
-  //   this.orderStatusService.getInvoices(this.id)
-  //   .subscribe({
-  //     next: (data) => {
-  //       this.invoice = data;
-  //       console.log(this.invoice);
-  //     },
-  //     error: (e: any) => console.error(e)
-
-  //   })
   }
 
 }
