@@ -11,7 +11,33 @@
               required
               [(ngModel)]="shoppingCart.invoiceId"
               name="invoice"
-            />
+            /> 
+            <button class="list-inline-item" (click)="getInvoice()" >Search </button>
+
+            <div class="row">
+              <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="text-muted">Your cart</span>
+                </h4>
+                  <table>
+                    <thead>
+                      <th>Product Name</th>
+                      <th>Quantity</th>
+                      <th>Product Price</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let cart of carts">
+                        <td>{{cart.product?.productName}}</td>
+                        <td>{{cart.productQuantity}}</td>
+                        <td>{{cart.productCost}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+            
+
+
           </div>
 
         <div class="form-group">
