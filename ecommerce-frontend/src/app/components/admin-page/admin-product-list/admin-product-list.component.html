@@ -1,3 +1,27 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a routerLink="/admin-home" class="navbar-brand"></a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin/product-list" class="nav-link">View Products</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="/admin-orders-list" class="nav-link">View Orders</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="/admin-users-list" class="nav-link">View Users</a>
+      </li>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
 <div class="list row">
     <div class="col-md-8">
       <div class="input-group mb-3">
