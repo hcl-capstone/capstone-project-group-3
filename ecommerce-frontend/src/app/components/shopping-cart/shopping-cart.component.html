@@ -1,49 +1,35 @@
+
 <div>
     <div class="submit-form">
       <div *ngIf="!submitted">
 
-        <div class="form-group">
-            <label for="invoice">Invoice ID</label>
-            <input
-              type = "text"
-              class="form-control"
-              id="invoice"
-              required
-              [(ngModel)]="shoppingCart.invoiceId"
-              name="invoice"
-            />
-          </div>
-
-        <div class="form-group">
-          <label for="product">Product ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="product"
-            required
-            [(ngModel)]="shoppingCart.productId"
-            name="product"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="productQuantity">Product Quantity</label>
-          <input
-            type = "text"
-            class="form-control"
-            id="productQuantity"
-            required
-            [(ngModel)]="shoppingCart.productQuantity"
-            name="productQuantity"
-          />
-        </div>
-
-        <button (click)= saveShoppingCart() class="btn btn-success">Submit</button>
+        <input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id"  
+            class="au-input au-input-xl" (keyup.enter)="getInvoice()" />
+            <button (click)= getInvoice() class="btn btn-success">Submit</button>
       </div>
   
       <div *ngIf="submitted">
-        <h4>Added to Cart</h4>
-        <button class="btn btn-success" (click)= newShoppingCart()>Add</button>
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+        </h4>
+          <table>
+            <thead>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Product Price</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cart of carts">
+                <td>{{cart.product?.productName}}</td>
+                <td>{{cart.productQuantity}}</td>
+                <td>{{cart.productCost}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>{{invoice.totalPrice}}</strong>
+          </li>
       </div>
     </div>
   </div>

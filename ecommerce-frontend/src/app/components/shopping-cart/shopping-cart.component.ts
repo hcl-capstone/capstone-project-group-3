@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Invoice } from 'src/app/common/invoice';
 import { ShoppingCart } from 'src/app/common/shopping-cart';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-
+import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,6 +11,11 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
+  invoice:Invoice; 
+  carts?:ShoppingCart[];  
+  id:string; 
+
+
   shoppingCart: ShoppingCart = {
     productId: 0,
     productQuantity: 0,
@@ -18,7 +23,10 @@ export class ShoppingCartComponent implements OnInit {
   };
   submitted = false;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(private invoiceService: InvoiceService, private shoppingCartService:ShoppingCartService) { 
+    this.invoice; 
+    this.carts = []; 
+  }
 
   ngOnInit(): void {
   }
@@ -49,4 +57,19 @@ export class ShoppingCartComponent implements OnInit {
     };
 
 }
+
+getInvoice(): void {
+  this.invoiceService.getInvoice(this.id)
+    .subscribe({
+      next: (data) => {
+        this.invoice = data;
+        this.carts = data.carts; 
+        console.log(this.invoice, this.carts); 
+      },
+      error: (e) => console.error(e)
+  })
+  this.submitted = true;
+}
+
+  
 }
