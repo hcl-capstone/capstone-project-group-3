@@ -26,6 +26,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -65,6 +67,8 @@ const oktaAuth = new OktaAuth({
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
     ProductDetailsEditComponent,
+    OrderStatusComponent,
+    CartDetailsComponent,
     ShoppingCartComponent,
     ProfileComponent,
     ProtectedComponent,
@@ -84,10 +88,11 @@ const oktaAuth = new OktaAuth({
     OktaAuthModule,
 
     ToastrModule.forRoot(),
-    MatSliderModule
+    MatSliderModule 
 
 
   ],
+
   providers: [ProductService, InvoiceService,ShoppingCartService,
     { provide: OKTA_CONFIG, useValue: { oktaAuth } },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

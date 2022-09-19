@@ -16,7 +16,7 @@ export class ShoppingCartComponent implements OnInit {
   id:string | undefined; 
   shoppingCart: ShoppingCart = {
     productId: 0,
-    productQuantity: 0,
+    productQuantity: 1,
     invoiceId: 0
   };
   submitted = false;

@@ -188,8 +188,6 @@ body{
     color: white;
     cursor: pointer;
 }
-
-
 #banner{
     display: flex;
     flex-direction: column;
