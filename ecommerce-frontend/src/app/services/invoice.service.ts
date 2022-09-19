@@ -28,4 +28,9 @@ export class InvoiceService {
     return this.http.get<Invoice>(`http://localhost:8082/invoice/get/${id}`);
   }
 
+  deleteProduct(invoice_id: any, cart: any): Observable<Invoice> {
+    return this.http.get<Invoice>(`http://localhost:8082/user/invoice/product/delete/${invoice_id}/${cart}`);
+    
+   }
+
 }

@@ -2,6 +2,7 @@ package com.hcl.commerce.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,11 +38,14 @@ public class InvoiceSupportController {
 		return invoiceSupportService.addInvoiceCart(invoice_id, dto);
 	}
 	
-	@PostMapping("invoice/product/delete/{invoice_id}/{cart_id}")
+	@GetMapping("invoice/product/delete/{invoice_id}/{cart_id}")
 	public Invoice removeProductFromInvoice(@PathVariable Long invoice_id, @PathVariable Long cart_id) {
 		return invoiceSupportService.deleteInvoiceCart(invoice_id, cart_id);
 	}
-	
+	@GetMapping("user/invoice/product/delete/{invoice_id}/{cart}")
+	public Invoice removeProductFromInvoice2(@PathVariable Long invoice_id, @PathVariable ShoppingCart shoppingCart) {
+		return invoiceSupportService.deleteProductFromCart(invoice_id, shoppingCart);
+	}
 	@PostMapping("invoice/product/update")
 	public ShoppingCart updateProductInInvoice(@RequestBody CartUpdateDTO dto) {
 		return invoiceSupportService.updateInvoiceCart(dto);

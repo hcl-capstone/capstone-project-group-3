@@ -6,6 +6,8 @@ import { AuthState } from '@okta/okta-auth-js';
 @Component({
   selector: 'app-profile',
   template: `
+  
+  <app-header></app-header>
   <div class="profile-card">
     <div class="shield"></div>
     <p>You're logged in!

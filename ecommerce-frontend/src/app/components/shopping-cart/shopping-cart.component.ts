@@ -15,12 +15,13 @@ export class ShoppingCartComponent implements OnInit {
   carts?:ShoppingCart[]; 
   id:string | undefined; 
   shoppingCart: ShoppingCart = {
+    id: 0,
     productId: 0,
     productQuantity: 0,
     invoiceId: 0
   };
   submitted = false;
-
+  invoice:Invoice;
   constructor(private shoppingCartService: ShoppingCartService, private invoiceService:InvoiceService) { }
 
   ngOnInit(): void {
@@ -57,12 +58,18 @@ export class ShoppingCartComponent implements OnInit {
     this.invoiceService.getInvoice(this.shoppingCart.invoiceId)
       .subscribe({
         next: (data) => {
-          this.carts = data.carts; 
+          this.carts = data.carts;
           console.log(this.carts); 
         },
         error: (e) => console.error(e)
     })
 
+  }
+
+  removeShoppingCart(cart_id:any): void {
+    console.log(cart_id);
+    this.invoiceService.deleteProduct(this.shoppingCart.invoiceId, cart_id);
+    this.getInvoice();
   }
 
 }

@@ -15,7 +15,7 @@
             /> 
             <button class="list-inline-item" (click)="getInvoice()" >Search </button>
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-4 order-md-2 mb-4">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                   <span class="text-muted">Your cart</span>
@@ -34,13 +34,33 @@
                       </tr>
                     </tbody>
                   </table>
-
-
-            
-
-
-          </div>
-
+          </div> -->
+         
+          <section id="cart" class="section-p2">
+            <table width="100%">
+              <thead>
+                <tr>
+                  <td>Remove</td>
+                  <td>Image</td>
+                  <td>cartID</td>
+                  <td>Product</td>
+                  <td>Price</td>
+                  <td>Quantity</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cart of carts">
+                  <td><button href="" (click)='removeShoppingCart(cart)'><i class="far fa-times-circle fa-1.5x"></i>remove</button></td>
+                  <td><img src="/assets/images/Images/DragonFruit.jpg" alt=""></td>
+                  <td>{{cart.product?.productId}}</td>
+                  <td>{{cart.product?.productName}}</td>
+                  <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
+                  <td><input type="number" value="{{cart.productQuantity}}"></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         <div class="form-group">
           <label for="product">Product ID</label>
           <input
@@ -67,10 +87,10 @@
 
         <button (click)= saveShoppingCart() class="btn btn-success">Submit</button>
       </div>
-  
       <div *ngIf="submitted">
         <h4>Added to Cart</h4>
         <button class="btn btn-success" (click)= newShoppingCart()>Add</button>
       </div>
+     
     </div>
   </div>

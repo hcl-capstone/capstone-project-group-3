@@ -56,7 +56,7 @@ export class CheckoutComponent implements OnInit {
 
 
   getInvoice(): void {
-    this.id = this.user.email; 
+
     this.invoiceService.getInvoice(this.id)
       .subscribe({
         next: (data) => {
