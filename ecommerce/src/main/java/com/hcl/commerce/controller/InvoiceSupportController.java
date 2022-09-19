@@ -14,6 +14,8 @@ import com.hcl.commerce.entity.Invoice;
 import com.hcl.commerce.entity.ShoppingCart;
 import com.hcl.commerce.service.invoice.InvoiceSupportService;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class InvoiceSupportController {
@@ -45,6 +47,11 @@ public class InvoiceSupportController {
 	@PostMapping("invoice/product/update")
 	public ShoppingCart updateProductInInvoice(@RequestBody CartUpdateDTO dto) {
 		return invoiceSupportService.updateInvoiceCart(dto);
+	}
+	
+	@GetMapping("invoice/cart/get/{invoice_id}")
+	public List<ShoppingCart> getCarts(@PathVariable Long invoice_id){
+		return invoiceSupportService.getCarts(invoice_id);
 	}
 	
 }
