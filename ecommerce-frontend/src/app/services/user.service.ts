@@ -10,6 +10,7 @@ const baseUrl = "http://localhost:8082/user"
 export class UserService {
 
   constructor(private http:HttpClient) {
+    
   }
 
   update (id: any, data: any): Observable<any> {
@@ -19,6 +20,12 @@ export class UserService {
 
   getByEmail(email: string): Observable<User> {
     return this.http.get(`http://localhost:8082/user/get/${email}`); 
+  }
+
+
+
+  getByIdToken(IdToken: String): Observable<User> {
+    return this.http.get(`http://localhost:8082/user/getIdToken/${IdToken}`); 
   }
 
 }

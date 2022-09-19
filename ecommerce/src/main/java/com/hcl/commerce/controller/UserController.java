@@ -16,7 +16,8 @@ import com.hcl.commerce.dto.user.UserLoginDTO;
 import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.service.user.UserService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200, http://localhost:8082"})
 @RestController
 public class UserController {
 	@Autowired
@@ -35,6 +36,11 @@ public class UserController {
 	@GetMapping("users/get/{userEmail}")
 	public Users getUser(@PathVariable String userEmail) {
 		return userService.getUserByEmail(userEmail);
+	}
+	
+	@GetMapping("users/getIdToken/{IdToken}")
+	public Users getUserByIdToken(@PathVariable String IdToken) {
+		return userService.getUserByIdToken(IdToken); 
 	}
 	
 	@PostMapping("user/update/{userId}")

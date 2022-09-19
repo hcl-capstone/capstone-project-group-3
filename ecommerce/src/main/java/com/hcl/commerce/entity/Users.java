@@ -36,6 +36,7 @@ public class Users {
 	private String email;
 	private String username;
 	private String password;
+	private String idToken; 
 
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id")

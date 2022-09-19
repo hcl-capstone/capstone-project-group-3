@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { OKTA_AUTH } from '@okta/okta-angular';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/common/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -12,9 +15,10 @@ export class ProfileComponent implements OnInit {
   userName?: string;
   isAuthenticated!: boolean;
   email?: string;
-  sub?: string; 
+  sub: string; 
+  user?: User; 
 
-  constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth) {
+  constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) {
   }
 
   async ngOnInit() {
@@ -29,7 +33,14 @@ export class ProfileComponent implements OnInit {
       this.sub = userClaims.sub; 
     }
   
-    console.log(this.sub); 
+    this.userService.getByIdToken(this.sub)
+      .subscribe({
+        next: (data) => {
+        this.user = data;
+        console.log(this.user); 
+      },
+      error: (e) => console.error(e)
+    })
   }
 
 }
