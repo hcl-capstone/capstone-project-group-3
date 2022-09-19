@@ -6,6 +6,8 @@ import { AuthState } from '@okta/okta-auth-js';
 @Component({
   selector: 'app-profile',
   template: `
+  
+  <app-header></app-header>
   <div class="profile-card">
     <div class="shield"></div>
     <p>You're logged in!
@@ -20,6 +22,7 @@ import { AuthState } from '@okta/okta-auth-js';
 export class ProfileComponent implements OnInit {
 
   public name$!: Observable<string>;
+  public email: Observable<string>;
   constructor(private _oktaAuthStateService: OktaAuthStateService) { }
 
   public ngOnInit(): void {
@@ -28,5 +31,8 @@ export class ProfileComponent implements OnInit {
       map((authState: AuthState) => authState.idToken?.claims.name ?? '')
     );
 
+    
   }
+
+
 }
