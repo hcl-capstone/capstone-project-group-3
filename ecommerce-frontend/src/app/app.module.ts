@@ -36,6 +36,9 @@ import { AuthInterceptor } from './auth.interceptor';
 import { AdminProductDetailsComponent } from './components/admin-page/admin-product-details/admin-product-details.component';
 import { AdminProductListComponent } from './components/admin-page/admin-product-list/admin-product-list.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
+import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
+
 
 const oktaAuth = new OktaAuth({
   issuer: 'https://dev-71392619.okta.com/oauth2/default',
@@ -67,7 +70,9 @@ const oktaAuth = new OktaAuth({
     ProtectedComponent,
     AdminHomeComponent,
     AdminProductDetailsComponent,
-    AdminProductListComponent
+    AdminProductListComponent,
+    AdminOrderListComponent,
+    AdminOrderDetailsComponent
   ],
   imports: [
     BrowserModule,

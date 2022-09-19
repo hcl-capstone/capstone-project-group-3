@@ -20,7 +20,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductListComponent } from './components/product-search/product-list/product-list.component';
 import { HomeComponent } from './home/home.component';
-
+import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
+import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
 
 
 
@@ -44,7 +45,9 @@ const routes: Routes = [
   {path: 'login/callback', component: OktaCallbackComponent },
   {path: 'admin/home', component:AdminHomeComponent},
   {path: 'admin/product-list', component: AdminProductListComponent},
-  {path: 'admin/product-list/:id', component: AdminProductDetailsComponent}
+  {path: 'admin/product-list/:id', component: AdminProductDetailsComponent},
+  {path: 'admin/invoice-list', component: AdminOrderListComponent},
+  {path: 'admin/invoice-list/:id', component: AdminOrderDetailsComponent}
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
