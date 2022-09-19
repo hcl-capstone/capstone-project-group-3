@@ -1,4 +1,8 @@
-  <section class="py-5">
+
+<app-header></app-header>
+<input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id"  class="au-input au-input-xl" (keyup.enter)="getInvoice()" />
+  <button class="list-inline-item" (click)="getInvoice()" >Search </button>
+  <section id="cart" class="py-5">
     <div class="container px-4 px-lg-5 my-5">
     <div class="row">
       <div class="col-md-4 order-md-2 mb-4">
@@ -19,7 +23,7 @@
               </tr>
             </tbody>
           </table>
-          <li class="list-group-item d-flex justify-content-between">
+          <li class="d-flex justify-content-between align-items-center mb-3">
             <span>Total (USD)</span>
             <strong>{{invoice.totalPrice}}</strong>
           </li>

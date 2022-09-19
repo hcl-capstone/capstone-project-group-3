@@ -20,7 +20,7 @@ export class ShoppingCartComponent implements OnInit {
     invoiceId: 0
   };
   submitted = false;
-
+  invoice:Invoice;
   constructor(private shoppingCartService: ShoppingCartService, private invoiceService:InvoiceService) { }
 
   ngOnInit(): void {
@@ -57,12 +57,25 @@ export class ShoppingCartComponent implements OnInit {
     this.invoiceService.getInvoice(this.shoppingCart.invoiceId)
       .subscribe({
         next: (data) => {
-          this.carts = data.carts; 
+          this.carts = data.carts;
           console.log(this.carts); 
         },
         error: (e) => console.error(e)
     })
 
+  }
+
+  removeShoppingCart(cartId:any): void {
+    console.log(cartId);
+    console.log(this.shoppingCart.invoiceId);
+    this.invoiceService.deleteProduct(this.shoppingCart.invoiceId, cartId)
+    .subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (e: any) => console.error(e)
+    });
+    this.getInvoice();
   }
 
 }

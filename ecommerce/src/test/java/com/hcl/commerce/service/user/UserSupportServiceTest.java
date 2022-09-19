@@ -223,4 +223,3 @@ class UserSupportServiceTest {
         verify(userServiceImplementation).getUser((Long) any());
     }
 }
-
