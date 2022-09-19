@@ -7,4 +7,5 @@ export class ShoppingCart{
     invoiceId?: number; 
     productCost?: number; 
     product?: Product; 
+    cartPrice? :number;
 }

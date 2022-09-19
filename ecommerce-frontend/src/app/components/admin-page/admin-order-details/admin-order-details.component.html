@@ -1,0 +1,81 @@
+<div *ngIf="viewMode; else detailpage">
+    <div *ngIf="currentInvoice.invoiceId">
+      <h4>Invoice</h4>
+      <div>
+        <label><strong>ID:</strong></label> {{ currentInvoice.invoiceId }}
+      </div>
+      <div>
+        <label><strong>Total Price:</strong></label> {{ currentInvoice.totalPrice }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label> {{ currentInvoice.orderStatus }}
+      </div>
+      <div>
+        <label><strong>Date Ordered:</strong></label> {{ currentInvoice.dateOrdered }}
+      </div>
+      <div id="address">
+        <label><strong>Shipping Address:</strong></label> <div>{{ toString() }}</div>
+      </div>
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/admin/invoice-list/{{currentInvoice.invoiceId}}"
+      >
+        Details
+      </a>
+    </div>
+  
+    <div *ngIf="!currentInvoice">
+      <br />
+      <p>Please click on a Invoice...</p>
+    </div>
+  </div>
+  
+
+  <ng-template #detailpage>
+    <div *ngIf="currentInvoice.invoiceId" class="edit-form">
+      <h4>Invoice</h4>
+      <div>
+        <label><strong>ID:</strong></label> {{ currentInvoice.invoiceId }}
+      </div>
+      <section id="cart">
+        <div>        
+          <table >
+            <tr>
+              <th>Product Name</th>
+              <th>Product Count</th>
+              <th>Product Price</th>
+              <th>Order Cost</th>
+            </tr>
+            <ng-container *ngFor="let cart of currentInvoice.carts" >
+              <tr *ngIf="cart.product">
+                <td>{{cart.product.productName}}</td>
+                <td>{{cart.productQuantity}}</td>
+                <td>{{cart.product.unitPrice}}</td>
+                <td>{{cart.cartPrice}}</td>
+            </tr>
+          </ng-container>
+          </table> 
+        </div>
+      </section>
+      <div height:200px display:inline-block></div>
+      <div>
+        <label><strong>Total Price:</strong></label> {{ currentInvoice.totalPrice }}
+      </div>
+      
+
+      
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/admin/invoice-list"
+      >
+        Back
+      </a>
+    </div>
+  
+    <div *ngIf="!currentInvoice.invoiceId">
+      <br />
+      <p>Cannot access this Tutorial...</p>
+    </div>
+  </ng-template>
