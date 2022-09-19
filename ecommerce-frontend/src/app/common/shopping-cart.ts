@@ -2,7 +2,7 @@ import { Invoice } from "./invoice";
 import { Product } from "./product";
 
 export class ShoppingCart{
-    id?: number;
+    cartId?: number;
     productId?: number; 
     productQuantity?: number; 
     invoiceId?: number; 

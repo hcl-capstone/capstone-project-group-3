@@ -15,7 +15,6 @@ export class ShoppingCartComponent implements OnInit {
   carts?:ShoppingCart[]; 
   id:string | undefined; 
   shoppingCart: ShoppingCart = {
-    id: 0,
     productId: 0,
     productQuantity: 0,
     invoiceId: 0
@@ -66,9 +65,16 @@ export class ShoppingCartComponent implements OnInit {
 
   }
 
-  removeShoppingCart(cart_id:any): void {
-    console.log(cart_id);
-    this.invoiceService.deleteProduct(this.shoppingCart.invoiceId, cart_id);
+  removeShoppingCart(cartId:any): void {
+    console.log(cartId);
+    console.log(this.shoppingCart.invoiceId);
+    this.invoiceService.deleteProduct(this.shoppingCart.invoiceId, cartId)
+    .subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (e: any) => console.error(e)
+    });
     this.getInvoice();
   }
 
