@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Invoice } from 'src/app/common/invoice';
 import { ShoppingCart } from 'src/app/common/shopping-cart';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -18,7 +18,7 @@ export class ShoppingCartComponent implements OnInit {
   };
   submitted = false;
 
-  constructor(private shoppingCartService: ShoppingCartService) { }
+  constructor(public http: HttpClient, private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
   }
