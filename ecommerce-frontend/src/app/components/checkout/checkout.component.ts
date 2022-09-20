@@ -17,8 +17,7 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 export class CheckoutComponent implements OnInit {
 
   userDetails:UserDetailsComponent;
-
-
+  paymentHandler:any = null;
   invoice:Invoice;
   address:Address | undefined;
   carts?:ShoppingCart[];
@@ -70,6 +69,42 @@ export class CheckoutComponent implements OnInit {
 
   }
 
+  initializePayment(amount: number | undefined) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51LhETxEgAjpp2DzimLBoNsy75SlfLYDR9vRq2HfRKIncxa939QQM7a72SaTIofHqonNrhfwy8SFWy7KTP7gbV7Ze00qlTexV2u',
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log({stripeToken})
+        alert('your order has been placed check your email for a conformation!');
+      }
+    });
 
+    paymentHandler.open({
+      image: 'https://res.cloudinary.com/du6vcjz7b/image/upload/v1663189011/peach-removebg-preview_dyy9jx.png',
+      name: 'Fruitilicious',
+      description: 'Exotic fruits',
+      amount: Number(amount) * 100
 
+    });
+  }
+
+  invokeStripe() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51LhETxEgAjpp2DzimLBoNsy75SlfLYDR9vRq2HfRKIncxa939QQM7a72SaTIofHqonNrhfwy8SFWy7KTP7gbV7Ze00qlTexV2u',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken)
+            alert('Payment has been successfull!');
+          }
+        });
+      }
+      window.document.body.appendChild(script);
+    }
+  }
 }
