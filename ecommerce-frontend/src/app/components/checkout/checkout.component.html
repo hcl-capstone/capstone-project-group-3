@@ -111,7 +111,7 @@
           <label class="form-check-label" for="save-info">Save this information for next time</label>
         </div>
 
-        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" (click)="doCheckout()">Proceed To Payment</button>
+        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" (click)="initializePayment(invoice.totalPrice)">Proceed To Payment</button>
       </form>
     </div>
   </div>
