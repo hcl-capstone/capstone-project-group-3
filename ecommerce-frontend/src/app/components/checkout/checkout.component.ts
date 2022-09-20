@@ -1,8 +1,8 @@
+
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Address } from 'src/app/common/address';
 import { Invoice } from 'src/app/common/invoice';
 import { ShoppingCart } from 'src/app/common/shopping-cart';
-import { User } from 'src/app/common/user';
 import { AddressService } from 'src/app/services/address.service';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 import { UserDetailsComponent } from '../user-details/user-details.component';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { OKTA_AUTH } from '@okta/okta-angular';
+import { User } from "src/app/common/user"; 
+
 
 @Component({
   selector: 'app-checkout',
@@ -33,7 +35,7 @@ export class CheckoutComponent implements OnInit {
   sub: string; 
   isAuthenticated!: boolean;
   name?: string;
-
+  paymentHandler:any = null;
 
   constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService, @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
 
@@ -72,6 +74,7 @@ export class CheckoutComponent implements OnInit {
     error: (e) => console.error(e)
     })
   
+    this.invokeStripe();
 
   }
 
@@ -83,6 +86,7 @@ export class CheckoutComponent implements OnInit {
           console.log(this.invoice);
         },
         error: (e) => console.error(e)
+
 
       })
   }
@@ -99,7 +103,6 @@ export class CheckoutComponent implements OnInit {
         },
         error: (e) => console.error(e)
     })
-
   }
 
   getIdToken(): void {
@@ -117,5 +120,48 @@ export class CheckoutComponent implements OnInit {
   }
 
 
+ 
 
+
+
+  initializePayment(amount: number | undefined) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51LhETxEgAjpp2DzimLBoNsy75SlfLYDR9vRq2HfRKIncxa939QQM7a72SaTIofHqonNrhfwy8SFWy7KTP7gbV7Ze00qlTexV2u',
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log({stripeToken})
+        alert('your order has been placed check your email for a confirmation!');
+      }
+    });
+
+    paymentHandler.open({
+      image: 'https://res.cloudinary.com/du6vcjz7b/image/upload/v1663189011/peach-removebg-preview_dyy9jx.png',
+      name: 'Fruitilicious',
+      description: 'Exotic fruits',
+      amount: Number(amount) * 100
+
+    });
+  }
+
+  invokeStripe() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51LhETxEgAjpp2DzimLBoNsy75SlfLYDR9vRq2HfRKIncxa939QQM7a72SaTIofHqonNrhfwy8SFWy7KTP7gbV7Ze00qlTexV2u',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken)
+            alert('Payment has been successfull!');
+          }
+        });
+      }
+      window.document.body.appendChild(script);
+    }
+  }
 }
+
+

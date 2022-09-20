@@ -3,7 +3,7 @@ import { Invoice } from 'src/app/common/invoice';
 import { ShoppingCart } from 'src/app/common/shopping-cart';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,12 +16,14 @@ export class ShoppingCartComponent implements OnInit {
   id:string | undefined; 
   shoppingCart: ShoppingCart = {
     productId: 0,
-    productQuantity: 0,
+    productQuantity: 1,
     invoiceId: 0
   };
   submitted = false;
+
   invoice:Invoice;
   constructor(private shoppingCartService: ShoppingCartService, private invoiceService:InvoiceService) { }
+
 
   ngOnInit(): void {
   }

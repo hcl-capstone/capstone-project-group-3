@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-dark my-5">
+          <div class="card-body">
+            <h2 class="card-title text-center text-white py-3">View Past Orders</h2>
+            <ul class="text-center list-inline py-3">
+              <li class="list-inline-item">
+              
+              <input #myInput type="text" placeholder="User ID" [(ngModel)]="id"
+                class="au-input au-input-xl" (keyup.enter)="getInvoices()" />
+  
+              <button class="list-inline-item" (click)="getInvoices()" >Search 
+           
+  
+              </button>
+  
+            </ul>
+          </div>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Date Ordered</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Order Status</th>
+            <!-- <th scope="col">Delivery Address</th> -->
+            
+            <th scope="col">In Cart</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let invoice of invoices">
+                <td>{{ invoice.dateOrdered }}</td>
+                <td>{{ invoice.totalPrice }}</td>
+                <td>{{ invoice.orderStatus }}</td>
+                <td>
+                    <button color="primary" [routerLink]="[invoice.invoiceId]">
+                        Details
+                    </button>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

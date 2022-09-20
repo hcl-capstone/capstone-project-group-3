@@ -1,5 +1,7 @@
 package com.hcl.commerce.service.invoice;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +66,22 @@ public class InvoiceSupportService {
 	
 	public ShoppingCart updateInvoiceCart(CartUpdateDTO dto) {
 		ShoppingCart cart = cartService.updateCart(dto);
+		List<Invoice> invoices = invoiceService.getAllInvoice();
+		
+		Long id = null;
+		
+		for(Invoice invoice : invoices) {
+			for(ShoppingCart tempCart : invoice.getCarts()) {
+				if(dto.getCartId() == tempCart.getCartId()) {
+					id = invoice.getInvoiceId();
+				}
+			}
+		}
+		
+		if(id != null) {
+			invoiceService.updateInvoice(id);
+		}
+		
 		return cart;
 	}
 

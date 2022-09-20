@@ -188,7 +188,6 @@ body{
     color: white;
     cursor: pointer;
 }
-
 #banner{
     display: flex;
     flex-direction: column;
@@ -309,6 +308,7 @@ footer .install img{
     font-size: 40px;
 
 }
+
 /*cart page*/
 #cart table{
     width: 100%;

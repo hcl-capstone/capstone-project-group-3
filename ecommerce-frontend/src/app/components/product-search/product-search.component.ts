@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { ShoppingCart } from 'src/app/common/shopping-cart';
+
+
+
 @Component({
   selector: 'app-product-search',
   templateUrl: './product-search.component.html',
@@ -12,8 +17,14 @@ export class ProductSearchComponent implements OnInit {
   currentTutorial: Product = {};
   currentIndex = -1;
   productName = '';
+  shoppingCart: ShoppingCart = {
+    productId: 0,
+    productQuantity: 1,
+    invoiceId: 1
+  };
 
-  constructor(private productService: ProductService) {
+
+  constructor(private shoppingCartService: ShoppingCartService,private productService: ProductService) {
     this.products = [];
   }
 
@@ -34,4 +45,19 @@ export class ProductSearchComponent implements OnInit {
       });
   }
 
+  saveShoppingCart(id: any): void {
+    const data = {
+      productQuantity: 1,
+      productId: id
+      
+    };
+
+    this.shoppingCartService.addToCart(this.shoppingCart.invoiceId, data)
+      .subscribe({
+        next: (res: any) => {
+          console.log(res);
+        },
+        error: (e: any) => console.error(e)
+      });
+  }
 }

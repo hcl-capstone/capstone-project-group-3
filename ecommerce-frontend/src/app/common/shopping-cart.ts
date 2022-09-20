@@ -1,3 +1,4 @@
+import { ProductService } from "../services/product.service";
 import { Invoice } from "./invoice";
 import { Product } from "./product";
 
@@ -8,4 +9,5 @@ export class ShoppingCart{
     invoiceId?: number; 
     productCost?: number; 
     product?: Product; 
+    cartPrice? :number;
 }

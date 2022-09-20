@@ -50,7 +50,7 @@
               <tbody>
                 <tr *ngFor="let cart of carts">
                   <td><button href="" (click)=removeShoppingCart(cart.cartId)><i class="far fa-times-circle fa-1.5x"></i></button></td>
-                  <td><img src="/assets/images/Images/DragonFruit.jpg" alt=""></td>
+                  <td><img src="/assets/images/Images/logo.png" alt=""></td>
                   <td>{{cart.product?.productName}}</td>
                   <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
                   <td><input type="number" value="{{cart.productQuantity}}"></td>
