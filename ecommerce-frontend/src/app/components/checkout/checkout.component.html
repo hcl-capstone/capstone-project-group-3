@@ -34,8 +34,7 @@
               <button type="button" class="btn btn-dark px-4 rounded-pill">Redeem</button>
             </div>
           </div>
-        </form>
-      </div>
+      </form>
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
@@ -111,7 +110,7 @@
           <label class="form-check-label" for="save-info">Save this information for next time</label>
         </div>
 
-        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" 
+        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}"
           (click)="initializePayment(invoice.totalPrice)">Proceed To Payment</button>
       </form>
     </div>
