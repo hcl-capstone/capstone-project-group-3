@@ -45,10 +45,10 @@ export class ProductSearchComponent implements OnInit {
       });
   }
 
-  saveShoppingCart(): void {
+  saveShoppingCart(id: any): void {
     const data = {
       productQuantity: 1,
-      productId: 1
+      productId: id
       
     };
 
