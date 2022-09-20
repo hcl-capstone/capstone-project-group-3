@@ -21,8 +21,10 @@ export class CheckoutComponent implements OnInit {
   userDetails:UserDetailsComponent;
 
 
-  invoice:Invoice; 
+  invoices?:Invoice[];
+  invoice: Invoice;  
   address?:Address[];  
+  add?:Address;
   carts?:ShoppingCart[];  
   id:string | undefined; 
   user?:User;
@@ -30,6 +32,7 @@ export class CheckoutComponent implements OnInit {
   claims!: { name: string; value: unknown }[];
   sub: string; 
   isAuthenticated!: boolean;
+  name?: string;
 
 
   constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService, @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
@@ -48,18 +51,27 @@ export class CheckoutComponent implements OnInit {
     }
   
     this.userService.getByIdToken(this.sub)
-      .subscribe({
-        next: (data) => {
-        this.user = data;
-        this.email = this.user.email; 
-        this.address = data.address; 
-        console.log(this.user, this.address); 
-      },
-      error: (e) => console.error(e)
+    .subscribe({
+      next: (data) => {
+      this.user = data;
+      this.email = this.user.email; 
+      this.address = data.address; 
+      this.invoices = data.invoices; 
+      this.name = this.user.firstName; 
+      if(this.user?.address != null){
+        this.add = this.user?.address[0]; 
+      }
+      if(this.invoices != null){
+        this.invoice = this.invoices[0]; 
+      } 
+
+      this.carts = this.invoice.carts; 
+  
+      console.log(this.user, this.address, this.name, this.add, this.invoice); 
+    },
+    error: (e) => console.error(e)
     })
-
-
-
+  
 
   }
 
@@ -67,7 +79,7 @@ export class CheckoutComponent implements OnInit {
     this.invoiceService.getCheckout(this.id)
       .subscribe({
         next: (data) => {
-          this.invoice = data;
+          //this.invoice = data;
           console.log(this.invoice);
         },
         error: (e) => console.error(e)
@@ -80,7 +92,7 @@ export class CheckoutComponent implements OnInit {
     this.invoiceService.getInvoice(this.id)
       .subscribe({
         next: (data) => {
-          this.invoice = data;
+          //this.invoice = data;
           //this.address = { ...this.invoice.address };
           this.carts = data.carts; 
           console.log(this.invoice, this.address, this.carts); 
@@ -88,6 +100,20 @@ export class CheckoutComponent implements OnInit {
         error: (e) => console.error(e)
     })
 
+  }
+
+  getIdToken(): void {
+    this.userService.getByIdToken(this.sub)
+      .subscribe({
+        next: (data) => {
+        this.user = data;
+        this.email = this.user.email; 
+        this.address = data.address; 
+        this.name = this.user.firstName; 
+        console.log(this.user, this.address, this.name); 
+      },
+      error: (e) => console.error(e)
+    })
   }
 
 
