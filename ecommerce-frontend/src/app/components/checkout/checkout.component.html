@@ -42,10 +42,7 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required />
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
+              <output>{{user?.firstName}}</output>
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName" class="form-label">Last name</label>
@@ -76,28 +73,38 @@
           </div>
           <div class="mb-3">
             <label for="address" class="form-label"> Address  </label>
-            <output>{{address?.street}}</output>
+            <table>
+              <thead>
+                <th>Street</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let add of address"> 
+                  <script> console.log(add.street)</script>
+                  <td>{{add.street}}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <div class="mb-3">
             <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-            <output>{{address?.secondary}}</output>
+            <output>{{email}}</output>
           </div>
           <div class="row">
             <div class="col-md-5 mb-3">
               <label for="country" class="form-label">City</label>
-              <output>{{address?.city}}</output>
+              <output></output>
             </div>
             <div class="col-md-5 mb-3">
               <label for="country" class="form-label">Country</label>
-              <output>{{address?.country}}</output>
+              <output></output>
             </div>
             <div class="col-md-4 mb-3">
               <label for="state" class="form-label">State</label>
-              <output>{{address?.state}}</output>
+              <output></output>
             </div>
             <div class="col-md-3 mb-3">
               <label for="zip" class="form-label">Zip</label>
-              <output>{{address?.zip}}</output>
+              <output></output>
             </div>
           </div>
           <hr class="mb-4" />

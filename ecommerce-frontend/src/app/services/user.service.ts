@@ -25,7 +25,7 @@ export class UserService {
 
 
   getByIdToken(IdToken: String): Observable<User> {
-    return this.http.get(`http://localhost:8082/user/getIdToken/${IdToken}`); 
+    return this.http.get(`http://localhost:8082/users/getIdToken/${IdToken}`); 
   }
 
 }

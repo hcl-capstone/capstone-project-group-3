@@ -7,5 +7,5 @@ export class User{
     lastName?: string;
     email?: string;
     role?: Role;
-    address?: Address;
+    address?: Address[];
 }

@@ -52,7 +52,7 @@ public class Users {
 	@JoinTable(name = "user_address", 
 	joinColumns = @JoinColumn(name = "user_id"), 
 	inverseJoinColumns = @JoinColumn(name = "address_id"))
-	private Set<Address> addresses = new HashSet<>();
+	private Set<Address> address = new HashSet<>();
 
 	public void addInvoice(Invoice invoice) {
 		this.invoices.add(invoice);
@@ -63,6 +63,6 @@ public class Users {
 	}
 	
 	public void addAddress(Address address) {
-		this.addresses.add(address);
+		this.address.add(address);
 	}
 }
