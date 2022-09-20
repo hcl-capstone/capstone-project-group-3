@@ -1,35 +1,34 @@
 <app-header></app-header>
-<input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id" class="au-input au-input-xl"
-  (keyup.enter)="getInvoice()" />
-<button class="list-inline-item" (click)="getInvoice()">Search </button>
-<section id="cart" class="py-5">
-  <div class="container px-4 px-lg-5 my-5">
+<input #myInput type="text" placeholder="Search for invoice..." [(ngModel)]="id"  class="au-input au-input-xl" (keyup.enter)="getInvoice()" />
+  <button class="list-inline-item" (click)="getInvoice()" >Search </button>
+  <section id="cart" class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
     <div class="row">
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted">Your cart</span>
         </h4>
-        <table>
-          <thead>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Product Price</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let cart of carts">
-              <td>{{cart.product?.productName}}</td>
-              <td>{{cart.productQuantity}}</td>
-              <td>{{cart.productCost}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <li class="d-flex justify-content-between align-items-center mb-3">
-          <span>Total (USD)</span>
-          <strong>{{invoice.totalPrice}}</strong>
-        </li>
+          <table>
+            <thead>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Product Price</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cart of carts">
+                <td>{{cart.product?.productName}}</td>
+                <td>{{cart.productQuantity}}</td>
+                <td>{{cart.productCost}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <li class="d-flex justify-content-between align-items-center mb-3">
+            <span>Total (USD)</span>
+            <strong>{{invoice.totalPrice}}</strong>
+          </li>
         <form class="card p-2">
           <div class="input-group">
-            <input type="text" class="form-control me-2" placeholder="Promo code" />
+            <input type="text" class="form-control me-2" placeholder="Promo code"/>
             <div class="input-group-append">
               <button type="button" class="btn btn-dark px-4 rounded-pill">Redeem</button>
             </div>
@@ -75,7 +74,7 @@
           </div>
         </div>
         <div class="mb-3">
-          <label for="address" class="form-label"> Address </label>
+          <label for="address" class="form-label"> Address  </label>
           <output>{{address?.street}}</output>
         </div>
         <div class="mb-3">
@@ -110,9 +109,9 @@
           <label class="form-check-label" for="save-info">Save this information for next time</label>
         </div>
 
-        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}"
-          (click)="initializePayment(invoice.totalPrice)">Proceed To Payment</button>
+        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" (click)="initializePayment(invoice.totalPrice)">Proceed To Payment</button>
       </form>
     </div>
   </div>
+</div>
 </section>
