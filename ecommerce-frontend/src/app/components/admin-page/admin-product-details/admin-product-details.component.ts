@@ -68,4 +68,17 @@ export class AdminProductDetailsComponent implements OnInit {
       });
   }
 
+  deleteProduct(): void {
+    console.log("Deleting Product");
+    console.log(this.currentProduct);
+    this.productService.delete(this.currentProduct.productId)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.router.navigate(['/admin/product-list']);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
 }

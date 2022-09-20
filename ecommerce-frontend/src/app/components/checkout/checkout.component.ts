@@ -19,26 +19,26 @@ export class CheckoutComponent implements OnInit {
   userDetails:UserDetailsComponent;
 
 
-  invoice:Invoice; 
-  address:Address | undefined; 
-  carts?:ShoppingCart[];  
-  id:string | undefined; 
+  invoice:Invoice;
+  address:Address | undefined;
+  carts?:ShoppingCart[];
+  id:string | undefined;
   user:User;
-  email:string; 
+  email:string;
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService) { 
-    this.invoice; 
-    this.address = {}; 
+  constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService) {
+    this.invoice;
+    this.address = {};
     this.carts = [];
-    this.user;  
+    this.user;
   }
 
   ngOnInit(): void {
   }
 
   getEmail(): void {
-    this.user = this.userDetails.getUserByEmail(this.email); 
-    console.log(); 
+    this.user = this.userDetails.getUserByEmail(this.email);
+    console.log();
   }
 
 
@@ -56,14 +56,13 @@ export class CheckoutComponent implements OnInit {
 
 
   getInvoice(): void {
-    this.id = this.user.email; 
     this.invoiceService.getInvoice(this.id)
       .subscribe({
         next: (data) => {
           this.invoice = data;
           this.address = { ...this.invoice.address };
-          this.carts = data.carts; 
-          console.log(this.invoice, this.address, this.carts); 
+          this.carts = data.carts;
+          console.log(this.invoice, this.address, this.carts);
         },
         error: (e) => console.error(e)
     })
