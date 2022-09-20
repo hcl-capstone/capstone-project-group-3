@@ -6,8 +6,8 @@ import { Invoice } from '../common/invoice';
 import { ShoppingCart } from '../common/shopping-cart';
 
 
-const baseUrl = 'http://localhost:8082/user/invoice/get';
-const cartUrl = 'http://localhost:8082/invoice/cart/get';
+const baseUrl = 'https://fruitilicious-frontend.azurewebsites.net/user/invoice/get';
+const cartUrl = 'https://fruitilicious-frontend.azurewebsites.net/invoice/cart/get';
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ShoppingCart } from '../common/shopping-cart';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8082/invoice/product/add';
+const baseUrl = 'https://fruitilicious-frontend.azurewebsites.net/invoice/product/add';
 
 @Injectable({
   providedIn: 'root'
