@@ -8,7 +8,7 @@ on:
     branches:
       - main
     paths:
-      - 'ecommerce-frontend/**'
+      - 'ecommerce-frontend'
   workflow_dispatch:
 
 jobs:
@@ -28,13 +28,12 @@ jobs:
           cd ecommerce-frontend
           npm install --force
           npm run build --prod
-        working-directory: .  
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: ./ecommerce-frontend/dist/angular-ecommerce
+          path: ./ecommerce-frontend/dist/ecommerce-frontend
 
   deploy:
     runs-on: ubuntu-latest
