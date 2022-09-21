@@ -96,8 +96,6 @@ export class CheckoutComponent implements OnInit {
     this.invoiceService.getInvoice(this.id)
       .subscribe({
         next: (data) => {
-          //this.invoice = data;
-          //this.address = { ...this.invoice.address };
           this.carts = data.carts; 
           console.log(this.invoice, this.address, this.carts); 
         },
