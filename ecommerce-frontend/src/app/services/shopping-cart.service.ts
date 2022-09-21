@@ -9,6 +9,7 @@ const baseUrl = 'http://localhost:8082/invoice/product/add';
   providedIn: 'root'
 })
 export class ShoppingCartService {
+  
 
   constructor(private http: HttpClient) { }
 
@@ -16,4 +17,5 @@ export class ShoppingCartService {
     return this.http.post(`${baseUrl}/${id}`, data);
   }
 
+ 
 }

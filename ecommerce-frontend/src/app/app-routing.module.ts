@@ -13,6 +13,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
@@ -22,6 +24,7 @@ import { AdminProductDetailsComponent } from './components/admin-page/admin-prod
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
 import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
+
 
 
 
@@ -39,6 +42,8 @@ const routes: Routes = [
   {path:'checkout', component:CheckoutComponent},
   {path: 'user-details', component:UserDetailsComponent},
   {path: 'shopping-cart', component: ShoppingCartComponent},
+  {path: 'order-status', component: OrderStatusComponent},
+  {path: 'order-status/:id', component: CartDetailsComponent},
   {path: 'register-user', component: RegisterUserComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [OktaAuthGuard] },
   {path: 'protected', loadChildren: () => import('./components/protected/protected.module').then(m => m.ProtectedModule), canActivate: [OktaAuthGuard] },
@@ -48,7 +53,8 @@ const routes: Routes = [
   {path: 'admin/product-list/:id', component: AdminProductDetailsComponent},
   {path: 'admin/invoice-list', component: AdminOrderListComponent},
   {path: 'admin/invoice-list/:id', component: AdminOrderDetailsComponent}
-]
+];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

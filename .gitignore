@@ -7,3 +7,4 @@ application.properties
 ecommerce/target/*
 
 /.metadata/
+ecommerce/src/main/resources/application.properties

@@ -45,6 +45,7 @@
   label {
     margin-bottom: 10px;
     display: block;
+    font-weight: bolder;
   }
   
   .icon-container {
@@ -83,3 +84,12 @@
       margin-bottom: 20px;
     }
   }
+
+#userInfo{
+  background-color: beige;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+
+}

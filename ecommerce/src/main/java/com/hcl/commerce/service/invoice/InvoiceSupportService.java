@@ -107,4 +107,15 @@ public class InvoiceSupportService {
 		return null;
 	}
 
+
+	public Invoice deleteProductFromCart(Long invoice_id, ShoppingCart shoppingCart) {
+		Invoice invoice = invoiceService.getInvoice(invoice_id);
+		ShoppingCart cart = shoppingCart;
+		if (invoice != null && cart != null) {
+			invoice.getCarts().remove(cart);
+			return repo.save(invoice);
+		}
+		return null;
+	}
+
 }

@@ -16,7 +16,6 @@ export class UserDetailsComponent implements OnInit {
     email: '',
   } 
   submitted = false;
-
   message = '';
 
   constructor(
@@ -62,5 +61,18 @@ export class UserDetailsComponent implements OnInit {
       lastName: '',
       email: ''
     }
+  }
+
+
+  getUserByEmail(email: string): User {
+    this.userservice.getByEmail(email)
+      .subscribe({
+        next: (data) => {
+          this.currentUser = data; 
+          console.log(this.currentUser);
+        },
+        error: (e) => console.error(e)
+      })
+      return this.currentUser;
   }
 }

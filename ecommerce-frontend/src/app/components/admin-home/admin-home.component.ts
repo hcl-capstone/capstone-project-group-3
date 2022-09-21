@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { OktaAuthStateService, OKTA_AUTH } from '@okta/okta-angular';
+import { AuthState, OktaAuth } from '@okta/okta-auth-js';
 
 @Component({
   selector: 'app-admin-home',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor( @Inject(OKTA_AUTH) private _oktaAuth: OktaAuth, ) { }
 
   ngOnInit(): void {
   }
+
+  public async signOut(): Promise<void> {
+    await this._oktaAuth.signOut();
+  }
+
 
 }

@@ -37,7 +37,7 @@ public class UserSupportService{
 	public Set<Address> getAddress(Long user_id) {
 		Users user = userService.getUser(user_id);
 		if (user != null) {
-			return user.getAddresses();
+			return user.getAddress();
 		}
 		return null;
 	}
