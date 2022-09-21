@@ -14,11 +14,13 @@ import com.hcl.commerce.dto.shoppingcart.CartUpdateDTO;
 import com.hcl.commerce.entity.Invoice;
 import com.hcl.commerce.entity.ShoppingCart;
 import com.hcl.commerce.service.invoice.InvoiceSupportService;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 //@CrossOrigin(origins = "http://localhost:4200")
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class InvoiceSupportController {
 	
@@ -57,6 +59,11 @@ public class InvoiceSupportController {
 	public ShoppingCart updateProductInInvoice(@RequestBody CartUpdateDTO dto) {
 		log.info("product in invoice was updated");
 		return invoiceSupportService.updateInvoiceCart(dto);
+	}
+	
+	@GetMapping("invoice/cart/get/{invoice_id}")
+	public List<ShoppingCart> getCarts(@PathVariable Long invoice_id){
+		return invoiceSupportService.getCarts(invoice_id);
 	}
 	
 }

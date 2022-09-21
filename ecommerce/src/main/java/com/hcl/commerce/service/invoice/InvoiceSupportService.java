@@ -17,6 +17,8 @@ import com.hcl.commerce.service.product.ProductService;
 import com.hcl.commerce.service.shoppingcart.ShoppingCartService;
 import com.hcl.commerce.service.user.UserService;
 
+import java.util.List;
+
 @Service
 public class InvoiceSupportService {
 
@@ -103,6 +105,14 @@ public class InvoiceSupportService {
 		if (invoice != null && address != null) {
 			invoice.setAddress(address);
 			return repo.save(invoice);
+		}
+		return null;
+	}
+	
+	public List<ShoppingCart> getCarts(Long invoice_id) {
+		Invoice invoice = invoiceService.getInvoice(invoice_id);
+		if (invoice != null) {
+			return invoice.getCarts();
 		}
 		return null;
 	}
