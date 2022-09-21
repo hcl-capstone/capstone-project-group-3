@@ -20,14 +20,33 @@
                   <td><button href="" (click)=removeShoppingCart(cart.cartId)><i class="far fa-times-circle fa-1.5x"></i></button></td>
                   <td><img src="/assets/images/Images/logo.png" alt=""></td>
                   <td>{{cart.product?.productName}}</td>
-                  <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
-                  <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"  ></td>
+                  <!-- <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td> -->
+                  <td>{{cart.cartPrice}}</td>
+                  <!-- <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"></td> -->
+                  <td>
+                    <form>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="product-quantity"
+                          [(ngModel)]="cart.productQuantity"
+                          name="product-quantity"
+                        />
+                      </div>
+                    </form>
+                  </td>
+
+                  <div class = "quantity-update">
+                    <button type = "submit-button" (click)="updateCart(cart)">Update</button>
+                  </div>
+
                   <td></td>
                 </tr>
               </tbody>
             </table>
           </section>
-        <button (click)= saveShoppingCart() routerLink="/checkout" class="btn btn-success">Checkout</button>
+        <button routerLink="/checkout" class="btn btn-success">Checkout</button>
       </div>
      
     </div>

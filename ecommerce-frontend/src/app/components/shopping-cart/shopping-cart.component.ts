@@ -31,8 +31,8 @@ export class ShoppingCartComponent implements OnInit {
   sub: string; 
   isAuthenticated!: boolean;
   user?:User;
-  cartDto: UpdateCartDto; 
-  productQuantity?: number
+  cartDto: UpdateCartDto = {}; 
+  //  productQuantity?: number;
 
   constructor(private shoppingCartService: ShoppingCartService, private invoiceService:InvoiceService,  @Inject(OKTA_AUTH) public oktaAuth: OktaAuth,  public userService: UserService) { }
 
@@ -65,69 +65,32 @@ export class ShoppingCartComponent implements OnInit {
     })
   }
 
-  updateCart(quantity?: number, id?: number): void {
-
-    this.cartDto.productQuantity = quantity; 
-    this.cartDto.cartId = id; 
-    this.invoiceService.postInvoiceUpdate(this.cartDto); 
-    console.log(this.cartDto); 
-  }
-
-
-  saveShoppingCart(): void {
-    const data = {
-      productQuantity: this.shoppingCart.productQuantity,
-      productId: this.shoppingCart.productId
-      
-    };
-
-    this.shoppingCartService.addToCart(this.shoppingCart.invoiceId, data)
+  updateCart(cart : ShoppingCart): void {
+    this.cartDto.productQuantity = cart.productQuantity; 
+    this.cartDto.cartId = cart.cartId; 
+    //console.log("Posting Invoice Update...", this.cartDto);
+    this.invoiceService.postInvoiceUpdate(this.cartDto)
       .subscribe({
-        next: (res: any) => {
-          console.log(res);
-          this.submitted = true;
+        next: (data: any) => {
+          console.log(data);
         },
         error: (e: any) => console.error(e)
       });
-
-
-
-
+    
   }
 
-  newShoppingCart(): void {
-    this.submitted = false;
-    this.shoppingCart = {
-      productId: 0,
-      productQuantity: 0,
-      invoiceId: 0
-    };
-  }
-
-
-  getInvoice(): void {
-    this.invoiceService.getInvoice(this.shoppingCart.invoiceId)
-      .subscribe({
-        next: (data) => {
-          this.carts = data.carts;
-          console.log(this.carts); 
-        },
-        error: (e) => console.error(e)
-    })
-
-  }
 
   removeShoppingCart(cartId:any): void {
     console.log(cartId);
     console.log(this.shoppingCart.invoiceId);
-    this.invoiceService.deleteProduct(this.shoppingCart.invoiceId, cartId)
+    this.invoiceService.deleteProduct(this.invoice.invoiceId, cartId)
     .subscribe({
       next: (res: any) => {
         console.log(res);
       },
       error: (e: any) => console.error(e)
     });
-    this.getInvoice();
+    
   }
 
 }

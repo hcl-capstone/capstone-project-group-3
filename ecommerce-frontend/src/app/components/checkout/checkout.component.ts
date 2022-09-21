@@ -24,7 +24,7 @@ export class CheckoutComponent implements OnInit {
 
 
   invoices?:Invoice[];
-  invoice: Invoice;  
+  invoice: Invoice = {};  
   address?:Address[];  
   add?:Address;
   carts?:ShoppingCart[];  
@@ -37,7 +37,7 @@ export class CheckoutComponent implements OnInit {
   name?: string;
   paymentHandler:any = null;
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService, @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
+  constructor(private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
 
   }
 

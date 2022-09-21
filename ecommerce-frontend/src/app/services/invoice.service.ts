@@ -38,8 +38,8 @@ export class InvoiceService {
 
 
 
-  postInvoiceUpdate(UpdateCartDto: UpdateCartDto): Observable<ShoppingCart> {
-    return this.http.post<ShoppingCart>(`http://localhost:8082/invoice/product/update`, UpdateCartDto); 
+  postInvoiceUpdate(updateCartDto: any): Observable<ShoppingCart> {
+   return this.http.post<ShoppingCart>(`http://localhost:8082/invoice/product/update`, updateCartDto); 
   }
 
 }
