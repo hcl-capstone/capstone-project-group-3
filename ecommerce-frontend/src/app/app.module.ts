@@ -26,6 +26,8 @@ import { ProductDetailsDeleteComponent } from './product-details-delete/product-
 import { FormsModule } from '@angular/forms';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -33,6 +35,12 @@ import { ProtectedComponent } from './components/protected/protected.component';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 import { AuthInterceptor } from './auth.interceptor';
+import { AdminProductDetailsComponent } from './components/admin-page/admin-product-details/admin-product-details.component';
+import { AdminProductListComponent } from './components/admin-page/admin-product-list/admin-product-list.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
+import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
+
 
 const oktaAuth = new OktaAuth({
   issuer: 'https://dev-71392619.okta.com/oauth2/default',
@@ -59,11 +67,16 @@ const oktaAuth = new OktaAuth({
     ProductDetailsDeleteComponent,
     ProductDetailsAddComponent,
     ProductDetailsEditComponent,
+    OrderStatusComponent,
+    CartDetailsComponent,
     ShoppingCartComponent,
     ProfileComponent,
-    ProtectedComponent
-    
-
+    ProtectedComponent,
+    AdminHomeComponent,
+    AdminProductDetailsComponent,
+    AdminProductListComponent,
+    AdminOrderListComponent,
+    AdminOrderDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +92,7 @@ const oktaAuth = new OktaAuth({
 
 
   ],
+
   providers: [ProductService, InvoiceService,ShoppingCartService,
     { provide: OKTA_CONFIG, useValue: { oktaAuth } },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],

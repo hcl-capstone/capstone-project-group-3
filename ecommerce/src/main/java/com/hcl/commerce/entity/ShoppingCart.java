@@ -15,7 +15,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "cart")
+@Table(name = "shopping_cart")
 public class ShoppingCart {
 	
 	@Id
@@ -30,8 +30,18 @@ public class ShoppingCart {
 	@Column(name = "product_quantity")
 	private int productQuantity;
 	
+	@Column(name = "cart_price")
+	private BigDecimal cartPrice;
+	
 	public BigDecimal getProductCost() {
+		//System.out.println(product.getProductName());
 		return product.getUnitPrice();
+	}
+	
+	public BigDecimal updateCartPrice() {
+		BigDecimal result = this.getProductCost().multiply(BigDecimal.valueOf(productQuantity));
+		this.cartPrice = result;
+		return result;
 	}
 	
 
