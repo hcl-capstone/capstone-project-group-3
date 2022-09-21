@@ -21,7 +21,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let cart of carts">
-                  <td><a (click)=removeShoppingCart(cart.cartId)><i class="far fa-times-circle fa-1.5x"></i></a></td>
+                  <td><a href="/shopping-cart"(click)=removeShoppingCart(cart.cartId)><i class="far fa-times-circle fa-1.5x"></i></a></td>
                   <td><img src={{cart.product?.image_url}} alt=""></td>
                   <td>{{cart.product?.productName}}</td>
                   <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
@@ -33,7 +33,6 @@
           </section>
         <button (click)= saveShoppingCart() routerLink="/checkout" class="btn btn-success">Checkout</button>
       </div>
-     
     </div>
     <footer class="section-p1">
       <div class="col">

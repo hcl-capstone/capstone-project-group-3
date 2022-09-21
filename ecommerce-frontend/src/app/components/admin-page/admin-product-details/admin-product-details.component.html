@@ -78,6 +78,11 @@
         </div>
       </form>
 
+      <div class = "file-upload">
+        <input type = "file" (change)="onFileSelected($event)">
+        <button type = "submit-button" (click)="onUpload()">Upload</button>
+      </div>
+
       <button class="badge badge-danger mr-2" (click)="deleteProduct()">
         Delete
       </button>
