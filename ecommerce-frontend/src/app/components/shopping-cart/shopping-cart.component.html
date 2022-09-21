@@ -21,22 +21,8 @@
                   <td><img src="/assets/images/Images/logo.png" alt=""></td>
                   <td>{{cart.product?.productName}}</td>
                   <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
-                  <!-- <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"  ></td> <button href="/shopping-cart" (click)="updateCart(productQuantity, cart.cartId)"> Add Quantity</button> -->
-                  <td><form>
-                    <div class="form-group">
-                      <input
-                        type="number"
-                        class="form-control"
-                        id="productQuantity"
-                        [(ngModel)]="cart.productQuantity"
-                        name="productQuantity"
-                      />
-                      
-                    </div>
-                </form></td>
-                  <div class = "change-quantity">
-                  <button type = "submit-button" (click)="updateCart(productQuantity, cart.cartId)">Update</button>
-                </div>
+                  <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"  ></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
