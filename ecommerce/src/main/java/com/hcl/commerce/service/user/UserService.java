@@ -24,4 +24,6 @@ public interface UserService {
 
 	Users getUserByEmail(String userEmail);
 
+	Users getUserByIdToken(String idToken);
+
 }

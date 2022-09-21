@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Invoice } from 'src/app/common/invoice';
 import { ShoppingCart } from 'src/app/common/shopping-cart';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { HttpClient } from '@angular/common/http';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { OKTA_AUTH } from '@okta/okta-angular';
+import { User } from "src/app/common/user"; 
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -20,12 +24,42 @@ export class ShoppingCartComponent implements OnInit {
     invoiceId: 0
   };
   submitted = false;
-
+  invoices?:Invoice[];
   invoice:Invoice;
-  constructor(private shoppingCartService: ShoppingCartService, private invoiceService:InvoiceService) { }
+  claims!: { name: string; value: unknown }[];
+  sub: string; 
+  isAuthenticated!: boolean;
+  user?:User;
+
+  constructor(private shoppingCartService: ShoppingCartService, private invoiceService:InvoiceService,  @Inject(OKTA_AUTH) public oktaAuth: OktaAuth,  public userService: UserService) { }
 
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    const idToken = await this.oktaAuth.tokenManager.get('idToken');
+    this.claims = Object.entries(idToken.claims).map(entry => ({ name: entry[0], value: entry[1] }));
+    console.log(this.claims);
+
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    if (this.isAuthenticated) {
+      const userClaims = await this.oktaAuth.getUser();
+      this.sub = userClaims.sub; 
+    }
+  
+    this.userService.getByIdToken(this.sub)
+    .subscribe({
+      next: (data) => {
+      this.user = data;
+      this.invoices = data.invoices; 
+      if(this.invoices != null){
+        this.invoice = this.invoices[0]; 
+      } 
+
+      this.carts = this.invoice.carts; 
+  
+      console.log(this.user, this.invoice); 
+    },
+    error: (e) => console.error(e)
+    })
   }
 
   saveShoppingCart(): void {

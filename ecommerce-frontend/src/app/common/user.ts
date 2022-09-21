@@ -1,5 +1,6 @@
 import { Role } from "./role";
 import { Address } from "./address";
+import { Invoice } from "./invoice"; 
 
 export class User{
     id?: number;
@@ -7,5 +8,6 @@ export class User{
     lastName?: string;
     email?: string;
     role?: Role;
-    address?: Address;
+    address?: Address[];
+    invoices?: Invoice[]; 
 }

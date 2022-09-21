@@ -12,6 +12,7 @@ import { filter, map, Observable } from 'rxjs';
 export class HeaderComponent implements OnInit {
   title = 'okta-angular-quickstart';
   public isAuthenticated$!: Observable<boolean>;
+  accessToken?: String;
 
   constructor(private _router: Router, private _oktaStateService: OktaAuthStateService, @Inject(OKTA_AUTH) private _oktaAuth: OktaAuth) { }
 
@@ -20,6 +21,10 @@ export class HeaderComponent implements OnInit {
       filter((s: AuthState) => !!s),
       map((s: AuthState) => s.isAuthenticated ?? false)
     );
+
+
+    this.accessToken = this._oktaAuth.getAccessToken(); 
+    
   }
   public async signIn() : Promise<void> {
     await this._oktaAuth.signInWithRedirect().then(

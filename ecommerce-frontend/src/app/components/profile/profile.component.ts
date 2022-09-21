@@ -1,38 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import { OktaAuthStateService } from '@okta/okta-angular';
-import { filter, map, Observable } from 'rxjs';
-import { AuthState } from '@okta/okta-auth-js';
+import { Component, Inject, OnInit } from '@angular/core';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { OKTA_AUTH } from '@okta/okta-angular';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/common/user';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
-  template: `
-  
-  <app-header></app-header>
-  <div class="profile-card">
-    <div class="shield"></div>
-    <p>You're logged in!
-      <span *ngIf="name$ | async as name">
-        Welcome, {{name}}
-      </span>
-    </p>
-  </div>
-  `,
+  templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  claims!: { name: string; value: unknown }[];
+  userName?: string;
+  isAuthenticated!: boolean;
+  email?: string;
+  sub: string; 
+  user?: User; 
 
-  public name$!: Observable<string>;
-  public email: Observable<string>;
-  constructor(private _oktaAuthStateService: OktaAuthStateService) { }
-
-  public ngOnInit(): void {
-    this.name$ = this._oktaAuthStateService.authState$.pipe(
-      filter((authState: AuthState) => !!authState && !!authState.isAuthenticated),
-      map((authState: AuthState) => authState.idToken?.claims.name ?? '')
-    );
-
-    
+  constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) {
   }
 
+  async ngOnInit() {
+    const idToken = await this.oktaAuth.tokenManager.get('idToken');
+    this.claims = Object.entries(idToken.claims).map(entry => ({ name: entry[0], value: entry[1] }));
+
+    this.isAuthenticated = await this.oktaAuth.isAuthenticated();
+    if (this.isAuthenticated) {
+      const userClaims = await this.oktaAuth.getUser();
+      this.userName = userClaims.name;
+      this.email = userClaims.email;
+      this.sub = userClaims.sub; 
+    }
+  
+    this.userService.getByIdToken(this.sub)
+      .subscribe({
+        next: (data) => {
+        this.user = data;
+        console.log(this.user); 
+      },
+      error: (e) => console.error(e)
+    })
+  }
 
 }
+
+
