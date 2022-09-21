@@ -3,39 +3,7 @@
     <div class="submit-form">
       <div *ngIf="!submitted">
 
-        <div class="form-group">
-            <!--<label for="invoice">Invoice ID</label>
-            <input
-              type = "text"
-              class="form-control"
-              id="invoice"
-              required
-              [(ngModel)]="shoppingCart.invoiceId"
-              name="invoice"
-            /> 
-            <button class="list-inline-item" (click)="getInvoice()" >Search </button>
-
-             <div class="row">
-              <div class="col-md-4 order-md-2 mb-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                  <span class="text-muted">Your cart</span>
-                </h4>
-                  <table>
-                    <thead>
-                      <th>Product Name</th>
-                      <th>Quantity</th>
-                      <th>Product Price</th>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let cart of carts">
-                        <td>{{cart.product?.productName}}</td>
-                        <td>{{cart.productQuantity}}</td>
-                        <td>{{cart.productCost}}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-          </div> -->
-         
+        <div class="form-group">         
           <section id="cart" class="section-p2">
             <table width="100%">
               <thead>
@@ -53,41 +21,27 @@
                   <td><img src="/assets/images/Images/logo.png" alt=""></td>
                   <td>{{cart.product?.productName}}</td>
                   <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
-                  <td><input type="number" value="{{cart.productQuantity}}"></td>
-                  <td></td>
+                  <!-- <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"  ></td> <button href="/shopping-cart" (click)="updateCart(productQuantity, cart.cartId)"> Add Quantity</button> -->
+                  <td><form>
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="productQuantity"
+                        [(ngModel)]="cart.productQuantity"
+                        name="productQuantity"
+                      />
+                      
+                    </div>
+                </form></td>
+                  <div class = "change-quantity">
+                  <button type = "submit-button" (click)="updateCart(productQuantity, cart.cartId)">Update</button>
+                </div>
                 </tr>
               </tbody>
             </table>
           </section>
-        <div class="form-group">
-          <label for="product">Product ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="product"
-            required
-            [(ngModel)]="shoppingCart.productId"
-            name="product"
-          />
-        </div>
-  
-        <div class="form-group">
-          <label for="productQuantity">Product Quantity</label>
-          <input
-            type = "text"
-            class="form-control"
-            id="productQuantity"
-            required
-            [(ngModel)]="shoppingCart.productQuantity"
-            name="productQuantity"
-          />
-        </div>
-
-        <button (click)= saveShoppingCart() class="btn btn-success">Submit</button>
-      </div>
-      <div *ngIf="submitted">
-        <h4>Added to Cart</h4>
-        <button class="btn btn-success" (click)= newShoppingCart()>Add</button>
+        <button (click)= saveShoppingCart() routerLink="/checkout" class="btn btn-success">Checkout</button>
       </div>
      
     </div>

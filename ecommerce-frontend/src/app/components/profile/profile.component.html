@@ -1,5 +1,4 @@
 <h1 class="ui header">
-    <app-header></app-header>
     <i aria-hidden="true" class="drivers license outline icon"></i> My User Profile (ID Token Claims)
   </h1>
   <p>
@@ -23,4 +22,6 @@
         <td id="claim-{{claim.name}}">{{claim.value}}</td>
       </tr>
     </tbody>
+
+    <button name="Home" (click)="goHome()">Home</button>
   </table>
