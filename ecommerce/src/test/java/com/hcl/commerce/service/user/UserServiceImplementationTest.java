@@ -261,4 +261,3 @@ class UserServiceImplementationTest {
         verify(userRepository).findAll();
     }
 }
-
