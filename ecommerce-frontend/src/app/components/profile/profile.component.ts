@@ -4,6 +4,8 @@ import { OKTA_AUTH } from '@okta/okta-angular';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/common/user';
 import { Observable } from 'rxjs';
+import { Role } from 'src/app/common/role';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -17,8 +19,12 @@ export class ProfileComponent implements OnInit {
   email?: string;
   sub: string; 
   user?: User; 
+  role?: Role;
+  roles?: Role[]; 
+  home: string; 
 
-  constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) {
+
+  constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService, private router: Router) {
   }
 
   async ngOnInit() {
@@ -37,10 +43,32 @@ export class ProfileComponent implements OnInit {
       .subscribe({
         next: (data) => {
         this.user = data;
-        console.log(this.user); 
+        this.roles = this.user.roles; 
+        if(this.roles != null){
+          this.role = this.roles[0];  
+        }
+        console.log(this.user, this.role); 
       },
       error: (e) => console.error(e)
     })
+
+  }
+
+
+  goHome(): void {
+
+    console.log(this.role?.roleName); 
+    if(this.role?.roleName == "Admin"){
+      this.home = 'admin/home'; 
+    }
+    if(this.role?.roleName == "User"){
+      this.home = "";
+    }
+
+
+
+    console.log(this.home)
+    this.router.navigateByUrl(this.home);
   }
 
 }
