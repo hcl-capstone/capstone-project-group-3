@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.commerce.InventoryDTO.InventoryDTO;
 import com.hcl.commerce.dto.product.ProductAddDTO;
 import com.hcl.commerce.entity.Product;
 import com.hcl.commerce.service.product.ProductService;
@@ -60,7 +61,9 @@ public class ProductController {
 		log.info("User gets product by name");
 		return productService.getByName(name);
 	}
-	
+	public Product updateProductInventory(ProductAddDTO dto, InventoryDTO inventoryDTO) {
+        return productService.updateProductInventory(dto,inventoryDTO);
+    }
 
 	
 }

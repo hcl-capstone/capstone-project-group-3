@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/common/product';
 import { ProductDTO } from 'src/app/common/productdto';
 import { ProductService } from 'src/app/services/product.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-product-details',
@@ -20,6 +21,8 @@ export class AdminProductDetailsComponent implements OnInit {
     stockCount: 0,
   }
 
+  productURL? = '';
+
   productDTO : ProductDTO = {};
 
   message = '';
@@ -27,12 +30,13 @@ export class AdminProductDetailsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private router: Router ) { }
+    private router: Router,
+    private http: HttpClient ) { }
 
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
-      this.getProduct(this.route.snapshot.params["id"])
+      this.getProduct(this.route.snapshot.params["id"]);
       console.log(`details: ${this.route.snapshot.params["id"]}`);
     }
   }
@@ -41,6 +45,7 @@ export class AdminProductDetailsComponent implements OnInit {
     this.productService.findByProductId(id).subscribe({
       next: (data) =>{
         this.currentProduct = data;
+        this.productURL = this.currentProduct.image_url;
         console.log(data);
       },
       error: (e) => console.error(e)
@@ -79,6 +84,24 @@ export class AdminProductDetailsComponent implements OnInit {
         },
         error: (e) => console.error(e)
       });
+  }
+
+  selectedFile = '';
+  onFileSelected(event: any){
+    this.selectedFile = event.target.files[0];
+    //console.log(event);
+  }
+
+  onUpload(){
+    const fd = new FormData();
+    fd.append('file', this.selectedFile);
+    fd.append('upload_preset', "nz2scxg7")
+    this.http.post('https://api.cloudinary.com/v1_1/du6vcjz7b/auto/upload', fd).subscribe(
+      (data: any) => {
+        console.log(data, data.url);
+        this.currentProduct.image_url=data.url;
+      }
+    );
   }
 
 }

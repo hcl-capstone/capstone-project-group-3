@@ -47,6 +47,7 @@ public class ProductCategoryController {
 		log.info("product_category got got");
 		return productCategoryService.getCategory(id);
 	}
+	
 
 	
 }
