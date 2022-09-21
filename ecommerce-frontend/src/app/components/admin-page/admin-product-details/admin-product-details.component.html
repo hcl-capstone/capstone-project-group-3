@@ -1,0 +1,100 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentProduct.productId">
+      <h4>Product</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentProduct.productName }}
+      </div>
+      <div>
+        <label><strong>Stock:</strong></label>
+        {{ currentProduct.stockCount }}
+      </div>
+      <div>
+        <label><strong>Price:</strong></label>
+        {{ currentProduct.unitPrice }}
+      </div>
+      <div>
+        <img src="{{currentProduct.image_url}}" alt="Product Picture" style="width:100%">
+      </div>
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/admin/product-list/{{ currentProduct.productId }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentProduct">
+      <br />
+      <p>Please click on a Product...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentProduct.productId" class="edit-form">
+      <h4>Product</h4>
+      <form>
+        <div class="form-group">
+          <label for="product-name">Product</label>
+          <input
+            type="text"
+            class="form-control"
+            id="product-name"
+            [(ngModel)]="currentProduct.productName"
+            name="product-name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="stockCount">In-Stock</label>
+          <input
+            type="number"
+            class="form-control"
+            id="stockCount"
+            [(ngModel)]="currentProduct.stockCount"
+            name="stockCount"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="unitPrice">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="unitPrice"
+            [(ngModel)]="currentProduct.unitPrice"
+            name="unitPrice"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="image_url">Image Url</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image_url"
+            [(ngModel)]="currentProduct.image_url"
+            name="image_url"
+          />
+        </div>
+      </form>
+
+      <button class="badge badge-danger mr-2" (click)="deleteProduct()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateProduct()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentProduct.productId">
+      <br />
+      <p>Cannot access this Tutorial...</p>
+    </div>
+  </ng-template>
+  

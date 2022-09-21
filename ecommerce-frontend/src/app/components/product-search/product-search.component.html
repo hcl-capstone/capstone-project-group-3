@@ -1,6 +1,8 @@
 <body>
+  <app-header></app-header>
   <section id="product-hero">
       <p>Fresh, Tropical, Exotic</p>
+      <p>#StayFruity</p>
       <h4>Sourced In-House.</h4>
   </section>
   <section id="search-bar">
@@ -19,7 +21,7 @@
           <h5>{{product.productName}}</h5>
           <h4>{{product.unitPrice}}</h4>
         </div>
-        <a href = "/product-search"><i class="fal fa-shopping-cart cart"></i></a>
+        <i class="fal fa-shopping-cart cart" (click)= saveShoppingCart(product.productId)></i>
       </div>
     </div>
   </section>

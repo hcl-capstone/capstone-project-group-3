@@ -26,6 +26,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
 		ShoppingCart cart = new ShoppingCart();
 		BeanUtils.copyProperties(dto, cart);
 		cart.setProduct(productService.getProduct(dto.getProductId()));
+		cart.updateCartPrice();
 		return repo.save(cart);
 	}
 
@@ -53,6 +54,7 @@ public class ShoppingCartServiceImplementation implements ShoppingCartService {
 		ShoppingCart cart = readCart(dto.getCartId());
 		if (cart != null) {
 			BeanUtils.copyProperties(dto, cart);
+			cart.updateCartPrice();
 			return repo.save(cart);
 		}
 		return null;

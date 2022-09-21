@@ -72,4 +72,14 @@ public class UserServiceImplementation implements UserService {
 		return null;
 	}
 
+	@Override
+	public Users getUserByEmail(String userEmail) {
+		return userRepository.findByEmail(userEmail);
+	}
+
+	@Override
+	public Users getUserByIdToken(String idToken) {
+		return userRepository.findByIdToken(idToken); 
+	}
+
 }

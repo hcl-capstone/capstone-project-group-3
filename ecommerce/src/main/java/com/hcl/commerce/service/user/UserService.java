@@ -22,4 +22,8 @@ public interface UserService {
 
 	Users updateUser(Long userId, UserInputDTO dto);
 
+	Users getUserByEmail(String userEmail);
+
+	Users getUserByIdToken(String idToken);
+
 }
