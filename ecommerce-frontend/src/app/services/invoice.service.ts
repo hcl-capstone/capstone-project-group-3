@@ -10,14 +10,14 @@ import { Observable } from 'rxjs';
 export class InvoiceService {
 
    getCheckout(id: any): Observable<Invoice> {
-    return this.http.post<Invoice>(`https://fruitilicious-frontend.azurewebsites.net/invoice/checkout/${id}`, id);
+    return this.http.post<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/checkout/${id}`, id);
    }
 
 
 
   private invoiceUrl: string;
   constructor(private http:HttpClient) {
-    this.invoiceUrl = 'https://fruitilicious-frontend.azurewebsites.net/invoice/all';
+    this.invoiceUrl = 'https://fruitilicious-backend.azurewebsites.net/invoice/all';
   }
 
   getInvoiceList(): Observable<Invoice[]> {
@@ -25,11 +25,11 @@ export class InvoiceService {
   }
 
   getInvoice(id: any): Observable<Invoice> {
-    return this.http.get<Invoice>(`https://fruitilicious-frontend.azurewebsites.net/invoice/get/${id}`);
+    return this.http.get<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/get/${id}`);
   }
 
   deleteProduct(invoice_id: any, cartId: any): Observable<Invoice> {
-    return this.http.get<Invoice>(`https://fruitilicious-frontend.azurewebsites.net/invoice/product/delete/${invoice_id}/${cartId}`);
+    return this.http.get<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/product/delete/${invoice_id}/${cartId}`);
     
     
    }
