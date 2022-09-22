@@ -28,7 +28,7 @@ export class CheckoutComponent implements OnInit {
   add?:Address;
   carts?:ShoppingCart[];  
   id:string | undefined; 
-  user?:User;
+  user:User;
   email?:string; 
   claims!: { name: string; value: unknown }[];
   sub: string; 

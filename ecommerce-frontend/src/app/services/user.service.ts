@@ -18,15 +18,22 @@ export class UserService {
     return this.http.post(`http://localhost:8082/user/update/${id}`, data);
   }
 
-  getByEmail(email: string): Observable<User> {
+  getByEmail(email: any): Observable<any> {
     return this.http.get(`http://localhost:8082/user/get/${email}`); 
   }
 
 
 
-  getByIdToken(IdToken: String): Observable<User> {
+  getByIdToken(IdToken: any): Observable<any> {
     return this.http.get(`http://localhost:8082/users/getIdToken/${IdToken}`); 
   }
+
+
+  register(user: any): Observable<User> {
+    console.log(user);
+    return this.http.post<User>(`http://localhost:8082/user/registration`, user);
+  }
+
 
 }
 
