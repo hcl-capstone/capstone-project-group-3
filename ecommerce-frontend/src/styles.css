@@ -58,7 +58,7 @@ body{
     width: 100%;
 }
 
-/* #header{
+#header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -100,7 +100,7 @@ body{
     position: absolute;
     bottom: -4px;
     left: 20px;
-} */
+}
 
 /* Home Page */
 
