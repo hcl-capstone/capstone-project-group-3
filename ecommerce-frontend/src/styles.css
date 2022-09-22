@@ -32,7 +32,7 @@ p{
     color: #465b52;
     margin: 15px 0 20px 0;
 }
-.section-p1{
+/* .section-p1{
     padding: 40px 80px;
 }
 .section-p2{
@@ -41,7 +41,7 @@ p{
 }
 .section-m1 {
     margin: 40px 0;
-}
+} */
 button.normal{
     font-size: 14px;
     font-weight: 600;
@@ -62,7 +62,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /*padding: 20px 80px; */
+    padding: 20px 80px;
     background: #e3e6f3;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
