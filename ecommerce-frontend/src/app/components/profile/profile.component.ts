@@ -39,9 +39,13 @@ export class ProfileComponent implements OnInit {
       this.sub = userClaims.sub; 
     }
   
+    
     this.userService.getByIdToken(this.sub)
       .subscribe({
         next: (data) => {
+        if(data == null){
+          console.log("New User Data");
+        }
         this.user = data;
         this.roles = this.user.roles; 
         if(this.roles != null){
