@@ -35,7 +35,7 @@ export class UserService {
   }
 
   assignUserAddress(user_id: any, address_id: any): Observable<User>{
-    return this.http.post<User>(`http://localhost:8082/user/address/set/`+`/`+``, {user_id, address_id});
+    return this.http.post<User>(`http://localhost:8082/user/address/set/`, {user_id, address_id});
   }
 
 
