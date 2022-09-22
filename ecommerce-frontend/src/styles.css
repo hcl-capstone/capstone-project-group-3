@@ -459,3 +459,24 @@ footer .install img{
 #cart table tbody td{
     font-size: 17px;
 }
+#cart-hero{
+    background-image: url(assets/images/Images/fruits-header.jpeg);
+    width: 100%;
+    height: 25vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+#cart-hero h4{
+    color: #fff;
+    font-size: large;
+}
+#cart-hero p{
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: xx-large;
+}
