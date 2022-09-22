@@ -62,4 +62,9 @@ public class UserController {
 		return userService.getUser(dto.getUsername(), dto.getPassword());
 	}
 	
+	@GetMapping("user/get/name/{name}")
+	public List<Users> getUserByName(@PathVariable String name){
+		return userService.getUserByName(name);
+	}
+	
 }

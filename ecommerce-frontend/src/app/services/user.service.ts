@@ -28,5 +28,17 @@ export class UserService {
     return this.http.get(`http://localhost:8082/users/getIdToken/${IdToken}`); 
   }
 
+  getAllUsers() : Observable<User[]> {
+    return this.http.get<User[]>(`http://localhost:8082/user/all`);
+  }
+
+  getUserByName(name :  String) : Observable<User[]>{
+    return this.http.get<User[]>(`http://localhost:8082/user/get/name/${name}`);
+  }
+
+  getUserByIdNumber( id : number) : Observable<User>{
+    return this.http.get(`http://localhost:8082/user/get/${id}`);
+  }
+
 }
 
