@@ -49,7 +49,7 @@ class UserSupportServiceTest {
     void testGetAddress() {
         Users user = new Users();
         HashSet<Address> addressSet = new HashSet<>();
-        user.setAddresses(addressSet);
+        user.setAddress(addressSet);
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -70,7 +70,7 @@ class UserSupportServiceTest {
     @Test
     void testGetInvoices() {
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         ArrayList<Invoice> invoiceList = new ArrayList<>();
@@ -92,7 +92,7 @@ class UserSupportServiceTest {
     @Test
     void testGetRoles() {
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -118,7 +118,7 @@ class UserSupportServiceTest {
         role.setRoleName("Role Name");
         when(roleService.getRole((Long) any())).thenReturn(role);
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -129,7 +129,7 @@ class UserSupportServiceTest {
         user.setUsername("janedoe");
         when(userRepository.save((Users) any())).thenReturn(user);
         Users user1 = new Users();
-        user1.setAddresses(new HashSet<>());
+        user1.setAddress(new HashSet<>());
         user1.setEmail("jane.doe@example.org");
         user1.setFirstName("Jane");
         user1.setInvoices(new ArrayList<>());
@@ -159,7 +159,7 @@ class UserSupportServiceTest {
         address.setZip("21654");
         when(addressService.getAddress((Long) any())).thenReturn(address);
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -170,7 +170,7 @@ class UserSupportServiceTest {
         user.setUsername("janedoe");
         when(userRepository.save((Users) any())).thenReturn(user);
         Users user1 = new Users();
-        user1.setAddresses(new HashSet<>());
+        user1.setAddress(new HashSet<>());
         user1.setEmail("jane.doe@example.org");
         user1.setFirstName("Jane");
         user1.setInvoices(new ArrayList<>());
@@ -208,7 +208,7 @@ class UserSupportServiceTest {
         invoice.updateTotalPrice();
         when(invoiceService.addInvoice((Long) any())).thenReturn(invoice);
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
