@@ -5,7 +5,7 @@
       <ul id="navbar">
         <li><a href="#" routerLink="">Home</a></li>
         <li><a href="#" routerLink="/product-search">Shop</a></li>
-        <li><a href="#" routerLink="/shopping-cart"><i class="far fa-shopping-cart"></i> shopping cart</a></li>
+        <li><a href="#" routerLink="/shopping-cart"><i class="far fa-shopping-cart"></i></a></li>
         <li>
           <ng-container *ngIf="(isAuthenticated$ | async) === false; else signout">
             <a href="#" (click)="signIn()">
