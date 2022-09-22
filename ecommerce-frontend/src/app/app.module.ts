@@ -40,6 +40,7 @@ import { AdminProductListComponent } from './components/admin-page/admin-product
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
 import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 const oktaAuth = new OktaAuth({
@@ -76,7 +77,8 @@ const oktaAuth = new OktaAuth({
     AdminProductDetailsComponent,
     AdminProductListComponent,
     AdminOrderListComponent,
-    AdminOrderDetailsComponent
+    AdminOrderDetailsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

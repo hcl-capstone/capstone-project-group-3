@@ -36,4 +36,8 @@ export class InvoiceService {
     return this.http.post<ShoppingCart>(`http://localhost:8082/invoice/product/update`, updateCartDto);
   }
 
+  createUserInvoice(user_id: any): Observable<Invoice> {
+    return this.http.post<Invoice>(`http://localhost:8082/invoice/create/${user_id}`, user_id);
+  }
+
 }
