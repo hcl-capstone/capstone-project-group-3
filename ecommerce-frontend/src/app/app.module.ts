@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -80,7 +79,7 @@ const oktaAuth = new OktaAuth({
     AdminProductListComponent,
     AdminOrderListComponent,
     AdminOrderDetailsComponent,
-    UserProfileComponent
+    UserProfileComponent,
     AdminUserListComponent,
     AdminUserDetailsComponent
   ],
