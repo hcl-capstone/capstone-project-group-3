@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.commerce.dto.address.AddressCreateDTO;
 import com.hcl.commerce.entity.Address;
 import com.hcl.commerce.entity.Invoice;
 import com.hcl.commerce.entity.Role;
@@ -53,6 +55,12 @@ public class UserSupportController {
 	public Users addAddress(@PathVariable Long user_id, @PathVariable Long address_id) {
 		log.info("Setting address to userId by addressId");
 		return userService.addAddress(user_id, address_id);
+	}
+	
+	@PostMapping("user/address/set/{user_id}")
+	public Users addAddress(@PathVariable Long user_id, @RequestBody AddressCreateDTO address) {
+		log.info("Setting address to userId by address object");
+		return userService.addAddress(user_id, address);
 	}
 	
 	@PostMapping("user/invoice/add/{user_id}")
