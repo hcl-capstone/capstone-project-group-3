@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserDetailsComponent implements OnInit {
 
   @Input() currentUser: User ={
-    id: 0,
+    userId: 0,
     firstName: '',
     lastName: '',
     email: '',
@@ -36,13 +36,13 @@ export class UserDetailsComponent implements OnInit {
   updateUserDetails(): void {
     this.message = '';
     const data = {
-      id: this.currentUser.id,
+      id: this.currentUser.userId,
       firstName: this.currentUser.firstName,
       lastName: this.currentUser.lastName,
       email:this.currentUser.email
     }
 
-    this.userservice.update(this.currentUser.id, data)
+    this.userservice.update(this.currentUser.userId, data)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -56,7 +56,7 @@ export class UserDetailsComponent implements OnInit {
   newUser(): void{
     this.submitted = false;
     this.currentUser = {
-      id: 0,
+      userId: 0,
       firstName: '',
       lastName: '',
       email: ''
