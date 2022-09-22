@@ -52,9 +52,6 @@ const routes: Routes = [
   {path: 'address/delete-address', component:DeleteAddressComponent},
   {path: 'order-status', component: OrderStatusComponent},
   {path: 'order-status/:id', component: CartDetailsComponent},
-
-
-
   {path: 'register-user', component: RegisterUserComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [OktaAuthGuard] },
   {path: 'protected', loadChildren: () => import('./components/protected/protected.module').then(m => m.ProtectedModule), canActivate: [OktaAuthGuard] },

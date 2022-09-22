@@ -62,6 +62,9 @@ export class ProductSearchComponent implements OnInit {
     },
     error: (e) => console.error(e)
     })
+
+
+    this.doSearch(); 
   }
 
   doSearch(): void {

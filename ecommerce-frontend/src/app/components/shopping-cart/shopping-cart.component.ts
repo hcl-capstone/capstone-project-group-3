@@ -8,6 +8,7 @@ import { OktaAuth } from '@okta/okta-auth-js';
 import { OKTA_AUTH } from '@okta/okta-angular';
 import { User } from "src/app/common/user"; 
 import { UserService } from 'src/app/services/user.service';
+import { UpdateCartDto } from 'src/app/common/update-cart-dto';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -30,6 +31,8 @@ export class ShoppingCartComponent implements OnInit {
   sub: string; 
   isAuthenticated!: boolean;
   user?:User;
+  cartDto: UpdateCartDto; 
+  productQuantity?: number
 
   constructor(private shoppingCartService: ShoppingCartService, private invoiceService:InvoiceService,  @Inject(OKTA_AUTH) public oktaAuth: OktaAuth,  public userService: UserService) { }
 
@@ -56,11 +59,20 @@ export class ShoppingCartComponent implements OnInit {
 
       this.carts = this.invoice.carts; 
   
-      console.log(this.user, this.invoice); 
+      console.log(this.carts); 
     },
     error: (e) => console.error(e)
     })
   }
+
+  updateCart(quantity?: number, id?: number): void {
+
+    this.cartDto.productQuantity = quantity; 
+    this.cartDto.cartId = id; 
+    this.invoiceService.postInvoiceUpdate(this.cartDto); 
+    console.log(this.cartDto); 
+  }
+
 
   saveShoppingCart(): void {
     const data = {
@@ -77,6 +89,10 @@ export class ShoppingCartComponent implements OnInit {
         },
         error: (e: any) => console.error(e)
       });
+
+
+
+
   }
 
   newShoppingCart(): void {

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Invoice } from '../common/invoice';
 import { Observable } from 'rxjs';
+import { UpdateCartDto } from '../common/update-cart-dto';
+import { ShoppingCart } from '../common/shopping-cart';
 
 
 @Injectable({
@@ -33,5 +35,11 @@ export class InvoiceService {
     
     
    }
+
+
+
+  postInvoiceUpdate(UpdateCartDto: UpdateCartDto): Observable<ShoppingCart> {
+    return this.http.post<ShoppingCart>(`http://localhost:8082/invoice/product/update`, UpdateCartDto); 
+  }
 
 }
