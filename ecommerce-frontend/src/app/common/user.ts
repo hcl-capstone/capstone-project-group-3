@@ -10,4 +10,7 @@ export class User{
     roles?: Role[];
     address?: Address[];
     invoices?: Invoice[]; 
+    idToken?: string; 
+    username?: string;
+    password?: string;
 }

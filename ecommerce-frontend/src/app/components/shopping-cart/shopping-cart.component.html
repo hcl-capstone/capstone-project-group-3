@@ -1,13 +1,13 @@
 <app-header></app-header>
 <section id="cart-hero">
   <p>Sign-up and Save!</p>
-  
+
   <h4>Up To 50% Off On All Products!</h4>
 </section>
 <div>
     <div class="submit-form">
       <div *ngIf="!submitted">
-        <div class="form-group">         
+        <div class="form-group">
           <section id="cart" class="section-p2">
             <table width="100%">
               <thead>
@@ -24,14 +24,33 @@
                   <td><a href="/shopping-cart"(click)=removeShoppingCart(cart.cartId)><i class="far fa-times-circle fa-1.5x"></i></a></td>
                   <td><img src={{cart.product?.image_url}} alt=""></td>
                   <td>{{cart.product?.productName}}</td>
-                  <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
-                  <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"  ></td>
+                  <!-- <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td> -->
+                  <td>{{cart.cartPrice}}</td>
+                  <!-- <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"></td> -->
+                  <td>
+                    <form>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="product-quantity"
+                          [(ngModel)]="cart.productQuantity"
+                          name="product-quantity"
+                        />
+                      </div>
+                    </form>
+                  </td>
+
+                  <div class = "quantity-update">
+                    <button type = "submit-button" (click)="updateCart(cart)">Update</button>
+                  </div>
+
                   <td></td>
                 </tr>
               </tbody>
             </table>
           </section>
-        <button (click)= saveShoppingCart() routerLink="/checkout" class="btn btn-success">Checkout</button>
+        <button routerLink="/checkout" class="btn btn-success">Checkout</button>
       </div>
     </div>
     <footer class="section-p1">
@@ -52,7 +71,7 @@
               </div>
           </div>
       </div>
-    
+
       <div class="col">
         <h2>About</h2>
         <a href="#">About Us</a>
@@ -61,7 +80,7 @@
         <a href="#">Terms & Conditions</a>
         <a href="#">Contact Us</a>
       </div>
-    
+
       <div class="col">
         <h2>My Account</h2>
         <a href="#">Sign In</a>
@@ -70,7 +89,7 @@
         <a href="#">Track My Order</a>
         <a href="#">Help</a>
       </div>
-    
+
       <div class="col install">
         <h2> Install App</h2>
         <p>From App Store or Google Play</p>

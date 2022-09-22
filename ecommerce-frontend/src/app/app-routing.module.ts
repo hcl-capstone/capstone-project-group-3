@@ -6,9 +6,6 @@ import { ProductComponent } from './components/product-search/product/product.co
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
-import { ProductListComponent } from './components/product-search/product-list/product-list.component';
-import { ProductSearchComponent } from './components/product-search/product-search.component';
-import { HomeComponent } from './home/home.component';
 import { ProductDetailsDeleteComponent } from './product-details-delete/product-details-delete.component';
 import { ProductDetailsAddComponent } from './components/product-details/product-details-add/product-details-add.component';
 import { ProductDetailsEditComponent } from './components/product-details/product-details-edit/product-details-edit.component';
@@ -26,6 +23,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AdminProductListComponent } from './components/admin-page/admin-product-list/admin-product-list.component';
 import { AdminProductDetailsComponent } from './components/admin-page/admin-product-details/admin-product-details.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
+import { ProductListComponent } from './components/product-search/product-list/product-list.component';
+import { HomeComponent } from './home/home.component';
 import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
 import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
 

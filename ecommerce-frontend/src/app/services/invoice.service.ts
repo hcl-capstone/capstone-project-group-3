@@ -11,14 +11,12 @@ import { ShoppingCart } from '../common/shopping-cart';
 })
 export class InvoiceService {
 
-   getCheckout(id: any): Observable<Invoice> {
+  getCheckout(id: any): Observable<Invoice> {
     return this.http.post<Invoice>(`http://localhost:8082/invoice/checkout/${id}`, id);
-   }
-
-
+  }
 
   private invoiceUrl: string;
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.invoiceUrl = 'http://localhost:8082/invoice/all';
   }
 
@@ -32,14 +30,10 @@ export class InvoiceService {
 
   deleteProduct(invoice_id: any, cartId: any): Observable<Invoice> {
     return this.http.get<Invoice>(`http://localhost:8082/invoice/product/delete/${invoice_id}/${cartId}`);
-    
-    
-   }
+  }
 
-
-
-  postInvoiceUpdate(UpdateCartDto: UpdateCartDto): Observable<ShoppingCart> {
-    return this.http.post<ShoppingCart>(`http://localhost:8082/invoice/product/update`, UpdateCartDto); 
+  postInvoiceUpdate(updateCartDto: any): Observable<ShoppingCart> {
+    return this.http.post<ShoppingCart>(`http://localhost:8082/invoice/product/update`, updateCartDto);
   }
 
 }
