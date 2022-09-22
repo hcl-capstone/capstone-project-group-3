@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Address } from 'src/app/common/address';
 import { Invoice } from 'src/app/common/invoice';
@@ -10,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 import { UserDetailsComponent } from '../user-details/user-details.component';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { OKTA_AUTH } from '@okta/okta-angular';
-import { User } from "src/app/common/user";
+import { User } from "src/app/common/user"; 
 
 
 @Component({
@@ -24,20 +23,20 @@ export class CheckoutComponent implements OnInit {
 
 
   invoices?:Invoice[];
-  invoice: Invoice = {};
-  address?:Address[];
+  invoice: Invoice = {};  
+  address?:Address[];  
   add?:Address;
-  carts?:ShoppingCart[];
-  id:string | undefined;
+  carts?:ShoppingCart[];  
+  id:string | undefined; 
   user?:User;
-  email?:string;
+  email?:string; 
   claims!: { name: string; value: unknown }[];
-  sub: string;
+  sub: string; 
   isAuthenticated!: boolean;
   name?: string;
   paymentHandler:any = null;
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) {
+  constructor(private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
 
   }
 
@@ -49,31 +48,31 @@ export class CheckoutComponent implements OnInit {
     if (this.isAuthenticated) {
       const userClaims = await this.oktaAuth.getUser();
 
-      this.sub = userClaims.sub;
+      this.sub = userClaims.sub; 
     }
-
+  
     this.userService.getByIdToken(this.sub)
     .subscribe({
       next: (data) => {
       this.user = data;
-      this.email = this.user.email;
-      this.address = data.address;
-      this.invoices = data.invoices;
-      this.name = this.user.firstName;
+      this.email = this.user.email; 
+      this.address = data.address; 
+      this.invoices = data.invoices; 
+      this.name = this.user.firstName; 
       if(this.user?.address != null){
-        this.add = this.user?.address[0];
+        this.add = this.user?.address[0]; 
       }
       if(this.invoices != null){
-        this.invoice = this.invoices[0];
-      }
+        this.invoice = this.invoices[0]; 
+      } 
 
-      this.carts = this.invoice.carts;
-
-      console.log(this.user, this.address, this.name, this.add, this.invoice);
+      this.carts = this.invoice.carts; 
+  
+      console.log(this.user, this.address, this.name, this.add, this.invoice); 
     },
     error: (e) => console.error(e)
     })
-
+  
     this.invokeStripe();
 
   }
@@ -96,8 +95,8 @@ export class CheckoutComponent implements OnInit {
     this.invoiceService.getInvoice(this.id)
       .subscribe({
         next: (data) => {
-          this.carts = data.carts;
-          console.log(this.invoice, this.address, this.carts);
+          this.carts = data.carts; 
+          console.log(this.invoice, this.address, this.carts); 
         },
         error: (e) => console.error(e)
     })
@@ -108,14 +107,19 @@ export class CheckoutComponent implements OnInit {
       .subscribe({
         next: (data) => {
         this.user = data;
-        this.email = this.user.email;
-        this.address = data.address;
-        this.name = this.user.firstName;
-        console.log(this.user, this.address, this.name);
+        this.email = this.user.email; 
+        this.address = data.address; 
+        this.name = this.user.firstName; 
+        console.log(this.user, this.address, this.name); 
       },
       error: (e) => console.error(e)
     })
   }
+
+
+ 
+
+
 
   initializePayment(amount: number | undefined) {
     const paymentHandler = (<any>window).StripeCheckout.configure({
@@ -123,16 +127,17 @@ export class CheckoutComponent implements OnInit {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log({stripeToken})
-        alert('your order has been placed check your email for a conformation!');
+        alert('your order has been placed check your email for a confirmation!');
       }
+    });
 
-      paymentHandler.open({
-        image: 'https://res.cloudinary.com/du6vcjz7b/image/upload/v1663189011/peach-removebg-preview_dyy9jx.png',
-        name: 'Fruitilicious',
-        description: 'Exotic fruits',
-        amount: Number(amount) * 100
+    paymentHandler.open({
+      image: 'https://res.cloudinary.com/du6vcjz7b/image/upload/v1663189011/peach-removebg-preview_dyy9jx.png',
+      name: 'Fruitilicious',
+      description: 'Exotic fruits',
+      amount: Number(amount) * 100
 
-      });
+    });
   }
 
   invokeStripe() {
