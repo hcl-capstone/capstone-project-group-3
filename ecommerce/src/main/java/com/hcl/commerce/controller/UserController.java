@@ -27,43 +27,42 @@ public class UserController {
 
 	@PostMapping("user/registration")
 	public Users registerUser(@RequestBody UserInputDTO dto) {
-		log.info("User was registered");
 		return userService.registerUser(dto);
 	}
 
 	@GetMapping("user/get/{userId}") //read
 	public Users getUser(@PathVariable Long userId) {
-		log.info("User got got");
 		return userService.getUser(userId);
 	}
-	
+
 	@GetMapping("users/get/{userEmail}")
 	public Users getUser(@PathVariable String userEmail) {
 		return userService.getUserByEmail(userEmail);
 	}
-	
+
+	@GetMapping("users/getIdToken/{IdToken}")
+	public Users getUserByIdToken(@PathVariable String IdToken) {
+		return userService.getUserByIdToken(IdToken);
+	}
+
 	@PostMapping("user/update/{userId}")
 	public Users updateUser(@PathVariable Long userId, @RequestBody UserInputDTO dto) {
-		log.info("User info was updated");
 		return userService.updateUser(userId, dto);
 	}
-			
+
 	@DeleteMapping("user/delete/{userId}") //delete
 	public Users deleteUser(@PathVariable Long userId) {
-		log.info("User got deleted");
 		return userService.deleteUser(userId);
 	}
 
 	@GetMapping("user/all")
 	public List<Users> getAllUsers() {
-		log.info("All users retrieved");
 		return userService.getAllUser();
 	}
 
 	@PostMapping("user/login")
 	public Users loginUser(@RequestBody UserLoginDTO dto) {
-		log.info("Okta :)");
 		return userService.getUser(dto.getUsername(), dto.getPassword());
 	}
-	
+
 }

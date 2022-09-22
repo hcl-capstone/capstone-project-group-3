@@ -84,9 +84,7 @@ const oktaAuth = new OktaAuth({
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-
     OktaAuthModule,
-
     ToastrModule.forRoot(),
     MatSliderModule 
 

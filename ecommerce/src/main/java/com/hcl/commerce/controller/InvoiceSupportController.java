@@ -46,7 +46,7 @@ public class InvoiceSupportController {
 	
 	@GetMapping("invoice/product/delete/{invoice_id}/{cart_id}")
 	public Invoice removeProductFromInvoice(@PathVariable Long invoice_id, @PathVariable Long cart_id) {
-		log.info("cart was added to invoice");
+		log.info("cart was deleted to invoice");
 		return invoiceSupportService.deleteInvoiceCart(invoice_id, cart_id);
 	}
 	@PostMapping("invoice/product/update")
