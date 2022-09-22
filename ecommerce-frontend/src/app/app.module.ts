@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
-
 import { AppComponent } from './app.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
@@ -39,6 +38,9 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
 import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
 import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AdminUserListComponent } from './components/admin-page/admin-user-list/admin-user-list.component';
+import { AdminUserDetailsComponent } from './components/admin-page/admin-user-details/admin-user-details.component';
 
 
 const oktaAuth = new OktaAuth({
@@ -74,7 +76,10 @@ const oktaAuth = new OktaAuth({
     AdminProductDetailsComponent,
     AdminProductListComponent,
     AdminOrderListComponent,
-    AdminOrderDetailsComponent
+    AdminOrderDetailsComponent,
+    UserProfileComponent,
+    AdminUserListComponent,
+    AdminUserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,7 @@ const oktaAuth = new OktaAuth({
     FormsModule,
     OktaAuthModule,
     ToastrModule.forRoot(),
-    MatSliderModule 
+    MatSliderModule
 
 
   ],

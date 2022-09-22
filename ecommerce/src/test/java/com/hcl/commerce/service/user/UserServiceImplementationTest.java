@@ -45,7 +45,7 @@ class UserServiceImplementationTest {
     void testRegisterUser() throws MailException {
         doNothing().when(javaMailSender).send((SimpleMailMessage) any());
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -71,7 +71,7 @@ class UserServiceImplementationTest {
     @Test
     void testGetUser() {
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -100,7 +100,7 @@ class UserServiceImplementationTest {
     @Test
     void testGetUser3() {
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -119,7 +119,7 @@ class UserServiceImplementationTest {
     @Test
     void testUpdateUser() {
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -130,7 +130,7 @@ class UserServiceImplementationTest {
         user.setUsername("janedoe");
         Optional<Users> ofResult = Optional.of(user);
         Users user1 = new Users();
-        user1.setAddresses(new HashSet<>());
+        user1.setAddress(new HashSet<>());
         user1.setEmail("jane.doe@example.org");
         user1.setFirstName("Jane");
         user1.setInvoices(new ArrayList<>());
@@ -170,7 +170,7 @@ class UserServiceImplementationTest {
         //   updateUser(Long, UserInputDTO).
         //   See https://diff.blue/R013 to resolve this issue.
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -195,7 +195,7 @@ class UserServiceImplementationTest {
     @Test
     void testUpdateUser3() {
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -221,7 +221,7 @@ class UserServiceImplementationTest {
     @Test
     void testDeleteUser() {
         Users user = new Users();
-        user.setAddresses(new HashSet<>());
+        user.setAddress(new HashSet<>());
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
         user.setInvoices(new ArrayList<>());
@@ -261,4 +261,3 @@ class UserServiceImplementationTest {
         verify(userRepository).findAll();
     }
 }
-

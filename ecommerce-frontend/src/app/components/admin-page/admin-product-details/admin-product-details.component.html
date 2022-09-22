@@ -1,6 +1,24 @@
+<!-- <div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a routerLink="/admin-home" class="navbar-brand"></a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/admin/product-list" class="nav-link">View Products</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="/admin/invoice-list" class="nav-link">View Orders</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="/admin/user-list" class="nav-link">View Users</a>
+      </li>
+    </div>
+  </nav>
+</div> -->
 <div *ngIf="viewMode; else editable">
     <div *ngIf="currentProduct.productId">
-      <h4>Product</h4>
       <div>
         <label><strong>Name:</strong></label> {{ currentProduct.productName }}
       </div>
@@ -31,6 +49,25 @@
   </div>
   
   <ng-template #editable>
+    <div>
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a routerLink="/admin-home" class="navbar-brand"></a>
+        <div class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/admin/product-list" class="nav-link">View Products</a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/admin/invoice-list" class="nav-link">View Orders</a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/admin/user-list" class="nav-link">View Users</a>
+          </li>
+        </div>
+      </nav>
+    </div>
     <div *ngIf="currentProduct.productId" class="edit-form">
       <h4>Product</h4>
       <form>
@@ -78,6 +115,11 @@
         </div>
       </form>
 
+      <div class = "file-upload">
+        <input type = "file" (change)="onFileSelected($event)">
+        <button type = "submit-button" (click)="onUpload()">Upload</button>
+      </div>
+
       <button class="badge badge-danger mr-2" (click)="deleteProduct()">
         Delete
       </button>
@@ -94,7 +136,18 @@
   
     <div *ngIf="!currentProduct.productId">
       <br />
-      <p>Cannot access this Tutorial...</p>
+      <div class="center">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>      
     </div>
   </ng-template>
   
