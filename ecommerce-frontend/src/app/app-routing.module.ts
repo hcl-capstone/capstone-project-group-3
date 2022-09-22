@@ -24,6 +24,7 @@ import { AdminProductDetailsComponent } from './components/admin-page/admin-prod
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
 import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 
@@ -52,7 +53,8 @@ const routes: Routes = [
   {path: 'admin/product-list', component: AdminProductListComponent},
   {path: 'admin/product-list/:id', component: AdminProductDetailsComponent},
   {path: 'admin/invoice-list', component: AdminOrderListComponent},
-  {path: 'admin/invoice-list/:id', component: AdminOrderDetailsComponent}
+  {path: 'admin/invoice-list/:id', component: AdminOrderDetailsComponent},
+  {path: 'user/profile', component: UserProfileComponent}
 ];
 
 @NgModule({

@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { Role } from 'src/app/common/role';
 import { Router } from '@angular/router';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { AddressService } from 'src/app/services/address.service';
+import { Address } from 'src/app/common/address';
 
 @Component({
   selector: 'app-profile',
@@ -26,9 +28,10 @@ export class ProfileComponent implements OnInit {
   home: string;
   firstName: any;
   lastName?: any;
+  address: Address = {};
 
 
-  constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService, private router: Router,  public invoiceService: InvoiceService) {
+  constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public addressService: AddressService , public userService: UserService, private router: Router,  public invoiceService: InvoiceService) {
   }
 
   async ngOnInit() {
@@ -88,6 +91,7 @@ export class ProfileComponent implements OnInit {
           this.user = data;
           console.log(data);
           console.log(this.user.userId);
+          //create invoice
           this.invoiceService.createUserInvoice(this.user.userId)
           .subscribe({
             next: (data: any) => {
@@ -95,6 +99,30 @@ export class ProfileComponent implements OnInit {
             },
             error: (e: any) => console.error(e)
           });
+          //create address
+          this.address.city = "Fruit Town";
+          this.address.street = "111 fruit lane";
+          this.address.secondary = "";
+          this.address.state = "Fruitty";
+          this.address.country = "Fruitopia";
+          this.address.zip = "10000";
+          this.addressService.createAddress(this.address)
+          .subscribe({
+            next: (data: any) => {
+              this.address = data;
+              console.log(data);
+            },
+            error: (e: any) => console.error(e)
+          });
+          //add an address to a user : default address
+          this.userService.assignUserAddress(this.user.userId, this.address.addressId)
+          .subscribe({
+            next: (data: any) => {
+              console.log(data);
+            },
+            error: (e: any) => console.error(e)
+          });
+
         },
         error: (e: any) => console.error(e)
       });
