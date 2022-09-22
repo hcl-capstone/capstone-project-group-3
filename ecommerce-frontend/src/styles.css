@@ -418,7 +418,11 @@ footer .install img{
 #cart table td:nth-child(1){
     width: 150px;
     text-align: center;
-
+}
+#cart table td:nth-child(1) a:hover{
+    cursor: pointer;
+    color: red;
+    transition: 0.3s ease;
 }
 #cart table td:nth-child(2){
     width: 150px;
