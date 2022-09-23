@@ -115,7 +115,7 @@ export class ProfileComponent implements OnInit {
             error: (e: any) => console.error(e)
           });
           //add an address to a user : default address
-          this.userService.assignUserAddress(this.user.userId, this.address.addressId)
+          this.userService.assignUserAddress(this.user.userId, this.address)
           .subscribe({
             next: (data: any) => {
               console.log(data);
