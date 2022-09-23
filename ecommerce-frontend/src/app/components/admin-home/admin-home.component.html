@@ -37,30 +37,4 @@
     <div class="container mt-3">
       <router-outlet></router-outlet>
     </div>
-    <div class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a routerLink="/admin/product-list" class="nav-link">View Products</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/admin/invoice-list" class="nav-link">View Orders</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/admin/user-list" class="nav-link">View Users</a>
-      </li>
-      <li class="nav-item">
-        <a (click)="signOut()" routerLink="/admin/home" class="nav-link">Sign Out</a>
-      </li>
-    </div>
-
-  <section id="admin-product">
-    <button routerLink="/admin/product-list">View Products</button>
-  </section>
-
-  <section id="admin-users">
-    <button routerLink="/admin/user-list">View Users</button>
-  </section>
-
-  <div class="container mt-3">
-    <router-outlet></router-outlet>
   </div>
-</div>
