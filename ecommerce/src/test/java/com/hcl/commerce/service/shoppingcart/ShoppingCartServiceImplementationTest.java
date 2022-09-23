@@ -22,7 +22,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.amqp.AmqpException;
