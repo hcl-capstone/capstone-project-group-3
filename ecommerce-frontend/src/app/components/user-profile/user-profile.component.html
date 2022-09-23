@@ -7,24 +7,96 @@
         <div class="col-md-5 border-right align-items-center">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+                    <h1 class="text-right">Profile</h1>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" placeholder={{user.firstName}} value=""></div>
-                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder={{user.lastName}}></div>
+                    <!-- <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" placeholder={{user.firstName}} value=""></div>
+                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value="" placeholder={{user.lastName}}></div> -->
+                    <label for="first-name">First Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="first-name"
+                        [(ngModel)]="user.firstName"
+                        name="first-name"
+                    />
+                    <label for="last-name">Last Name</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="last-name"
+                        [(ngModel)]="user.lastName"
+                        name="last-name"
+                    />
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder={{user.email}} value=""></div>
+                    <!-- <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder={{user.email}} value=""></div>
                     <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" placeholder={{add?.street}} value=""></div>
                     <div class="col-md-12"><label class="labels">Address (Secondary/Apartment)</label><input type="text" class="form-control" placeholder={{add?.secondary}} value=""></div>
                     <div class="col-md-12"><label class="labels">ZipCode</label><input type="text" class="form-control" placeholder={{add?.zip}} value=""></div>
-                    <div class="col-md-12"><label class="labels">City</label><input type="text" class="form-control" placeholder={{add?.city}} value=""></div>
+                    <div class="col-md-12"><label class="labels">City</label><input type="text" class="form-control" placeholder={{add?.city}} value=""></div> -->
+                    <label for="email">Email</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="email"
+                        [(ngModel)]="user.email"
+                        name="email"
+                    />
+                    <label for="street">Address</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="street"
+                        [(ngModel)]="add.street"
+                        name="street"
+                    />
+                    <label for="secondary">Address (Secondary/Apartment)</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="secondary"
+                        [(ngModel)]="add.secondary"
+                        name="secondary"
+                    />
+                    <label for="zip">ZipCode</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="zip"
+                        [(ngModel)]="add.zip"
+                        name="zip"
+                    />
+                    <label for="street">City</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="city"
+                        [(ngModel)]="add.city"
+                        name="city"
+                    />
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder={{add?.country}} value=""></div>
-                    <div class="col-md-6"><label class="labels">State</label><input type="text" class="form-control" value="" placeholder={{add?.state}}></div>
+                    <!-- <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder={{add?.country}} value=""></div>
+                    <div class="col-md-6"><label class="labels">State</label><input type="text" class="form-control" value="" placeholder={{add?.state}}></div> -->
+                    <label for="country">Country</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="country"
+                        [(ngModel)]="add.country"
+                        name="country"
+                    />
+                    <label for="state">State</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="state"
+                        [(ngModel)]="add.state"
+                        name="state"
+                    />
                 </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center"><button (click)="updateProfile()" class="btn btn-success profile-button" type="button">Save Profile</button></div>
             </div>
         </div>
         <div class="col-md-4">

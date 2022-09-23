@@ -10,6 +10,8 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { OKTA_AUTH } from '@okta/okta-angular';
 import { User } from "src/app/common/user"; 
+import { ToastrService } from 'ngx-toastr';
+import { UserUpdateDTO } from 'src/app/common/user-update-dto';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,10 +26,12 @@ export class UserProfileComponent implements OnInit {
   invoices?:Invoice[];
   invoice: Invoice = {};  
   address?:Address[];  
-  add?:Address;
+  add:Address;
+  updatedAddress: Address = {};
   carts?:ShoppingCart[];  
   id:string | undefined; 
   user:User;
+  userUpdateDTO : UserUpdateDTO = {};
   email?:string; 
   claims!: { name: string; value: unknown }[];
   sub: string; 
@@ -35,7 +39,7 @@ export class UserProfileComponent implements OnInit {
   name?: string;
   paymentHandler:any = null;
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
+  constructor(private toastr: ToastrService, private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
 
   }
 
@@ -110,6 +114,51 @@ export class UserProfileComponent implements OnInit {
       },
       error: (e) => console.error(e)
     })
+  }
+
+  updateUsersAddress(): void{
+    console.log("Updating User's Address");
+    // console.log(this.currentUser);
+    // this.message = '';
+    
+    this.updatedAddress.street=this.add.street;
+    this.updatedAddress.secondary=this.add.secondary;
+    this.updatedAddress.city=this.add.city;
+    this.updatedAddress.state=this.add.state;
+    this.updatedAddress.country=this.add.country;
+    this.updatedAddress.zip=this.add.zip;
+
+    this.addressService.updateAddress(this.add.addressId, this.updatedAddress)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  updateUser(): void {
+    console.log("Updating User");
+    
+    this.userUpdateDTO.firstName=this.user.firstName;
+    this.userUpdateDTO.lastName=this.user.lastName;
+    this.userUpdateDTO.email=this.user.email;
+    this.userUpdateDTO.idToken=this.user.idToken;
+
+    this.userService.update(this.user.userId, this.userUpdateDTO)
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
+  updateProfile(): void{
+    this.updateUser();
+    this.updateUsersAddress();
+    this.toastr.success("User Information Updated Successfully");
   }
 
 }

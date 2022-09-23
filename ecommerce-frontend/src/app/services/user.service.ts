@@ -32,9 +32,9 @@ export class UserService {
     console.log(user);
     return this.http.post<User>(`https://fruitilicious-backend.azurewebsites.net/user/registration`, user);
   }
-
-  assignUserAddress(user_id: any, address_id: any): Observable<User>{
-    return this.http.post<User>(`https://fruitilicious-backend.azurewebsites.net/user/address/set/`, {user_id, address_id});
+  
+  assignUserAddress(user_id: any, address: any): Observable<User>{
+    return this.http.post<User>(`https://fruitilicious-backend.azurewebsites.net/user/address/set/${user_id}`, address);
   }
 
   getAllUsers() : Observable<User[]> {

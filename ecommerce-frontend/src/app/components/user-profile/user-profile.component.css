@@ -8,27 +8,27 @@ body {
 }
 
 .profile-button {
-  background: rgb(99, 39, 120);
+  background: green;
   box-shadow: none;
   border: none
 }
 
 .profile-button:hover {
-  background: #682773
+  background: green
 }
 
 .profile-button:focus {
-  background: #682773;
+  background: green;
   box-shadow: none
 }
 
 .profile-button:active {
-  background: #682773;
+  background: green;
   box-shadow: none
 }
 
 .back:hover {
-  color: #682773;
+  color: green;
   cursor: pointer
 }
 
