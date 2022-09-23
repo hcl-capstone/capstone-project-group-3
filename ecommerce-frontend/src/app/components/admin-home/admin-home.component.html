@@ -1,10 +1,41 @@
 <div>
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a routerLink="/admin-home" class="navbar-brand"></a>
-    <div class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
-      </li>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a routerLink="/admin-home" class="navbar-brand"></a>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
+        </li>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a routerLink="/admin/product-list" class="nav-link">View Products</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/admin/invoice-list" class="nav-link">View Orders</a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/admin/user-list" class="nav-link">View Users</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="signOut()" routerLink="/admin/home" class="nav-link">Sign Out</a>
+        </li>
+      </div>
+    </nav>
+
+    <section id="admin-product">
+      <button routerLink="/admin/product-list">View Products</button>
+    </section>
+
+    <section id="admin-users">
+      <button routerLink="/admin/user-list">View Users</button>
+    </section>
+  
+    <section id="admin-invoice">
+      <button routerLink="/admin/invoice-list">View Orders</button>
+    </section>
+
+    <div class="container mt-3">
+      <router-outlet></router-outlet>
     </div>
     <div class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -20,7 +51,6 @@
         <a (click)="signOut()" routerLink="/admin/home" class="nav-link">Sign Out</a>
       </li>
     </div>
-  </nav>
 
   <section id="admin-product">
     <button routerLink="/admin/product-list">View Products</button>

@@ -15,6 +15,27 @@
   </div>
   
   <ng-template #editable>
+    <div>
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a routerLink="/admin-home" class="navbar-brand"></a>
+        <div class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
+          </li>
+        </div>
+        <div class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a routerLink="/admin/product-list" class="nav-link">View Products</a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/admin/invoice-list" class="nav-link">View Orders</a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/admin/user-list" class="nav-link">View Users</a>
+          </li>
+        </div>
+      </nav>
+    </div>
     <div *ngIf="currentUser.userId" class="edit-form">
       <h4>User</h4>
       <form>
