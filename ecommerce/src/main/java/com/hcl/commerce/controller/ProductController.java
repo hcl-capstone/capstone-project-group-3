@@ -33,9 +33,9 @@ public class ProductController {
 	}
 
 	@DeleteMapping("product/delete/{id}")
-	public Product deleteProduct(@PathVariable Long id) {
+	public void deleteProduct(@PathVariable Long id) {
 		log.info("Admin deleted product by productId");
-		return productService.deleteProduct(id);
+		productService.deleteProduct(id);
 	}
 
 	@PostMapping("product/update/{id}")
