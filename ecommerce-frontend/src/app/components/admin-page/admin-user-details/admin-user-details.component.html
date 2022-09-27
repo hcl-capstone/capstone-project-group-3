@@ -1,0 +1,91 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentUser.userId">
+      <h4>User</h4>
+      <div> <label><strong>First Name:</strong></label> {{ currentUser.firstName }} </div>
+      <div> <label><strong>Last Name:</strong></label>{{ currentUser.lastName }} </div>
+      <div> <label><strong>Email:</strong></label> {{ currentUser.email }} </div>
+  
+      <a class="badge badge-warning" routerLink="/admin/user-list/{{ currentUser.userId }}"> Edit </a>
+    </div>
+  
+    <div *ngIf="!currentUser">
+      <br />
+      <p>Please click on a User...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div>
+      <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a routerLink="/admin-home" class="navbar-brand"></a>
+        <div class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
+          </li>
+        </div>
+        <div class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a routerLink="/admin/product-list" class="nav-link">View Products</a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/admin/invoice-list" class="nav-link">View Orders</a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/admin/user-list" class="nav-link">View Users</a>
+          </li>
+        </div>
+      </nav>
+    </div>
+    <div *ngIf="currentUser.userId" class="edit-form">
+      <h4>User</h4>
+      <form>
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="first-name"
+            [(ngModel)]="currentUser.firstName"
+            name="first-name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lastName"
+            [(ngModel)]="currentUser.lastName"
+            name="lastName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            [(ngModel)]="currentUser.email"
+            name="email"
+          />
+        </div>
+      </form>
+
+      <!-- <button class="badge badge-danger mr-2" (click)="deleteUser()">
+        Delete
+      </button> -->
+  
+      <button type="submit" class="badge badge-success mb-2"
+        (click)="updateUser()">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentUser.userId">
+      <br />
+      <p>Cannot access this User...</p>
+    </div>
+  </ng-template>
+  

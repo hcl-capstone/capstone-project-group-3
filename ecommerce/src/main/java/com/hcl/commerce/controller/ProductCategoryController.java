@@ -17,37 +17,37 @@ import com.hcl.commerce.service.category.ProductCategoryService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
 @Slf4j
 @RestController
 public class ProductCategoryController {
 	@Autowired
 	ProductCategoryService productCategoryService;
-	
+
 	@PostMapping("category/add")
 	public ProductCategory addCategory(@RequestBody ProductCategoryDTO dto) {
 		log.info("product_category was added");
 		return productCategoryService.addCategory(dto);
 	}
-	
+
 	@GetMapping("category/all")
 	public List<ProductCategory> allCategory() {
 		log.info("All product_category were listed");
 		return productCategoryService.getAllProductCategory();
 	}
-	
+
 	@PostMapping("category/update")
 	public ProductCategory updateCategory(@RequestBody ProductCategoryUpdateDTO dto) {
 		log.info("product_category was updated");
 		return productCategoryService.updateCategory(dto);
 	}
-	
+
 	@GetMapping("category/get/{id}")
 	public ProductCategory getCategory(@PathVariable Long id) {
 		log.info("product_category got got");
 		return productCategoryService.getCategory(id);
 	}
-	
 
-	
+
+
 }

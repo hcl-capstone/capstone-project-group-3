@@ -18,7 +18,7 @@ import com.hcl.commerce.service.user.UserService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
 @Slf4j
 @RestController
 public class UserController {
@@ -34,22 +34,22 @@ public class UserController {
 	public Users getUser(@PathVariable Long userId) {
 		return userService.getUser(userId);
 	}
-	
+
 	@GetMapping("users/get/{userEmail}")
 	public Users getUser(@PathVariable String userEmail) {
 		return userService.getUserByEmail(userEmail);
 	}
-	
+
 	@GetMapping("users/getIdToken/{IdToken}")
 	public Users getUserByIdToken(@PathVariable String IdToken) {
-		return userService.getUserByIdToken(IdToken); 
+		return userService.getUserByIdToken(IdToken);
 	}
-	
+
 	@PostMapping("user/update/{userId}")
 	public Users updateUser(@PathVariable Long userId, @RequestBody UserInputDTO dto) {
 		return userService.updateUser(userId, dto);
 	}
-			
+
 	@DeleteMapping("user/delete/{userId}") //delete
 	public Users deleteUser(@PathVariable Long userId) {
 		return userService.deleteUser(userId);
@@ -64,5 +64,10 @@ public class UserController {
 	public Users loginUser(@RequestBody UserLoginDTO dto) {
 		return userService.getUser(dto.getUsername(), dto.getPassword());
 	}
-	
+
+	@GetMapping("user/get/name/{name}")
+	public List<Users> getUserByName(@PathVariable String name){
+		return userService.getUserByName(name);
+	}
+
 }

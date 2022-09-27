@@ -8,6 +8,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.hcl.commerce.InventoryDTO.InventoryDTO;
 import com.hcl.commerce.dto.product.ProductAddDTO;
 import com.hcl.commerce.entity.Product;
 import com.hcl.commerce.entity.ProductCategory;
@@ -19,7 +20,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -171,11 +171,10 @@ class ProductServiceImplementationTest {
         Optional<Product> ofResult = Optional.of(product);
         when(productRepository.findById((Long) any())).thenReturn(ofResult);
         doNothing().when(productRepository).delete((Product) any());
-        Product actualDeleteProductResult = productServiceImplementation.deleteProduct(123L);
-        assertSame(product, actualDeleteProductResult);
-        assertEquals("1", actualDeleteProductResult.getUnitPrice().toString());
+        productServiceImplementation.deleteProduct(123L);
         verify(productRepository).findById((Long) any());
         verify(productRepository).delete((Product) any());
+        assertTrue(productServiceImplementation.getAllProduct().isEmpty());
     }
     /**
      * Method under test: {@link ProductServiceImplementation#deleteProduct(Long)}
@@ -184,9 +183,62 @@ class ProductServiceImplementationTest {
     void testDeleteProduct2() {
         when(productRepository.findById((Long) any())).thenReturn(Optional.empty());
         doNothing().when(productRepository).delete((Product) any());
-        assertNull(productServiceImplementation.deleteProduct(123L));
+        productServiceImplementation.deleteProduct(123L);
         verify(productRepository).findById((Long) any());
         verify(productRepository).delete((Product) any());
+        assertTrue(productServiceImplementation.getAllProduct().isEmpty());
+    }
+    /**
+     * Method under test: {@link ProductServiceImplementation#getByName(String)}
+     */
+    @Test
+    void testGetByName() {
+        ArrayList<Product> productList = new ArrayList<>();
+        when(productRepository.findByProductNameContains((String) any())).thenReturn(productList);
+        List<Product> actualByName = productServiceImplementation.getByName("Product Name");
+        assertSame(productList, actualByName);
+        assertTrue(actualByName.isEmpty());
+        verify(productRepository).findByProductNameContains((String) any());
+    }
+    /**
+     * Method under test: {@link ProductServiceImplementation#updateProductInventory(ProductAddDTO, InventoryDTO)}
+     */
+    @Test
+    void testUpdateProductInventory() {
+        ProductCategory productCategory = new ProductCategory();
+        productCategory.setCategoryId(123L);
+        productCategory.setCategoryName("Category Name");
+        Product product = new Product();
+        product.setCategory(productCategory);
+        product.setDateCreated(LocalDate.ofEpochDay(1L));
+        product.setDateLastUpdated(LocalDate.ofEpochDay(1L));
+        product.setImage_url("https://example.org/example");
+        product.setProductId(123L);
+        product.setProductName("Product Name");
+        product.setStockCount(3);
+        product.setUnitPrice(BigDecimal.valueOf(1L));
+        Optional<Product> ofResult = Optional.of(product);
+        ProductCategory productCategory1 = new ProductCategory();
+        productCategory1.setCategoryId(123L);
+        productCategory1.setCategoryName("Category Name");
+        Product product1 = new Product();
+        product1.setCategory(productCategory1);
+        product1.setDateCreated(LocalDate.ofEpochDay(1L));
+        product1.setDateLastUpdated(LocalDate.ofEpochDay(1L));
+        product1.setImage_url("https://example.org/example");
+        product1.setProductId(123L);
+        product1.setProductName("Product Name");
+        product1.setStockCount(3);
+        product1.setUnitPrice(BigDecimal.valueOf(1L));
+        when(productRepository.save((Product) any())).thenReturn(product1);
+        when(productRepository.findById((Long) any())).thenReturn(ofResult);
+        ProductAddDTO dto = new ProductAddDTO();
+        Product actualUpdateProductInventoryResult = productServiceImplementation.updateProductInventory(dto,
+                new InventoryDTO());
+        assertSame(product1, actualUpdateProductInventoryResult);
+        assertEquals("1", actualUpdateProductInventoryResult.getUnitPrice().toString());
+        verify(productRepository).save((Product) any());
+        verify(productRepository).findById((Long) any());
     }
 }
 

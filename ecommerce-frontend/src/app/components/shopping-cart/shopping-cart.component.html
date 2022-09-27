@@ -1,58 +1,74 @@
 <app-header></app-header>
 <section id="cart-hero">
   <p>Sign-up and Save!</p>
-  
+
   <h4>Up To 50% Off On All Products!</h4>
 </section>
 <div>
-    <div class="submit-form">
-      <div *ngIf="!submitted">
-        <div class="form-group">         
-          <section id="cart" class="section-p2">
-            <table width="100%">
-              <thead>
-                <tr>
-                  <td>Remove</td>
-                  <td>Image</td>
-                  <td>Product</td>
-                  <td>Price</td>
-                  <td>Quantity</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let cart of carts">
-                  <td><a href="/shopping-cart"(click)=removeShoppingCart(cart.cartId)><i class="far fa-times-circle fa-1.5x"></i></a></td>
-                  <td><img src={{cart.product?.image_url}} alt=""></td>
-                  <td>{{cart.product?.productName}}</td>
-                  <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td>
-                  <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"  ></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </section>
-        <button (click)= saveShoppingCart() routerLink="/checkout" class="btn btn-success">Checkout</button>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <section id="cart" class="section-p2">
+          <table width="100%">
+            <thead>
+              <tr>
+                <td>Remove</td>
+                <td>Image</td>
+                <td>Product</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cart of carts">
+                <td><a href="/shopping-cart" (click)=removeShoppingCart(cart.cartId)><i
+                      class="far fa-times-circle fa-1.5x"></i></a></td>
+                <td><img src={{cart.product?.image_url}} alt=""></td>
+                <td>{{cart.product?.productName}}</td>
+                <!-- <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td> -->
+                <td>{{cart.cartPrice}}</td>
+                <!-- <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"></td> -->
+                <td>
+                  <form>
+                    <div class="form-group">
+                      <input type="number" class="form-control" id="product-quantity" [(ngModel)]="cart.productQuantity"
+                        name="product-quantity" />
+                    </div>
+                  </form>
+                </td>
+                <td>
+                  <div class="quantity-update">
+                    <button type="submit-button" (click)="updateCart(cart)">Update</button>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <button routerLink="/checkout" class="btn btn-success">Checkout</button>
       </div>
     </div>
     <footer class="section-p1">
       <div class="col">
-        <img class="logo"src="/assets/images/Images/logo.png" alt="">
+        <img class="logo" src="/assets/images/Images/logo.png" alt="">
         <h2>Contact</h2>
         <p><strong>Address: </strong> 2401 Internet Blvd, Frisco Texas</p>
         <p><strong>Phone: </strong> +1(123) 111 2345</p>
         <p><strong>Hours: </strong> 9:00am - 5:00pm, Monday - Friday</p>
-          <div class="follow">
-            <h2>Follow us</h2>
-              <div class="icon">
-                <i class = "fab fa-facebook-f"></i>
-                <i class = "fab fa-twitter"></i>
-                <i class = "fab fa-instagram"></i>
-                <i class = "fab fa-pinterest-p"></i>
-                <i class = "fab fa-youtube"></i>
-              </div>
+        <div class="follow">
+          <h2>Follow us</h2>
+          <div class="icon">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-pinterest-p"></i>
+            <i class="fab fa-youtube"></i>
           </div>
+        </div>
       </div>
-    
+
       <div class="col">
         <h2>About</h2>
         <a href="#">About Us</a>
@@ -61,7 +77,7 @@
         <a href="#">Terms & Conditions</a>
         <a href="#">Contact Us</a>
       </div>
-    
+
       <div class="col">
         <h2>My Account</h2>
         <a href="#">Sign In</a>
@@ -70,16 +86,16 @@
         <a href="#">Track My Order</a>
         <a href="#">Help</a>
       </div>
-    
+
       <div class="col install">
         <h2> Install App</h2>
         <p>From App Store or Google Play</p>
-          <div class="row">
-            <img src= "/assets/images/Images/app.jpg" alt="">
-            <img src= "/assets/images/Images/play.jpg" alt="">
-          </div>
-          <p> Secured Payment Gateways</p>
-          <img src= "/assets/images/Images/pay.png" alt="">
+        <div class="row">
+          <img src="/assets/images/Images/app.jpg" alt="">
+          <img src="/assets/images/Images/play.jpg" alt="">
+        </div>
+        <p> Secured Payment Gateways</p>
+        <img src="/assets/images/Images/pay.png" alt="">
       </div>
     </footer>
   </div>

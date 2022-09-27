@@ -5,6 +5,8 @@
         <li class="nav-item">
           <a routerLink="/admin/home" class="navbar-brand">Admin-Home</a>
         </li>
+      </div>
+      <div class="navbar-nav ml-auto">
         <li class="nav-item">
           <a routerLink="/admin/product-list" class="nav-link">View Products</a>
         </li>
@@ -12,15 +14,10 @@
             <a routerLink="/admin/invoice-list" class="nav-link">View Orders</a>
         </li>
         <li class="nav-item">
-            <a routerLink="/admin-users-list" class="nav-link">View Users</a>
+            <a routerLink="/admin/user-list" class="nav-link">View Users</a>
         </li>
-        <li>
-          <ng-container >
-            <a href="#" (click)="signOut()">
-              <!-- <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg> -->
-              <span>Sign out</span>
-            </a>
-          </ng-container>
+        <li class="nav-item">
+          <a (click)="signOut()" routerLink="/admin/home" class="nav-link">Sign Out</a>
         </li>
       </div>
     </nav>
@@ -30,9 +27,13 @@
     </section>
 
     <section id="admin-users">
-      <button routerLink="/admin/product-list">View Users</button>
+      <button routerLink="/admin/user-list">View Users</button>
     </section>
   
+    <section id="admin-invoice">
+      <button routerLink="/admin/invoice-list">View Orders</button>
+    </section>
+
     <div class="container mt-3">
       <router-outlet></router-outlet>
     </div>

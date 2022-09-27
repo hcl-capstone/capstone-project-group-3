@@ -17,6 +17,9 @@ import com.hcl.commerce.service.product.ProductService;
 import com.hcl.commerce.service.shoppingcart.ShoppingCartService;
 import com.hcl.commerce.service.user.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class InvoiceSupportService {
 
@@ -58,6 +61,10 @@ public class InvoiceSupportService {
 		ShoppingCart cart = cartService.deleteCart(cart_id);
 		if (invoice != null && cart != null) {
 			invoice.getCarts().remove(cart);
+			repo.save(invoice);
+			invoiceService.updateInvoice(invoice_id);
+			System.out.println();
+			log.info(invoice.getTotalPrice().toString());
 			return repo.save(invoice);
 		}
 		return null;

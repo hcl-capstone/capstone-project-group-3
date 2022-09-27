@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Address } from 'src/app/common/address';
 import { Invoice } from 'src/app/common/invoice';
@@ -24,12 +23,12 @@ export class CheckoutComponent implements OnInit {
 
 
   invoices?:Invoice[];
-  invoice: Invoice;  
+  invoice: Invoice = {};  
   address?:Address[];  
   add?:Address;
   carts?:ShoppingCart[];  
   id:string | undefined; 
-  user?:User;
+  user:User;
   email?:string; 
   claims!: { name: string; value: unknown }[];
   sub: string; 
@@ -37,7 +36,7 @@ export class CheckoutComponent implements OnInit {
   name?: string;
   paymentHandler:any = null;
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService , private shoppingCartService:ShoppingCartService, @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
+  constructor(private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
 
   }
 
@@ -161,5 +160,3 @@ export class CheckoutComponent implements OnInit {
     }
   }
 }
-
-

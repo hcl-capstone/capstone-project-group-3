@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,43 +118,6 @@ class AddressServiceImplementationTest {
      * Method under test: {@link AddressServiceImplementation#updateAddress(Long, AddressCreateDTO)}
      */
     @Test
-    @Disabled("TODO: Complete this test")
-    void testUpdateAddress2() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException
-        //       at com.hcl.commerce.service.address.AddressServiceImplementation.getAddress(AddressServiceImplementation.java:30)
-        //       at com.hcl.commerce.service.address.AddressServiceImplementation.updateAddress(AddressServiceImplementation.java:38)
-        //   In order to prevent updateAddress(Long, AddressCreateDTO)
-        //   from throwing NullPointerException, add constructors or factory
-        //   methods that make it easier to construct fully initialized objects used in
-        //   updateAddress(Long, AddressCreateDTO).
-        //   See https://diff.blue/R013 to resolve this issue.
-        Address address = new Address();
-        address.setAddressId(123L);
-        address.setCity("Oxford");
-        address.setCountry("GB");
-        address.setSecondary("Secondary");
-        address.setState("MD");
-        address.setStreet("Street");
-        address.setZip("21654");
-        when(addressRepository.save((Address) any())).thenReturn(address);
-        when(addressRepository.findById((Long) any())).thenReturn(null);
-        AddressCreateDTO addressCreateDTO = new AddressCreateDTO();
-        addressCreateDTO.setCity("Oxford");
-        addressCreateDTO.setCountry("GB");
-        addressCreateDTO.setSecondary("Secondary");
-        addressCreateDTO.setState("MD");
-        addressCreateDTO.setStreet("Street");
-        addressCreateDTO.setZip("21654");
-        addressServiceImplementation.updateAddress(1L, addressCreateDTO);
-    }
-    /**
-     * Method under test: {@link AddressServiceImplementation#updateAddress(Long, AddressCreateDTO)}
-     */
-    @Test
     void testUpdateAddress3() {
         Address address = new Address();
         address.setAddressId(123L);
@@ -196,28 +158,6 @@ class AddressServiceImplementationTest {
         assertSame(address, addressServiceImplementation.deleteAddress(1L));
         verify(addressRepository).findById((Long) any());
         verify(addressRepository).delete((Address) any());
-    }
-    /**
-     * Method under test: {@link AddressServiceImplementation#deleteAddress(Long)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testDeleteAddress2() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException
-        //       at com.hcl.commerce.service.address.AddressServiceImplementation.getAddress(AddressServiceImplementation.java:30)
-        //       at com.hcl.commerce.service.address.AddressServiceImplementation.deleteAddress(AddressServiceImplementation.java:48)
-        //   In order to prevent deleteAddress(Long)
-        //   from throwing NullPointerException, add constructors or factory
-        //   methods that make it easier to construct fully initialized objects used in
-        //   deleteAddress(Long).
-        //   See https://diff.blue/R013 to resolve this issue.
-        doNothing().when(addressRepository).delete((Address) any());
-        when(addressRepository.findById((Long) any())).thenReturn(null);
-        addressServiceImplementation.deleteAddress(1L);
     }
     /**
      * Method under test: {@link AddressServiceImplementation#deleteAddress(Long)}

@@ -1,5 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-/* @import '~ngx-toastr/toastr'; */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 *{
@@ -263,7 +261,7 @@ footer .install img{
 #admin-product{
     background-image: url(assets/images/Images/fruits-header.jpeg);
     width: 100%;
-    height: 25vh;
+    height: 30vh;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -307,6 +305,56 @@ footer .install img{
     font-weight: 700;
     font-size: 40px;
 
+}
+
+#admin-invoice{
+    background-image: url(assets/images/Images/Admin-Invoice.jpeg);
+    width: 100%;
+    height: 32vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+
+#admin-invoice button{
+    /*background-image: url("assets/images/Images/Brush.png");*/
+    background-color: transparent;
+    color: white;
+    border: 0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 40px;
+
+}
+
+/* User Cart */
+#user-cart{
+    background-image: url(assets/images/Images/fruits-header.jpeg);
+    width: 100%;
+    height: 25vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+
+#user-cart h4{
+    color: #fff;
+    font-size: large;
+}
+
+#user-cart p{
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: xx-large;
 }
 
 /*cart page*/

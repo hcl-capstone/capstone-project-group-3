@@ -19,7 +19,7 @@ public interface ProductService {
 
 	Product updateProduct(Long id, ProductAddDTO dto);
 
-	Product deleteProduct(Long id);
+	void deleteProduct(Long id);
 
 	List<Product> getByName(String productName);
 
