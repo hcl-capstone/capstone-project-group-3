@@ -1,13 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AdminOrderDetailsComponent } from './admin-order-details.component';
 
-xdescribe('AdminOrderDetailsComponent', () => {
+describe('AdminOrderDetailsComponent', () => {
   let component: AdminOrderDetailsComponent;
   let fixture: ComponentFixture<AdminOrderDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, RouterTestingModule ],
       declarations: [ AdminOrderDetailsComponent ]
     })
     .compileComponents();
@@ -19,5 +21,10 @@ xdescribe('AdminOrderDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+
+  it('should have getInvoice function', () =>{
+    expect(component.getInvoice).toBeTruthy(); 
   });
 });
