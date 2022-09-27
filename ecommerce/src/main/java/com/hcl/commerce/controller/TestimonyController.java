@@ -40,7 +40,7 @@ public class TestimonyController {
 		return testimonyService.deleteTestimony(testimonyId);
 	}
 	
-	@PostMapping("testimony/update/content")
+	@PostMapping("testimony/update")
 	public Testimony updateTestimonyContent(@RequestBody TestimonyUpdateDTO dto) {
 		return testimonyService.updateTestimony(dto);
 	}
