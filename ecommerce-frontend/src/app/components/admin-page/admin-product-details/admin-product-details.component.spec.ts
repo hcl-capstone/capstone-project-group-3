@@ -1,13 +1,16 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AdminProductDetailsComponent } from './admin-product-details.component';
 
-xdescribe('AdminProductDetailsComponent', () => {
+describe('AdminProductDetailsComponent', () => {
   let component: AdminProductDetailsComponent;
   let fixture: ComponentFixture<AdminProductDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule, RouterTestingModule ],
       declarations: [ AdminProductDetailsComponent ]
     })
     .compileComponents();

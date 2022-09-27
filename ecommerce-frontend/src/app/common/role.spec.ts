@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Role } from './role';
@@ -5,9 +6,7 @@ import { Role } from './role';
 xdescribe('Role', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+      imports: [HttpClientTestingModule, RouterTestingModule ],
       declarations: [
         Role
       ],

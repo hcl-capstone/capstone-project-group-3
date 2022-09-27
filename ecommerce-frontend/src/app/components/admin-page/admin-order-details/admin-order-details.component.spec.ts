@@ -1,6 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AdminOrderDetailsComponent } from './admin-order-details.component';
 
 describe('AdminOrderDetailsComponent', () => {
@@ -21,10 +22,5 @@ describe('AdminOrderDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-
-  it('should have getInvoice function', () =>{
-    expect(component.getInvoice).toBeTruthy(); 
   });
 });

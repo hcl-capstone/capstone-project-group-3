@@ -1,6 +1,6 @@
 import { ShoppingCart } from './shopping-cart';
 
-xdescribe('ShoppingCart', () => {
+describe('ShoppingCart', () => {
   it('should create an instance', () => {
     expect(new ShoppingCart()).toBeTruthy();
   });

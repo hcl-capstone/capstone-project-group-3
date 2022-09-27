@@ -1,13 +1,13 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RoleService } from './role.service';
 
-describe('RoleService', () => {
+xdescribe('RoleService', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
+      imports: [HttpClientTestingModule, RouterTestingModule ],
+      
       declarations: [
         RoleService
       ],

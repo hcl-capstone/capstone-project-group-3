@@ -1,6 +1,6 @@
 import { Address } from './address';
 
-xdescribe('Address', () => {
+describe('Address', () => {
   it('should create an instance', () => {
     expect(new Address()).toBeTruthy();
   });
