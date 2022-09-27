@@ -1,0 +1,70 @@
+/* User Testimony */
+body .test{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* .test {
+
+    max-width: 100%;
+} */
+.testimonial-area .container{
+    max-width: 1140px;
+    width: 100%;
+    margin: auto;
+    padding: 0 15px;
+
+}
+.testimonial-area .container .sec-title{
+    position: relative;
+    margin-bottom: 50px;
+    padding-bottom: 15px;
+}
+.testimonial-area .container .sec-title::after{
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 3px;
+    background: black;
+}
+.testimonial-area .container .sec-title h2{
+    font-size: 60px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: black;
+}
+.testimonial-area .container .sec-title p{
+    font-size: 18px;
+    line-height: 28px;
+    text-transform: capitalize;
+    color: black;
+}
+.testimonial-area{
+    background: white;
+    position: relative;
+    z-index: 2;
+    padding: 50px 0;
+}
+.testimonial-area .owl-carousel{
+    overflow: hidden;
+    padding: 0 20px;
+    margin: 0 -40px;
+    padding-right: 40px;
+}
+.owl-carousel .owl-stage-outer{
+    padding: 30px;
+    margin-left: -35px;
+    width: calc(100% +100px);
+}
+.single-testimonial{
+    border: 7px solid black;
+    text-align: center;
+    border-radius: 45px;
+    position: relative;
+    z-index: 2;
+}
