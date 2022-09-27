@@ -5,6 +5,7 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.hcl.commerce.dto.address.AddressCreateDTO;
 import com.hcl.commerce.entity.Address;
 import com.hcl.commerce.entity.Invoice;
 import com.hcl.commerce.entity.Role;
@@ -47,18 +48,19 @@ class UserSupportServiceTest {
      */
     @Test
     void testGetAddress() {
-        Users user = new Users();
+        Users users = new Users();
         HashSet<Address> addressSet = new HashSet<>();
-        user.setAddress(addressSet);
-        user.setEmail("jane.doe@example.org");
-        user.setFirstName("Jane");
-        user.setInvoices(new ArrayList<>());
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
-        user.setRoles(new HashSet<>());
-        user.setUserId(123L);
-        user.setUsername("janedoe");
-        when(userServiceImplementation.getUser((Long) any())).thenReturn(user);
+        users.setAddress(addressSet);
+        users.setEmail("jane.doe@example.org");
+        users.setFirstName("Jane");
+        users.setIdToken("ABC123");
+        users.setInvoices(new ArrayList<>());
+        users.setLastName("Doe");
+        users.setPassword("iloveyou");
+        users.setRoles(new HashSet<>());
+        users.setUserId(123L);
+        users.setUsername("janedoe");
+        when(userServiceImplementation.getUser((Long) any())).thenReturn(users);
         Set<Address> actualAddress = userSupportService.getAddress(1L);
         assertSame(addressSet, actualAddress);
         assertTrue(actualAddress.isEmpty());
@@ -69,18 +71,19 @@ class UserSupportServiceTest {
      */
     @Test
     void testGetInvoices() {
-        Users user = new Users();
-        user.setAddress(new HashSet<>());
-        user.setEmail("jane.doe@example.org");
-        user.setFirstName("Jane");
+        Users users = new Users();
+        users.setAddress(new HashSet<>());
+        users.setEmail("jane.doe@example.org");
+        users.setFirstName("Jane");
+        users.setIdToken("ABC123");
         ArrayList<Invoice> invoiceList = new ArrayList<>();
-        user.setInvoices(invoiceList);
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
-        user.setRoles(new HashSet<>());
-        user.setUserId(123L);
-        user.setUsername("janedoe");
-        when(userServiceImplementation.getUser((Long) any())).thenReturn(user);
+        users.setInvoices(invoiceList);
+        users.setLastName("Doe");
+        users.setPassword("iloveyou");
+        users.setRoles(new HashSet<>());
+        users.setUserId(123L);
+        users.setUsername("janedoe");
+        when(userServiceImplementation.getUser((Long) any())).thenReturn(users);
         List<Invoice> actualInvoices = userSupportService.getInvoices(1L);
         assertSame(invoiceList, actualInvoices);
         assertTrue(actualInvoices.isEmpty());
@@ -91,18 +94,19 @@ class UserSupportServiceTest {
      */
     @Test
     void testGetRoles() {
-        Users user = new Users();
-        user.setAddress(new HashSet<>());
-        user.setEmail("jane.doe@example.org");
-        user.setFirstName("Jane");
-        user.setInvoices(new ArrayList<>());
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
+        Users users = new Users();
+        users.setAddress(new HashSet<>());
+        users.setEmail("jane.doe@example.org");
+        users.setFirstName("Jane");
+        users.setIdToken("ABC123");
+        users.setInvoices(new ArrayList<>());
+        users.setLastName("Doe");
+        users.setPassword("iloveyou");
         HashSet<Role> roleSet = new HashSet<>();
-        user.setRoles(roleSet);
-        user.setUserId(123L);
-        user.setUsername("janedoe");
-        when(userServiceImplementation.getUser((Long) any())).thenReturn(user);
+        users.setRoles(roleSet);
+        users.setUserId(123L);
+        users.setUsername("janedoe");
+        when(userServiceImplementation.getUser((Long) any())).thenReturn(users);
         Set<Role> actualRoles = userSupportService.getRoles(1L);
         assertSame(roleSet, actualRoles);
         assertTrue(actualRoles.isEmpty());
@@ -117,35 +121,37 @@ class UserSupportServiceTest {
         role.setRoleId(123L);
         role.setRoleName("Role Name");
         when(roleService.getRole((Long) any())).thenReturn(role);
-        Users user = new Users();
-        user.setAddress(new HashSet<>());
-        user.setEmail("jane.doe@example.org");
-        user.setFirstName("Jane");
-        user.setInvoices(new ArrayList<>());
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
-        user.setRoles(new HashSet<>());
-        user.setUserId(123L);
-        user.setUsername("janedoe");
-        when(userRepository.save((Users) any())).thenReturn(user);
-        Users user1 = new Users();
-        user1.setAddress(new HashSet<>());
-        user1.setEmail("jane.doe@example.org");
-        user1.setFirstName("Jane");
-        user1.setInvoices(new ArrayList<>());
-        user1.setLastName("Doe");
-        user1.setPassword("iloveyou");
-        user1.setRoles(new HashSet<>());
-        user1.setUserId(123L);
-        user1.setUsername("janedoe");
-        when(userServiceImplementation.getUser((Long) any())).thenReturn(user1);
-        assertSame(user, userSupportService.addRole(1L, 1L));
+        Users users = new Users();
+        users.setAddress(new HashSet<>());
+        users.setEmail("jane.doe@example.org");
+        users.setFirstName("Jane");
+        users.setIdToken("ABC123");
+        users.setInvoices(new ArrayList<>());
+        users.setLastName("Doe");
+        users.setPassword("iloveyou");
+        users.setRoles(new HashSet<>());
+        users.setUserId(123L);
+        users.setUsername("janedoe");
+        when(userRepository.save((Users) any())).thenReturn(users);
+        Users users1 = new Users();
+        users1.setAddress(new HashSet<>());
+        users1.setEmail("jane.doe@example.org");
+        users1.setFirstName("Jane");
+        users1.setIdToken("ABC123");
+        users1.setInvoices(new ArrayList<>());
+        users1.setLastName("Doe");
+        users1.setPassword("iloveyou");
+        users1.setRoles(new HashSet<>());
+        users1.setUserId(123L);
+        users1.setUsername("janedoe");
+        when(userServiceImplementation.getUser((Long) any())).thenReturn(users1);
+        assertSame(users, userSupportService.addRole(1L, 1L));
         verify(roleService).getRole((Long) any());
         verify(userRepository).save((Users) any());
         verify(userServiceImplementation).getUser((Long) any());
     }
     /**
-     * Method under test: {@link UserSupportService#addAddress(Long, Long)}
+     * Method under test: {@link UserSupportService#addAddress(Long, AddressCreateDTO)}
      */
     @Test
     void testAddAddress() {
@@ -157,30 +163,82 @@ class UserSupportServiceTest {
         address.setState("MD");
         address.setStreet("Street");
         address.setZip("21654");
+        when(addressService.addAddress((AddressCreateDTO) any())).thenReturn(address);
+        Users users = new Users();
+        users.setAddress(new HashSet<>());
+        users.setEmail("jane.doe@example.org");
+        users.setFirstName("Jane");
+        users.setIdToken("ABC123");
+        users.setInvoices(new ArrayList<>());
+        users.setLastName("Doe");
+        users.setPassword("iloveyou");
+        users.setRoles(new HashSet<>());
+        users.setUserId(123L);
+        users.setUsername("janedoe");
+        when(userRepository.save((Users) any())).thenReturn(users);
+        Users users1 = new Users();
+        users1.setAddress(new HashSet<>());
+        users1.setEmail("jane.doe@example.org");
+        users1.setFirstName("Jane");
+        users1.setIdToken("ABC123");
+        users1.setInvoices(new ArrayList<>());
+        users1.setLastName("Doe");
+        users1.setPassword("iloveyou");
+        users1.setRoles(new HashSet<>());
+        users1.setUserId(123L);
+        users1.setUsername("janedoe");
+        when(userServiceImplementation.getUser((Long) any())).thenReturn(users1);
+        AddressCreateDTO addressCreateDTO = new AddressCreateDTO();
+        addressCreateDTO.setCity("Oxford");
+        addressCreateDTO.setCountry("GB");
+        addressCreateDTO.setSecondary("Secondary");
+        addressCreateDTO.setState("MD");
+        addressCreateDTO.setStreet("Street");
+        addressCreateDTO.setZip("21654");
+        assertSame(users, userSupportService.addAddress(1L, addressCreateDTO));
+        verify(addressService).addAddress((AddressCreateDTO) any());
+        verify(userRepository).save((Users) any());
+        verify(userServiceImplementation).getUser((Long) any());
+    }
+    /**
+     * Method under test: {@link UserSupportService#addAddress(Long, Long)}
+     */
+    @Test
+    void testAddAddress2() {
+        Address address = new Address();
+        address.setAddressId(123L);
+        address.setCity("Oxford");
+        address.setCountry("GB");
+        address.setSecondary("Secondary");
+        address.setState("MD");
+        address.setStreet("Street");
+        address.setZip("21654");
         when(addressService.getAddress((Long) any())).thenReturn(address);
-        Users user = new Users();
-        user.setAddress(new HashSet<>());
-        user.setEmail("jane.doe@example.org");
-        user.setFirstName("Jane");
-        user.setInvoices(new ArrayList<>());
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
-        user.setRoles(new HashSet<>());
-        user.setUserId(123L);
-        user.setUsername("janedoe");
-        when(userRepository.save((Users) any())).thenReturn(user);
-        Users user1 = new Users();
-        user1.setAddress(new HashSet<>());
-        user1.setEmail("jane.doe@example.org");
-        user1.setFirstName("Jane");
-        user1.setInvoices(new ArrayList<>());
-        user1.setLastName("Doe");
-        user1.setPassword("iloveyou");
-        user1.setRoles(new HashSet<>());
-        user1.setUserId(123L);
-        user1.setUsername("janedoe");
-        when(userServiceImplementation.getUser((Long) any())).thenReturn(user1);
-        assertSame(user, userSupportService.addAddress(1L, 1L));
+        Users users = new Users();
+        users.setAddress(new HashSet<>());
+        users.setEmail("jane.doe@example.org");
+        users.setFirstName("Jane");
+        users.setIdToken("ABC123");
+        users.setInvoices(new ArrayList<>());
+        users.setLastName("Doe");
+        users.setPassword("iloveyou");
+        users.setRoles(new HashSet<>());
+        users.setUserId(123L);
+        users.setUsername("janedoe");
+        when(userRepository.save((Users) any())).thenReturn(users);
+        Users users1 = new Users();
+        users1.setAddress(new HashSet<>());
+        users1.setEmail("jane.doe@example.org");
+        users1.setFirstName("Jane");
+        users1.setIdToken("ABC123");
+        users1.setInvoices(new ArrayList<>());
+        users1.setLastName("Doe");
+        users1.setPassword("iloveyou");
+        users1.setRoles(new HashSet<>());
+        users1.setUserId(123L);
+        users1.setUsername("janedoe");
+        when(userServiceImplementation.getUser((Long) any())).thenReturn(users1);
+        assertSame(users, userSupportService.addAddress(1L, 1L));
         verify(addressService).getAddress((Long) any());
         verify(userRepository).save((Users) any());
         verify(userServiceImplementation).getUser((Long) any());
@@ -207,19 +265,21 @@ class UserSupportServiceTest {
         invoice.setTotalPrice(BigDecimal.valueOf(1L));
         invoice.updateTotalPrice();
         when(invoiceService.addInvoice((Long) any())).thenReturn(invoice);
-        Users user = new Users();
-        user.setAddress(new HashSet<>());
-        user.setEmail("jane.doe@example.org");
-        user.setFirstName("Jane");
-        user.setInvoices(new ArrayList<>());
-        user.setLastName("Doe");
-        user.setPassword("iloveyou");
-        user.setRoles(new HashSet<>());
-        user.setUserId(123L);
-        user.setUsername("janedoe");
-        when(userServiceImplementation.getUser((Long) any())).thenReturn(user);
-        assertSame(user, userSupportService.addInvoice(1L));
+        Users users = new Users();
+        users.setAddress(new HashSet<>());
+        users.setEmail("jane.doe@example.org");
+        users.setFirstName("Jane");
+        users.setIdToken("ABC123");
+        users.setInvoices(new ArrayList<>());
+        users.setLastName("Doe");
+        users.setPassword("iloveyou");
+        users.setRoles(new HashSet<>());
+        users.setUserId(123L);
+        users.setUsername("janedoe");
+        when(userServiceImplementation.getUser((Long) any())).thenReturn(users);
+        assertSame(users, userSupportService.addInvoice(1L));
         verify(invoiceService).addInvoice((Long) any());
         verify(userServiceImplementation).getUser((Long) any());
     }
 }
+

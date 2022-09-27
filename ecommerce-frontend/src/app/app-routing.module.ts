@@ -28,6 +28,9 @@ import { ProductListComponent } from './components/product-search/product-list/p
 import { HomeComponent } from './home/home.component';
 import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
 import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AdminUserDetailsComponent } from './components/admin-page/admin-user-details/admin-user-details.component';
+import { AdminUserListComponent } from './components/admin-page/admin-user-list/admin-user-list.component';
 
 
 
@@ -60,7 +63,11 @@ const routes: Routes = [
   {path: 'admin/product-list', component: AdminProductListComponent},
   {path: 'admin/product-list/:id', component: AdminProductDetailsComponent},
   {path: 'admin/invoice-list', component: AdminOrderListComponent},
-  {path: 'admin/invoice-list/:id', component: AdminOrderDetailsComponent}
+  {path: 'admin/invoice-list/:id', component: AdminOrderDetailsComponent},
+  {path: 'user/profile', component: UserProfileComponent},
+  {path: 'admin/user-list', component: AdminUserListComponent},
+  {path: 'admin/user-list/:id', component: AdminUserDetailsComponent}
+
 ];
 
 @NgModule({
