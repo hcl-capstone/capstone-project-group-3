@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RoleService } from './role.service';
 
-xdescribe('RoleService', () => {
+describe('RoleService', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [

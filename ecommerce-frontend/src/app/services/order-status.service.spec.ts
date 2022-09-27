@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { OrderStatusService } from './order-status.service';
 
-xdescribe('OrderStatusService', () => {
+describe('OrderStatusService', () => {
   let service: OrderStatusService;
 
   beforeEach(() => {
