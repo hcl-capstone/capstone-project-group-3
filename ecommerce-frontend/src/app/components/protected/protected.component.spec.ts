@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProtectedComponent } from './protected.component';
 
-describe('ProtectedComponent', () => {
+xdescribe('ProtectedComponent', () => {
   let component: ProtectedComponent;
   let fixture: ComponentFixture<ProtectedComponent>;
 

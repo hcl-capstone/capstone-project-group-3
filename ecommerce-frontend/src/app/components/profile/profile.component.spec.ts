@@ -5,7 +5,7 @@ import { OktaAuthStateService } from '@okta/okta-angular';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
 
-describe('ProfileComponent', () => {
+xdescribe('ProfileComponent', () => {
   const name = 'Awesome dev';
   const authSpy = jasmine.createSpyObj('OktaAuthStateService', [], {
     authState$: of({

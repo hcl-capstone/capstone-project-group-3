@@ -1,6 +1,6 @@
 import { ProductCategory } from './product-category';
 
-describe('ProductCategory', () => {
+xdescribe('ProductCategory', () => {
   it('should create an instance', () => {
     expect(new ProductCategory()).toBeTruthy();
   });
