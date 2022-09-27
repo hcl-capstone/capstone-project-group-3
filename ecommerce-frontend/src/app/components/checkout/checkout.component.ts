@@ -92,6 +92,7 @@ export class CheckoutComponent implements OnInit {
 
 
   getInvoice(): void {
+
     this.invoiceService.getInvoice(this.id)
       .subscribe({
         next: (data) => {
