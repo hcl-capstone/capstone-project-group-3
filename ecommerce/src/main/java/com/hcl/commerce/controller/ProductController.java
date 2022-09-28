@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.commerce.InventoryDTO.InventoryDTO;
 import com.hcl.commerce.dto.product.ProductAddDTO;
 import com.hcl.commerce.entity.Product;
 import com.hcl.commerce.service.product.ProductService;
@@ -24,43 +25,45 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductController {
 	@Autowired
 	ProductService productService;
-	
+
 	@PostMapping("product/add")
 	public Product addProduct(@RequestBody ProductAddDTO dto) {
 		log.info("Admin added product");
 		return productService.addProduct(dto);
 	}
-	
+
 	@DeleteMapping("product/delete/{id}")
-	public Product deleteProduct(@PathVariable Long id) {
+	public void deleteProduct(@PathVariable Long id) {
 		log.info("Admin deleted product by productId");
-		return productService.deleteProduct(id);
+		productService.deleteProduct(id);
 	}
-	
+
 	@PostMapping("product/update/{id}")
 	public Product updateProduct(@RequestBody ProductAddDTO dto, @PathVariable Long id) {
 		log.info("Admin updated product by productId");
 		return productService.updateProduct(id, dto);
 	}
-	
+
 	@GetMapping("product/get/{id}")
 	public Product getProduct(@PathVariable Long id) {
 		log.info("User requested for the productId");
 		return productService.getProduct(id);
 	}
-	
+
 	@GetMapping("product/all")
 	public List<Product> getProduct() {
 		log.info("User requests all product");
 		return productService.getAllProduct();
 	}
-	
+
 	@GetMapping("product/get/byName")
 	public List<Product> getByName (@RequestParam String name)	{
 		log.info("User gets product by name");
 		return productService.getByName(name);
 	}
-	
+	public Product updateProductInventory(ProductAddDTO dto, InventoryDTO inventoryDTO) {
+        return productService.updateProductInventory(dto,inventoryDTO);
+    }
 
-	
+
 }

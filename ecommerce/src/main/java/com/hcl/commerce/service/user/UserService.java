@@ -26,4 +26,6 @@ public interface UserService {
 
 	Users getUserByIdToken(String idToken);
 
+	List<Users> getUserByName(String name);
+
 }

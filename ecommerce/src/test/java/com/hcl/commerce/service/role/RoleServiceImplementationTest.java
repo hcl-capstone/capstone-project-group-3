@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,34 +97,6 @@ class RoleServiceImplementationTest {
         assertSame(role1, roleServiceImplementation.updateRole(roleDTO));
         verify(roleRepository).save((Role) any());
         verify(roleRepository).findById((Long) any());
-    }
-    /**
-     * Method under test: {@link RoleServiceImplementation#updateRole(RoleDTO)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testUpdateRole2() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException
-        //       at com.hcl.commerce.service.role.RoleServiceImplementation.getRole(RoleServiceImplementation.java:24)
-        //       at com.hcl.commerce.service.role.RoleServiceImplementation.updateRole(RoleServiceImplementation.java:44)
-        //   In order to prevent updateRole(RoleDTO)
-        //   from throwing NullPointerException, add constructors or factory
-        //   methods that make it easier to construct fully initialized objects used in
-        //   updateRole(RoleDTO).
-        //   See https://diff.blue/R013 to resolve this issue.
-        Role role = new Role();
-        role.setRoleId(123L);
-        role.setRoleName("Role Name");
-        when(roleRepository.save((Role) any())).thenReturn(role);
-        when(roleRepository.findById((Long) any())).thenReturn(null);
-        RoleDTO roleDTO = new RoleDTO();
-        roleDTO.setRoleId(123L);
-        roleDTO.setRoleName("Role Name");
-        roleServiceImplementation.updateRole(roleDTO);
     }
     /**
      * Method under test: {@link RoleServiceImplementation#updateRole(RoleDTO)}

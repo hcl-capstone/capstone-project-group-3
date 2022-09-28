@@ -3,4 +3,5 @@ export class Role{
       throw new Error('Method not implemented.');
     }
     roleName?: string;
+    roleId?: number; 
 }
