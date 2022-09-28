@@ -11,7 +11,7 @@ Backend SonarCloud Analysis:
 
 Frontend SonarCloud Analysis:
 
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=hcl-capstone_capstone-project-group-3_1&metric=coverage)](https://sonarcloud.io/summary/new_code?id=hcl-capstone_capstone-project-group-3_1)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=hcl-capstone_capstone-project-group-3_1&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=hcl-capstone_capstone-project-group-3_1)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=hcl-capstone_capstone-project-group-3_1&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=hcl-capstone_capstone-project-group-3_1)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=hcl-capstone_capstone-project-group-3_1&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=hcl-capstone_capstone-project-group-3_1)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=hcl-capstone_capstone-project-group-3_1&metric=bugs)](https://sonarcloud.io/summary/new_code?id=hcl-capstone_capstone-project-group-3_1)
