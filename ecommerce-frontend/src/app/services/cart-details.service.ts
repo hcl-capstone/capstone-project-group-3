@@ -7,7 +7,7 @@ import { ShoppingCart } from '../common/shopping-cart';
 import { CartDetails } from '../common/cart-details';
 
 
-//const baseUrl = 'http://localhost:8082/user/invoice/get';
+//const baseUrl = 'https://fruitilicious-backend.azurewebsites.net/user/invoice/get';
 const baseUrl = 'https://fruitilicious-backend.azurewebsites.net/invoice/cart/get';
 
 @Injectable({
