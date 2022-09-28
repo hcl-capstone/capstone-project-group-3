@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../common/user';
 
-const baseUrl = "https://fruitilicious-backend.azurewebsites.net/user"
+const baseUrl = "http://localhost:8082/user"
 @Injectable({
   providedIn: 'root'
 })

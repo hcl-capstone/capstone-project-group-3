@@ -5,48 +5,51 @@
   <h4>Up To 50% Off On All Products!</h4>
 </section>
 <div>
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <section id="cart" class="section-p2">
-          <table width="100%">
-            <thead>
-              <tr>
-                <td>Remove</td>
-                <td>Image</td>
-                <td>Product</td>
-                <td>Price</td>
-                <td>Quantity</td>
-                <td></td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let cart of carts">
-                <td><a href="/shopping-cart" (click)=removeShoppingCart(cart.cartId)><i
-                      class="far fa-times-circle fa-1.5x"></i></a></td>
-                <td><img src={{cart.product?.image_url}} alt=""></td>
-                <td>{{cart.product?.productName}}</td>
-                <!-- <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td> -->
-                <td>{{cart.cartPrice}}</td>
-                <!-- <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"></td> -->
-                <td>
-                  <form>
-                    <div class="form-group">
-                      <input type="number" class="form-control" id="product-quantity" [(ngModel)]="cart.productQuantity"
-                        name="product-quantity" />
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <section id="cart" class="section-p2">
+            <table width="100%"  cellspacing="0" cellpadding="0">
+              <thead>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cart of carts">
+                  <td><a href="/shopping-cart"(click)=removeShoppingCart(cart.cartId)><i class="far fa-times-circle fa-1.5x"></i></a></td>
+                  <td><img src={{cart.product?.image_url}} alt=""></td>
+                  <td>{{cart.product?.productName}}</td>
+                  <!-- <td>{{cart.productCost}} /Per {{cart.product?.productName}}</td> -->
+                  <td>{{cart.cartPrice}}</td>
+                  <!-- <td><input type="number" id="productQuantity" name="productQuantity" value="{{cart.productQuantity}}"></td> -->
+                  <td>
+                    <form>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="product-quantity"
+                          [(ngModel)]="cart.productQuantity"
+                          name="product-quantity"
+                        />
+                      </div>
+                    </form>
+                  </td>
+                  <td>
+                    <div class = "quantity-update">
+                      <button class="btn btn-success" (click)="updateCart(cart)" >Update</button>
                     </div>
-                  </form>
-                </td>
-                <td>
-                  <div class="quantity-update">
-                    <button type="submit-button" (click)="updateCart(cart)">Update</button>
-                  </div>
-                </td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
         <button routerLink="/checkout" class="btn btn-success">Checkout</button>
       </div>
     </div>
