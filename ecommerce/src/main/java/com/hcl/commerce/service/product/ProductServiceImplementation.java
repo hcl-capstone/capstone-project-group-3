@@ -8,6 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hcl.commerce.InventoryDTO.InventoryDTO;
 import com.hcl.commerce.dto.product.ProductAddDTO;
 import com.hcl.commerce.entity.Product;
 import com.hcl.commerce.repository.ProductRepository;
@@ -56,10 +57,9 @@ public class ProductServiceImplementation implements ProductService{
 	}
 
 	@Override
-	public Product deleteProduct(Long id) {
+	public void deleteProduct(Long id) {
 		Product product = getProduct(id);
 		productRepository.delete(product);
-		return product;
 	}
 
 	@Override
@@ -73,5 +73,13 @@ public class ProductServiceImplementation implements ProductService{
 //		}
 //		return null;
 	}
+	
+	@Override
+    public Product updateProductInventory( ProductAddDTO dto, InventoryDTO inventoryDTO) {
+        Product product = getProduct(inventoryDTO.getProductId());
+        product.setStockCount(inventoryDTO.getStock_count() + 100);
+        product.setDateLastUpdated(LocalDate.now());
+        return productRepository.save(product);
+    }
 
 }

@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,34 +96,6 @@ class ProductCategoryServiceImplementationTest {
         assertSame(productCategory1, productCategoryServiceImplementation.updateCategory(productCategoryUpdateDTO));
         verify(productCategoryRepository).save((ProductCategory) any());
         verify(productCategoryRepository).findById((Long) any());
-    }
-    /**
-     * Method under test: {@link ProductCategoryServiceImplementation#updateCategory(ProductCategoryUpdateDTO)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testUpdateCategory2() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException
-        //       at com.hcl.commerce.service.category.ProductCategoryServiceImplementation.getCategory(ProductCategoryServiceImplementation.java:24)
-        //       at com.hcl.commerce.service.category.ProductCategoryServiceImplementation.updateCategory(ProductCategoryServiceImplementation.java:44)
-        //   In order to prevent updateCategory(ProductCategoryUpdateDTO)
-        //   from throwing NullPointerException, add constructors or factory
-        //   methods that make it easier to construct fully initialized objects used in
-        //   updateCategory(ProductCategoryUpdateDTO).
-        //   See https://diff.blue/R013 to resolve this issue.
-        ProductCategory productCategory = new ProductCategory();
-        productCategory.setCategoryId(123L);
-        productCategory.setCategoryName("Category Name");
-        when(productCategoryRepository.save((ProductCategory) any())).thenReturn(productCategory);
-        when(productCategoryRepository.findById((Long) any())).thenReturn(null);
-        ProductCategoryUpdateDTO productCategoryUpdateDTO = new ProductCategoryUpdateDTO();
-        productCategoryUpdateDTO.setCategoryId(123L);
-        productCategoryUpdateDTO.setCategoryName("Category Name");
-        productCategoryServiceImplementation.updateCategory(productCategoryUpdateDTO);
     }
     /**
      * Method under test: {@link ProductCategoryServiceImplementation#updateCategory(ProductCategoryUpdateDTO)}

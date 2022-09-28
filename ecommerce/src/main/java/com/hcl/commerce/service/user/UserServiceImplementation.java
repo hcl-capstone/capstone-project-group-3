@@ -1,5 +1,6 @@
 package com.hcl.commerce.service.user;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +76,25 @@ public class UserServiceImplementation implements UserService {
 	@Override
 	public Users getUserByEmail(String userEmail) {
 		return userRepository.findByEmail(userEmail);
+	}
+
+	@Override
+	public Users getUserByIdToken(String idToken) {
+		return userRepository.findByIdToken(idToken); 
+	}
+
+	@Override
+	public List<Users> getUserByName(String name) {
+		List<Users> allUsers = getAllUser();
+		List<Users> curatedUsers = new ArrayList<Users>();
+		for(Users user : allUsers) {
+			if(	user.getFirstName().toLowerCase().contains(name.toLowerCase()) ||
+				user.getLastName().toLowerCase().contains(name.toLowerCase())) {
+				curatedUsers.add(user);
+			}
+		}
+		
+		return curatedUsers;
 	}
 
 }

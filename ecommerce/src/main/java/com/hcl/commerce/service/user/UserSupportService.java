@@ -6,6 +6,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hcl.commerce.dto.address.AddressCreateDTO;
 import com.hcl.commerce.entity.Address;
 import com.hcl.commerce.entity.Invoice;
 import com.hcl.commerce.entity.Role;
@@ -37,7 +38,7 @@ public class UserSupportService{
 	public Set<Address> getAddress(Long user_id) {
 		Users user = userService.getUser(user_id);
 		if (user != null) {
-			return user.getAddresses();
+			return user.getAddress();
 		}
 		return null;
 	}
@@ -81,6 +82,16 @@ public class UserSupportService{
 		if (user != null) {
 			invoiceService.addInvoice(user_id);
 			return user;
+		}
+		return null;
+	}
+
+	public Users addAddress(Long user_id, AddressCreateDTO address) {
+		Address addr = addressService.addAddress(address);
+		Users user = userService.getUser(user_id);
+		if (user != null && addr != null) {
+			user.addAddress(addr);
+			return userRepository.save(user);
 		}
 		return null;
 	}

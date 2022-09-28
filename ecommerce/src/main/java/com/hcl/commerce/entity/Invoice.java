@@ -52,7 +52,7 @@ public class Invoice {
 	}
 	
 	public void updateTotalPrice() {
-		System.out.println("Updating Total Price");
+		System.out.println("Updating Total Price (From Invoice entity)");
 		BigDecimal newtotalPrice = BigDecimal.ZERO;
 		for(ShoppingCart cart : carts) {
 			BigDecimal productPrice = cart.getProductCost();

@@ -3,7 +3,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -19,9 +22,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
@@ -32,6 +36,8 @@ class ShoppingCartServiceImplementationTest {
     @MockBean
     private ProductService productService;
     @MockBean
+    private RabbitTemplate rabbitTemplate;
+    @MockBean
     private ShoppingCartRepository shoppingCartRepository;
     @Autowired
     private ShoppingCartServiceImplementation shoppingCartServiceImplementation;
@@ -39,7 +45,7 @@ class ShoppingCartServiceImplementationTest {
      * Method under test: {@link ShoppingCartServiceImplementation#createCart(CartCreateDTO)}
      */
     @Test
-    void testCreateCart() {
+    void testCreateCart() throws AmqpException {
         ProductCategory productCategory = new ProductCategory();
         productCategory.setCategoryId(123L);
         productCategory.setCategoryName("Category Name");
@@ -67,16 +73,88 @@ class ShoppingCartServiceImplementationTest {
         product1.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setCartId(123L);
+        shoppingCart.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart.setProduct(product1);
         shoppingCart.setProductQuantity(1);
+        shoppingCart.updateCartPrice();
         when(shoppingCartRepository.save((ShoppingCart) any())).thenReturn(shoppingCart);
+        doNothing().when(rabbitTemplate).convertAndSend((String) any(), (String) any(), (Object) any());
         CartCreateDTO cartCreateDTO = new CartCreateDTO();
         cartCreateDTO.setProductId(123L);
         cartCreateDTO.setProductQuantity(1);
         ShoppingCart actualCreateCartResult = shoppingCartServiceImplementation.createCart(cartCreateDTO);
         assertSame(shoppingCart, actualCreateCartResult);
         assertEquals("1", actualCreateCartResult.getProductCost().toString());
-        verify(productService).getProduct((Long) any());
+        verify(productService, atLeast(1)).getProduct((Long) any());
+        verify(shoppingCartRepository).save((ShoppingCart) any());
+        verify(rabbitTemplate).convertAndSend((String) any(), (String) any(), (Object) any());
+    }
+    /**
+     * Method under test: {@link ShoppingCartServiceImplementation#createCart(CartCreateDTO)}
+     */
+    @Test
+    void testCreateCart2() throws AmqpException {
+        ProductCategory productCategory = new ProductCategory();
+        productCategory.setCategoryId(123L);
+        productCategory.setCategoryName("Category Name");
+        Product product = mock(Product.class);
+        when(product.getStockCount()).thenReturn(Integer.MIN_VALUE);
+        when(product.getProductId()).thenReturn(123L);
+        when(product.getUnitPrice()).thenReturn(BigDecimal.valueOf(1L));
+        doNothing().when(product).setCategory((ProductCategory) any());
+        doNothing().when(product).setDateCreated((LocalDate) any());
+        doNothing().when(product).setDateLastUpdated((LocalDate) any());
+        doNothing().when(product).setImage_url((String) any());
+        doNothing().when(product).setProductId((Long) any());
+        doNothing().when(product).setProductName((String) any());
+        doNothing().when(product).setStockCount(anyInt());
+        doNothing().when(product).setUnitPrice((BigDecimal) any());
+        product.setCategory(productCategory);
+        product.setDateCreated(LocalDate.ofEpochDay(1L));
+        product.setDateLastUpdated(LocalDate.ofEpochDay(1L));
+        product.setImage_url("https://example.org/example");
+        product.setProductId(123L);
+        product.setProductName("Product Name");
+        product.setStockCount(3);
+        product.setUnitPrice(BigDecimal.valueOf(1L));
+        when(productService.getProduct((Long) any())).thenReturn(product);
+        ProductCategory productCategory1 = new ProductCategory();
+        productCategory1.setCategoryId(123L);
+        productCategory1.setCategoryName("Category Name");
+        Product product1 = new Product();
+        product1.setCategory(productCategory1);
+        product1.setDateCreated(LocalDate.ofEpochDay(1L));
+        product1.setDateLastUpdated(LocalDate.ofEpochDay(1L));
+        product1.setImage_url("https://example.org/example");
+        product1.setProductId(123L);
+        product1.setProductName("Product Name");
+        product1.setStockCount(3);
+        product1.setUnitPrice(BigDecimal.valueOf(1L));
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setCartId(123L);
+        shoppingCart.setCartPrice(BigDecimal.valueOf(1L));
+        shoppingCart.setProduct(product1);
+        shoppingCart.setProductQuantity(1);
+        shoppingCart.updateCartPrice();
+        when(shoppingCartRepository.save((ShoppingCart) any())).thenReturn(shoppingCart);
+        doNothing().when(rabbitTemplate).convertAndSend((String) any(), (String) any(), (Object) any());
+        CartCreateDTO cartCreateDTO = new CartCreateDTO();
+        cartCreateDTO.setProductId(123L);
+        cartCreateDTO.setProductQuantity(1);
+        ShoppingCart actualCreateCartResult = shoppingCartServiceImplementation.createCart(cartCreateDTO);
+        assertSame(shoppingCart, actualCreateCartResult);
+        assertEquals("1", actualCreateCartResult.getProductCost().toString());
+        verify(productService, atLeast(1)).getProduct((Long) any());
+        verify(product).getStockCount();
+        verify(product).getUnitPrice();
+        verify(product).setCategory((ProductCategory) any());
+        verify(product).setDateCreated((LocalDate) any());
+        verify(product).setDateLastUpdated((LocalDate) any());
+        verify(product).setImage_url((String) any());
+        verify(product).setProductId((Long) any());
+        verify(product).setProductName((String) any());
+        verify(product).setStockCount(anyInt());
+        verify(product).setUnitPrice((BigDecimal) any());
         verify(shoppingCartRepository).save((ShoppingCart) any());
     }
     /**
@@ -98,8 +176,10 @@ class ShoppingCartServiceImplementationTest {
         product.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setCartId(123L);
+        shoppingCart.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart.setProduct(product);
         shoppingCart.setProductQuantity(1);
+        shoppingCart.updateCartPrice();
         Optional<ShoppingCart> ofResult = Optional.of(shoppingCart);
         when(shoppingCartRepository.findById((Long) any())).thenReturn(ofResult);
         ShoppingCart actualReadCartResult = shoppingCartServiceImplementation.readCart(123L);
@@ -135,8 +215,10 @@ class ShoppingCartServiceImplementationTest {
         product.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setCartId(123L);
+        shoppingCart.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart.setProduct(product);
         shoppingCart.setProductQuantity(1);
+        shoppingCart.updateCartPrice();
         Optional<ShoppingCart> ofResult = Optional.of(shoppingCart);
         doNothing().when(shoppingCartRepository).delete((ShoppingCart) any());
         when(shoppingCartRepository.findById((Long) any())).thenReturn(ofResult);
@@ -145,28 +227,6 @@ class ShoppingCartServiceImplementationTest {
         assertEquals("1", actualDeleteCartResult.getProductCost().toString());
         verify(shoppingCartRepository).findById((Long) any());
         verify(shoppingCartRepository).delete((ShoppingCart) any());
-    }
-    /**
-     * Method under test: {@link ShoppingCartServiceImplementation#deleteCart(Long)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testDeleteCart2() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException
-        //       at com.hcl.commerce.service.shoppingcart.ShoppingCartServiceImplementation.readCart(ShoppingCartServiceImplementation.java:35)
-        //       at com.hcl.commerce.service.shoppingcart.ShoppingCartServiceImplementation.deleteCart(ShoppingCartServiceImplementation.java:43)
-        //   In order to prevent deleteCart(Long)
-        //   from throwing NullPointerException, add constructors or factory
-        //   methods that make it easier to construct fully initialized objects used in
-        //   deleteCart(Long).
-        //   See https://diff.blue/R013 to resolve this issue.
-        doNothing().when(shoppingCartRepository).delete((ShoppingCart) any());
-        when(shoppingCartRepository.findById((Long) any())).thenReturn(null);
-        shoppingCartServiceImplementation.deleteCart(123L);
     }
     /**
      * Method under test: {@link ShoppingCartServiceImplementation#deleteCart(Long)}
@@ -197,8 +257,10 @@ class ShoppingCartServiceImplementationTest {
         product.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setCartId(123L);
+        shoppingCart.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart.setProduct(product);
         shoppingCart.setProductQuantity(1);
+        shoppingCart.updateCartPrice();
         Optional<ShoppingCart> ofResult = Optional.of(shoppingCart);
         ProductCategory productCategory1 = new ProductCategory();
         productCategory1.setCategoryId(123L);
@@ -214,8 +276,10 @@ class ShoppingCartServiceImplementationTest {
         product1.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart1 = new ShoppingCart();
         shoppingCart1.setCartId(123L);
+        shoppingCart1.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart1.setProduct(product1);
         shoppingCart1.setProductQuantity(1);
+        shoppingCart1.updateCartPrice();
         when(shoppingCartRepository.save((ShoppingCart) any())).thenReturn(shoppingCart1);
         when(shoppingCartRepository.findById((Long) any())).thenReturn(ofResult);
         CartUpdateDTO cartUpdateDTO = new CartUpdateDTO();
@@ -226,47 +290,6 @@ class ShoppingCartServiceImplementationTest {
         assertEquals("1", actualUpdateCartResult.getProductCost().toString());
         verify(shoppingCartRepository).save((ShoppingCart) any());
         verify(shoppingCartRepository).findById((Long) any());
-    }
-    /**
-     * Method under test: {@link ShoppingCartServiceImplementation#updateCart(CartUpdateDTO)}
-     */
-    @Test
-    @Disabled("TODO: Complete this test")
-    void testUpdateCart2() {
-        // TODO: Complete this test.
-        //   Reason: R013 No inputs found that don't throw a trivial exception.
-        //   Diffblue Cover tried to run the arrange/act section, but the method under
-        //   test threw
-        //   java.lang.NullPointerException
-        //       at com.hcl.commerce.service.shoppingcart.ShoppingCartServiceImplementation.readCart(ShoppingCartServiceImplementation.java:35)
-        //       at com.hcl.commerce.service.shoppingcart.ShoppingCartServiceImplementation.updateCart(ShoppingCartServiceImplementation.java:53)
-        //   In order to prevent updateCart(CartUpdateDTO)
-        //   from throwing NullPointerException, add constructors or factory
-        //   methods that make it easier to construct fully initialized objects used in
-        //   updateCart(CartUpdateDTO).
-        //   See https://diff.blue/R013 to resolve this issue.
-        ProductCategory productCategory = new ProductCategory();
-        productCategory.setCategoryId(123L);
-        productCategory.setCategoryName("Category Name");
-        Product product = new Product();
-        product.setCategory(productCategory);
-        product.setDateCreated(LocalDate.ofEpochDay(1L));
-        product.setDateLastUpdated(LocalDate.ofEpochDay(1L));
-        product.setImage_url("https://example.org/example");
-        product.setProductId(123L);
-        product.setProductName("Product Name");
-        product.setStockCount(3);
-        product.setUnitPrice(BigDecimal.valueOf(1L));
-        ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setCartId(123L);
-        shoppingCart.setProduct(product);
-        shoppingCart.setProductQuantity(1);
-        when(shoppingCartRepository.save((ShoppingCart) any())).thenReturn(shoppingCart);
-        when(shoppingCartRepository.findById((Long) any())).thenReturn(null);
-        CartUpdateDTO cartUpdateDTO = new CartUpdateDTO();
-        cartUpdateDTO.setCartId(123L);
-        cartUpdateDTO.setProductQuantity(1);
-        shoppingCartServiceImplementation.updateCart(cartUpdateDTO);
     }
     /**
      * Method under test: {@link ShoppingCartServiceImplementation#updateCart(CartUpdateDTO)}
@@ -287,8 +310,10 @@ class ShoppingCartServiceImplementationTest {
         product.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setCartId(123L);
+        shoppingCart.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart.setProduct(product);
         shoppingCart.setProductQuantity(1);
+        shoppingCart.updateCartPrice();
         when(shoppingCartRepository.save((ShoppingCart) any())).thenReturn(shoppingCart);
         when(shoppingCartRepository.findById((Long) any())).thenReturn(Optional.empty());
         CartUpdateDTO cartUpdateDTO = new CartUpdateDTO();
@@ -316,8 +341,10 @@ class ShoppingCartServiceImplementationTest {
         product.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setCartId(123L);
+        shoppingCart.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart.setProduct(product);
         shoppingCart.setProductQuantity(1);
+        shoppingCart.updateCartPrice();
         when(shoppingCartRepository.save((ShoppingCart) any())).thenReturn(shoppingCart);
         ProductCategory productCategory1 = new ProductCategory();
         productCategory1.setCategoryId(123L);
@@ -333,8 +360,10 @@ class ShoppingCartServiceImplementationTest {
         product1.setUnitPrice(BigDecimal.valueOf(1L));
         ShoppingCart shoppingCart1 = new ShoppingCart();
         shoppingCart1.setCartId(123L);
+        shoppingCart1.setCartPrice(BigDecimal.valueOf(1L));
         shoppingCart1.setProduct(product1);
         shoppingCart1.setProductQuantity(1);
+        shoppingCart1.updateCartPrice();
         ShoppingCart actualSaveCartResult = shoppingCartServiceImplementation.saveCart(shoppingCart1);
         assertSame(shoppingCart, actualSaveCartResult);
         assertEquals("1", actualSaveCartResult.getProductCost().toString());
