@@ -26,9 +26,9 @@
           </li>
         <form class="card p-2">
           <div class="input-group">
-            <input type="text" class="form-control me-2" placeholder="Promo code"/>
+            <input type="text" class="form-control me-2" id = "promoCode" name = "promoCode" placeholder="Promo code" [(ngModel)]="promo.promoCode"/>
             <div class="input-group-append">
-              <button type="button" class="btn btn-dark px-4 rounded-pill">Redeem</button>
+              <button type="button" class="btn btn-dark px-4 rounded-pill" (click) = "setPromocode()">Redeem</button>
             </div>
           </div>
       </form>
@@ -86,7 +86,7 @@
           <label class="form-check-label" for="save-info">Save this information for next time</label>
         </div>
 
-        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" (click)="initializePayment(invoice.totalPrice)">Proceed To Payment</button>
+        <button class="btn btn-dark px-4 rounded-pill" type="button" value="{{invoice.invoiceId}}" (click)='initializePayment(invoice.totalPrice, promo.promoCode)'>Proceed To Payment</button>
       </form>
     </div>
   </div>
