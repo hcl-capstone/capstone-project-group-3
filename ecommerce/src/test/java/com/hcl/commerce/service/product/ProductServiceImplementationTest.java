@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -172,11 +173,10 @@ class ProductServiceImplementationTest {
         Optional<Product> ofResult = Optional.of(product);
         when(productRepository.findById((Long) any())).thenReturn(ofResult);
         doNothing().when(productRepository).delete((Product) any());
-        Product actualDeleteProductResult = productServiceImplementation.deleteProduct(123L);
-        assertSame(product, actualDeleteProductResult);
-        assertEquals("1", actualDeleteProductResult.getUnitPrice().toString());
+        productServiceImplementation.deleteProduct(123L);
         verify(productRepository).findById((Long) any());
         verify(productRepository).delete((Product) any());
+        assertTrue(productServiceImplementation.getAllProduct().isEmpty());
     }
     /**
      * Method under test: {@link ProductServiceImplementation#deleteProduct(Long)}
@@ -185,9 +185,10 @@ class ProductServiceImplementationTest {
     void testDeleteProduct2() {
         when(productRepository.findById((Long) any())).thenReturn(Optional.empty());
         doNothing().when(productRepository).delete((Product) any());
-        assertNull(productServiceImplementation.deleteProduct(123L));
+        productServiceImplementation.deleteProduct(123L);
         verify(productRepository).findById((Long) any());
         verify(productRepository).delete((Product) any());
+        assertTrue(productServiceImplementation.getAllProduct().isEmpty());
     }
     /**
      * Method under test: {@link ProductServiceImplementation#getByName(String)}

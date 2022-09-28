@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSliderModule } from '@angular/material/slider';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
@@ -47,6 +46,7 @@ import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminUserListComponent } from './components/admin-page/admin-user-list/admin-user-list.component';
 import { AdminUserDetailsComponent } from './components/admin-page/admin-user-details/admin-user-details.component';
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 
 
 const oktaAuth = new OktaAuth({
@@ -58,7 +58,6 @@ const oktaAuth = new OktaAuth({
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     CheckoutComponent,
     ProductSearchComponent,
     RegisterUserComponent,

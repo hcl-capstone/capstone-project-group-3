@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-/* @import '~ngx-toastr/toastr'; */
+@import '~ngx-toastr/toastr';
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
 *{
@@ -441,7 +441,7 @@ footer .install img{
     width: 250px;
 }
 #cart table td:nth-child(1){
-    width: 150px;
+    width: 100px;
     text-align: center;
 }
 #cart table td:nth-child(1) a:hover{
@@ -450,21 +450,21 @@ footer .install img{
     transition: 0.3s ease;
 }
 #cart table td:nth-child(2){
-    width: 150px;
+    width: 300px;
     text-align: center;
 }
 #cart table td:nth-child(3){
-    width: 500px;
+    width: 400px;
     text-align: center;
 }
 #cart table td:nth-child(4),
 #cart table td:nth-child(5){
-    width: 250px;
+    width: 200px;
     text-align: center;
 }
 #cart table td:nth-child(5) input{
     width: 70px;
-    padding: 10px 5px 10px 15px;
+    padding: 20px 0px 10px 15px;
 }
 #cart table thead {
     border: 1px solid #e2e9e1;

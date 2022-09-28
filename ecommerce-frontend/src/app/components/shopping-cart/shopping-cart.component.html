@@ -9,14 +9,15 @@
       <div *ngIf="!submitted">
         <div class="form-group">
           <section id="cart" class="section-p2">
-            <table width="100%">
+            <table width="100%"  cellspacing="0" cellpadding="0">
               <thead>
                 <tr>
-                  <td>Remove</td>
-                  <td>Image</td>
-                  <td>Product</td>
-                  <td>Price</td>
-                  <td>Quantity</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </thead>
               <tbody>
@@ -40,12 +41,11 @@
                       </div>
                     </form>
                   </td>
-
-                  <div class = "quantity-update">
-                    <button type = "submit-button" (click)="updateCart(cart)">Update</button>
-                  </div>
-
-                  <td></td>
+                  <td>
+                    <div class = "quantity-update">
+                      <button class="btn btn-success" (click)="updateCart(cart)" >Update</button>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
