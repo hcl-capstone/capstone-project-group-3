@@ -11,26 +11,23 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "testimony")
+@Table(name = "rating")
 @Setter
 @Getter
-public class Testimony {
+public class Rating {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long testimonyId;
+	private Long ratingId;
 	
-	@Column(name = "user")
-	private String user;
+	@Column(name = "name")
+	private String name;
 	
 	@Column(name = "testimony")
 	private String testimony;
 	
 	@Column(name = "rating")
 	private int rating;
-	
-	@Column(name = "status")
-	private boolean status;
 	
 	
 }
