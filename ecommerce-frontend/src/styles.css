@@ -450,7 +450,8 @@ footer .install img{
     padding: 20px 0;
 }
 #form-details form input,
-#form-details form textarea{
+#form-details form textarea,
+#form-details form select{
     width: 100%;
     padding: 12px 15px;
     outline: none;
