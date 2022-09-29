@@ -37,10 +37,11 @@ import { AdminProductListComponent } from './components/admin-page/admin-product
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminOrderListComponent } from './components/admin-page/admin-order-list/admin-order-list.component';
 import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-details/admin-order-details.component';
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminUserListComponent } from './components/admin-page/admin-user-list/admin-user-list.component';
 import { AdminUserDetailsComponent } from './components/admin-page/admin-user-details/admin-user-details.component';
-import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+import { TestimonyComponent } from './components/testimony/testimony.component';
 
 
 const oktaAuth = new OktaAuth({
@@ -79,7 +80,8 @@ const oktaAuth = new OktaAuth({
     AdminOrderDetailsComponent,
     UserProfileComponent,
     AdminUserListComponent,
-    AdminUserDetailsComponent
+    AdminUserDetailsComponent,
+    TestimonyComponent
   ],
   imports: [
     BrowserModule,

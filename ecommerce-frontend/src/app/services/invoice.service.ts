@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Invoice } from '../common/invoice';
 import { Observable } from 'rxjs';
+import { UpdateCartDto } from '../common/update-cart-dto';
 import { ShoppingCart } from '../common/shopping-cart';
 
 
@@ -10,12 +11,14 @@ import { ShoppingCart } from '../common/shopping-cart';
 })
 export class InvoiceService {
 
-  getCheckout(id: any): Observable<Invoice> {
+   getCheckout(id: any): Observable<Invoice> {
     return this.http.post<Invoice>(`http://localhost:8082/invoice/checkout/${id}`, id);
-  }
+   }
+
+
 
   private invoiceUrl: string;
-  constructor(private http: HttpClient) {
+  constructor(private http:HttpClient) {
     this.invoiceUrl = 'http://localhost:8082/invoice/all';
   }
 
@@ -38,5 +41,4 @@ export class InvoiceService {
   createUserInvoice(user_id: any): Observable<Invoice> {
     return this.http.post<Invoice>(`http://localhost:8082/invoice/create/${user_id}`, user_id);
   }
-
 }

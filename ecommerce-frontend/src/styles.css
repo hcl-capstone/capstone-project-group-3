@@ -64,9 +64,9 @@ body{
     background: #e3e6f3;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
-    position: sticky;
+    position: sticky; 
     top: 0;
-    left: 0;
+    left: 0; 
 }
 #navbar{
     display: flex;
@@ -254,7 +254,7 @@ footer .install .row img{
 }
 footer .install img{
     margin: 10px 0 15px 0;
-}
+} 
 
 
 /* Admin Home */
@@ -368,8 +368,10 @@ footer .install img{
     width: 250px;
 }
 #cart table td:nth-child(1){
-    width: 100px;
+    width: 150px;
     text-align: center;
+    
+    
 }
 #cart table td:nth-child(1) a:hover{
     cursor: pointer;
@@ -377,21 +379,21 @@ footer .install img{
     transition: 0.3s ease;
 }
 #cart table td:nth-child(2){
-    width: 300px;
+    width: 150px;
     text-align: center;
 }
 #cart table td:nth-child(3){
-    width: 400px;
+    width: 500px;
     text-align: center;
 }
 #cart table td:nth-child(4),
 #cart table td:nth-child(5){
-    width: 200px;
+    width: 250px;
     text-align: center;
 }
 #cart table td:nth-child(5) input{
     width: 70px;
-    padding: 20px 0px 10px 15px;
+    padding: 10px 5px 10px 15px;
 }
 #cart table thead {
     border: 1px solid #e2e9e1;
@@ -407,7 +409,7 @@ footer .install img{
 }
 #cart table tbody tr td{
     padding-top: 15px;
-}
+} 
 #cart table tbody td{
     font-size: 17px;
 }

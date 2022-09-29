@@ -18,7 +18,7 @@ export class UserService {
     return this.http.post(`http://localhost:8082/user/update/${id}`, data);
   }
 
-  getByEmail(email: any): Observable<any> {
+  getByEmail(email: string): Observable<User> {
     return this.http.get(`http://localhost:8082/user/get/${email}`);
   }
 
@@ -32,7 +32,7 @@ export class UserService {
     console.log(user);
     return this.http.post<User>(`http://localhost:8082/user/registration`, user);
   }
-
+  
   assignUserAddress(user_id: any, address: any): Observable<User>{
     return this.http.post<User>(`http://localhost:8082/user/address/set/${user_id}`, address);
   }
