@@ -1,4 +1,5 @@
 import { ProductCategory } from "./product-category";
+import { Rating } from "./rating/rating";
 
 export class Product{
     productId?: number;
@@ -9,4 +10,6 @@ export class Product{
     unitPrice?: number;
     image_url?: string;
     category?: ProductCategory;
+    ratings?: Rating[];
+    avgrating?: number;
 }

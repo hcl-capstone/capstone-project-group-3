@@ -27,6 +27,7 @@ import { AdminOrderDetailsComponent } from './components/admin-page/admin-order-
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AdminUserDetailsComponent } from './components/admin-page/admin-user-details/admin-user-details.component';
 import { AdminUserListComponent } from './components/admin-page/admin-user-list/admin-user-list.component';
+import { TestimonyComponent } from './components/testimony/testimony.component';
 
 
 
@@ -58,7 +59,8 @@ const routes: Routes = [
   {path: 'admin/invoice-list/:id', component: AdminOrderDetailsComponent},
   {path: 'user/profile', component: UserProfileComponent},
   {path: 'admin/user-list', component: AdminUserListComponent},
-  {path: 'admin/user-list/:id', component: AdminUserDetailsComponent}
+  {path: 'admin/user-list/:id', component: AdminUserDetailsComponent},
+  {path: 'app-testimony', component: TestimonyComponent}
 
 ];
 
