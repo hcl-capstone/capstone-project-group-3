@@ -17,7 +17,8 @@ import com.hcl.commerce.service.category.ProductCategoryService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
+//@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
+@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 @RestController
 public class ProductCategoryController {
