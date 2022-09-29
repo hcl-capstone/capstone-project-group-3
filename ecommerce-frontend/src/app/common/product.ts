@@ -11,4 +11,5 @@ export class Product{
     image_url?: string;
     category?: ProductCategory;
     ratings?: Rating[];
+    avgrating?: number;
 }

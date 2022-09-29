@@ -43,6 +43,8 @@ public class ProductServiceImplementation implements ProductService{
 
 	@Override
 	public List<Product> getAllProduct() {
+		System.out.println("get all product");
+		
 		return productRepository.findAll();
 	}
 
@@ -73,6 +75,12 @@ public class ProductServiceImplementation implements ProductService{
 	@Override
 	public List<Product> getByName(String productName) {
 		
+		
+		List<Product> prolist = productRepository.findByProductNameContains(productName);
+		for(Product product : prolist) {
+			product.updateAverageRating();
+			productRepository.save(product);
+		}
 		return productRepository.findByProductNameContains(productName);
 		
 //		Optional<Product> product = productRepository.findByProductNameContaining(productName);
@@ -105,7 +113,10 @@ public class ProductServiceImplementation implements ProductService{
 		if(product != null) {
 			Rating rating = ratingService.createRating(dto);
 			product.addRating(rating);
-			return productRepository.save(product);
+			product = productRepository.save(product);
+			product.updateAverageRating();
+			product = productRepository.save(product);
+			return product;
 		}
 		return null;
 	}
