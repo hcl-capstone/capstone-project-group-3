@@ -134,7 +134,7 @@ export class ProfileComponent implements OnInit {
     this.userService.getByIdToken(this.sub)
       .subscribe({
         next: (data) => {
-          if (data) {
+          if (data != undefined) {
             this.user = data;
             if (this.user.roles != null) {
               this.roles = this.user.roles;
