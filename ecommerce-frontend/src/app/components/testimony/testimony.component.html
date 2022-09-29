@@ -1,83 +1,79 @@
 <app-header></app-header>
 <section id="form-details">
-    <form action="">
-        <span>LEAVE A MESSAGE</span>
-        <h2>We would love to hear your feedback on our products!</h2>
-        <input type="text" placeholder="Your name">
-        <input type="text" placeholder="E-mail">
-        <select id="product" name="product" >
-          <option value="" disabled selected>Select your product</option>
-          <option value="volvo">1 - Terrible</option>
-          <option value="saab">2 - Bad</option>
-          <option value="fiat">3 - Okay</option>
-          <option value="audi">4 - Good</option>
-          <option value="audi">5 - Great</option>
-        </select>
-          <select id="rating" name="rating" >
-           <option value="" disabled selected>Select your rating</option>
-           <option value="volvo">1 - Terrible</option>
-           <option value="saab">2 - Bad</option>
-           <option value="fiat">3 - Okay</option>
-           <option value="audi">4 - Good</option>
-           <option value="audi">5 - Great</option>
-         </select>
-        <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-        <button class="normal">Submit</button>
-    </form>
+  <form action="">
+    <span>LEAVE A MESSAGE</span>
+    <h2>We would love to hear your feedback on our products!</h2>
+    <span>Select Product</span>
+    <select id="product" [(ngModel)]="selectedProduct" name="product">
+      <option *ngFor="let product of products" value="{{product.productId}}">{{product.productName}}</option>
+    </select>
+    <span>Select rating</span>
+    <select id="rating" name="rating" [(ngModel)]="selectedRating">
+      <option value="" disabled selected></option>
+      <option value="1">1 - Terrible</option>
+      <option value="2">2 - Bad</option>
+      <option value="3">3 - Okay</option>
+      <option value="4">4 - Good</option>
+      <option value="5">5 - Great</option>
+    </select>
+    <form >
+      <div class="form-group">
+        <label for="testimony">Testimony</label>
+        <input type="text" class="form-control" id="testimony" [(ngModel)]="selectedTestimony" name="testimony" maxlength="100"/>
+      </div>
+    </form >
+    <button class="normal" (click)="getUserFeedBack()">Submit</button>
+  </form>
 </section>
-<section id="product-rating-details">
-    <form action="">
 
-    </form>
-</section>
 <!-- Start of footer -->
 <section id="footer">
-    <footer class="section-p1">
-      <div class="col">
-        <img class="logo"src="/assets/images/Images/logo.png" alt="">
-        <h2>Contact</h2>
-        <p><strong>Address: </strong> 2401 Internet Blvd, Frisco Texas</p>
-        <p><strong>Phone: </strong> +1(123) 111 2345</p>
-        <p><strong>Hours: </strong> 9:00am - 5:00pm, Monday - Friday</p>
-          <div class="follow">
-            <h2>Follow us</h2>
-              <div class="icon">
-                <i class = "fab fa-facebook-f"></i>
-                <i class = "fab fa-twitter"></i>
-                <i class = "fab fa-instagram"></i>
-                <i class = "fab fa-pinterest-p"></i>
-                <i class = "fab fa-youtube"></i>
-              </div>
-          </div>
+  <footer class="section-p1">
+    <div class="col">
+      <img class="logo" src="/assets/images/Images/logo.png" alt="">
+      <h2>Contact</h2>
+      <p><strong>Address: </strong> 2401 Internet Blvd, Frisco Texas</p>
+      <p><strong>Phone: </strong> +1(123) 111 2345</p>
+      <p><strong>Hours: </strong> 9:00am - 5:00pm, Monday - Friday</p>
+      <div class="follow">
+        <h2>Follow us</h2>
+        <div class="icon">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-pinterest-p"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
       </div>
-    
-      <div class="col">
-        <h2>About</h2>
-        <a href="#">About Us</a>
-        <a href="#">Delivery Information</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Contact Us</a>
+    </div>
+
+    <div class="col">
+      <h2>About</h2>
+      <a href="#">About Us</a>
+      <a href="#">Delivery Information</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Contact Us</a>
+    </div>
+
+    <div class="col">
+      <h2>My Account</h2>
+      <a href="#">Sign In</a>
+      <a href="#">View Cart</a>
+      <a href="#">My Wish list</a>
+      <a href="#">Track My Order</a>
+      <a href="#">Help</a>
+    </div>
+
+    <div class="col install">
+      <h2> Install App</h2>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="/assets/images/Images/app.jpg" alt="">
+        <img src="/assets/images/Images/play.jpg" alt="">
       </div>
-    
-      <div class="col">
-        <h2>My Account</h2>
-        <a href="#">Sign In</a>
-        <a href="#">View Cart</a>
-        <a href="#">My Wish list</a>
-        <a href="#">Track My Order</a>
-        <a href="#">Help</a>
-      </div>
-    
-      <div class="col install">
-        <h2> Install App</h2>
-        <p>From App Store or Google Play</p>
-          <div class="row">
-            <img src= "/assets/images/Images/app.jpg" alt="">
-            <img src= "/assets/images/Images/play.jpg" alt="">
-          </div>
-          <p> Secured Payment Gateways</p>
-          <img src= "/assets/images/Images/pay.png" alt="">
-      </div>
-    </footer>
+      <p> Secured Payment Gateways</p>
+      <img src="/assets/images/Images/pay.png" alt="">
+    </div>
+  </footer>
 </section>

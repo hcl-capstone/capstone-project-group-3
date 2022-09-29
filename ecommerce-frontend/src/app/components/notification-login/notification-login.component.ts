@@ -22,7 +22,7 @@ export class NotificationLoginComponent implements OnInit {
   }
 
   onRegister(){
-    this.toastr.success("Your accout has been created!\nPlease Login.");
+    this.toastr.success("Your account has been created!\nPlease Login.");
     //add code to route to login
   }
 }

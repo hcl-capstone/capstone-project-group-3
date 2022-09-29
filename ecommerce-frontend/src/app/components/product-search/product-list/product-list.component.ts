@@ -8,6 +8,8 @@ import { OKTA_AUTH } from '@okta/okta-angular';
 import { User } from "src/app/common/user"; 
 import { UserService } from 'src/app/services/user.service';
 import { Invoice } from 'src/app/common/invoice';
+import { RatingService } from 'src/app/services/rating.service';
+import { Rating } from 'src/app/common/rating/rating';
 
 @Component({
   selector: 'app-product-list',
@@ -24,19 +26,20 @@ export class ProductListComponent implements OnInit {
   isAuthenticated!: boolean;
   carts?:ShoppingCart[]; 
   user?:User;
+  totalRating: number;
+  ratings: Rating[] =[];
   shoppingCart: ShoppingCart = {
     productId: 0,
     productQuantity: 1,
     invoiceId: 1
   };
 
-  constructor(private shoppingCartService: ShoppingCartService, private productService:ProductService, @Inject(OKTA_AUTH) public oktaAuth: OktaAuth,  public userService: UserService) { }
+  constructor(private shoppingCartService: ShoppingCartService, private productService:ProductService, @Inject(OKTA_AUTH) public oktaAuth: OktaAuth,  public userService: UserService, private ratingService:RatingService) { }
 
   async ngOnInit() {
     this.productService.getProductList().subscribe(data => {
       this.products = data;
     });
-
     const idToken = await this.oktaAuth.tokenManager.get('idToken');
     this.claims = Object.entries(idToken.claims).map(entry => ({ name: entry[0], value: entry[1] }));
 
@@ -79,4 +82,5 @@ export class ProductListComponent implements OnInit {
         error: (e: any) => console.error(e)
       });
   }
+
 }

@@ -92,8 +92,6 @@ const oktaAuth = new OktaAuth({
     OktaAuthModule,
     ToastrModule.forRoot(),
     MatSliderModule
-
-
   ],
 
   providers: [ProductService, InvoiceService,ShoppingCartService,
