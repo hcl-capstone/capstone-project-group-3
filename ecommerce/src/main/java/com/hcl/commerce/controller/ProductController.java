@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.commerce.InventoryDTO.InventoryDTO;
 import com.hcl.commerce.dto.product.ProductAddDTO;
+import com.hcl.commerce.dto.rating.RatingCreateDTO;
+import com.hcl.commerce.dto.rating.RatingDeleteDTO;
+import com.hcl.commerce.dto.rating.RatingUpdateDTO;
 import com.hcl.commerce.entity.Product;
+import com.hcl.commerce.entity.Rating;
 import com.hcl.commerce.service.product.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -65,6 +69,26 @@ public class ProductController {
 	public Product updateProductInventory(ProductAddDTO dto, InventoryDTO inventoryDTO) {
         return productService.updateProductInventory(dto,inventoryDTO);
     }
+
+	@GetMapping("product/ratings/{product_id}")
+	public List<Rating> getProductRatings(@PathVariable Long product_id) {
+		return productService.getRatings(product_id);
+	}
+
+	@PostMapping("product/ratings/add")
+	public Product addProductRating(@RequestBody RatingCreateDTO dto) {
+		return productService.addRating(dto);
+	}
+
+	@DeleteMapping("product/ratings/delete/")
+	public Rating deleteProductRating(@RequestBody RatingDeleteDTO dto) {
+		return productService.deleteRating(dto);
+	}
+
+	@PostMapping("product/ratings/update/")
+	public Rating updateProductRating(@RequestBody RatingUpdateDTO dto) {
+		return productService.updateRating(dto);
+	}
 
 
 }

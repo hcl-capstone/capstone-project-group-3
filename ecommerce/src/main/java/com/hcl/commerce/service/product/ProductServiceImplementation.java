@@ -10,9 +10,14 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.commerce.InventoryDTO.InventoryDTO;
 import com.hcl.commerce.dto.product.ProductAddDTO;
+import com.hcl.commerce.dto.rating.RatingCreateDTO;
+import com.hcl.commerce.dto.rating.RatingDeleteDTO;
+import com.hcl.commerce.dto.rating.RatingUpdateDTO;
 import com.hcl.commerce.entity.Product;
+import com.hcl.commerce.entity.Rating;
 import com.hcl.commerce.repository.ProductRepository;
 import com.hcl.commerce.service.category.ProductCategoryService;
+import com.hcl.commerce.service.rating.RatingService;
 
 @Service
 public class ProductServiceImplementation implements ProductService{
@@ -22,6 +27,9 @@ public class ProductServiceImplementation implements ProductService{
 	
 	@Autowired
 	ProductCategoryService productCategoryService;
+	
+	@Autowired
+	RatingService ratingService;
 
 	@Override
 	public Product addProduct(ProductAddDTO dto) {
@@ -81,5 +89,43 @@ public class ProductServiceImplementation implements ProductService{
         product.setDateLastUpdated(LocalDate.now());
         return productRepository.save(product);
     }
+
+	@Override
+	public List<Rating> getRatings(Long id) {
+		Product product = getProduct(id);
+		if(product != null) {
+			return product.getRatings();
+		}
+		return null;
+	}
+
+	@Override
+	public Product addRating(RatingCreateDTO dto) {
+		Product product = getProduct(dto.getProductId());
+		if(product != null) {
+			Rating rating = ratingService.createRating(dto);
+			product.addRating(rating);
+			return productRepository.save(product);
+		}
+		return null;
+	}
+
+	@Override
+	public Rating deleteRating(RatingDeleteDTO dto) {
+		Product product = getProduct(dto.getProductId());
+		if(product != null) {
+			return ratingService.deleteRating(dto.getRatingId());
+		}
+		return null;
+	}
+
+	@Override
+	public Rating updateRating(RatingUpdateDTO dto) {
+		Product product = getProduct(dto.getProductId());
+		if(product != null) {
+			return ratingService.updateRating(dto);
+		}
+		return null;
+	}
 
 }
