@@ -16,7 +16,11 @@ import com.hcl.commerce.dto.user.UserLoginDTO;
 import com.hcl.commerce.entity.Users;
 import com.hcl.commerce.service.user.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+//@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
 @CrossOrigin(origins = "http://localhost:4200")
+@Slf4j
 @RestController
 public class UserController {
 	@Autowired

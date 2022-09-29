@@ -18,6 +18,7 @@ import com.hcl.commerce.service.invoice.InvoiceSupportService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+//@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class InvoiceSupportController {
