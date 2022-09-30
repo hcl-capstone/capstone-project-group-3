@@ -10,6 +10,10 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { OKTA_AUTH } from '@okta/okta-angular';
 import { User } from "src/app/common/user"; 
+import { PromoServiceTsService } from 'src/app/services/promo.service.ts.service';
+import { Promo } from 'src/app/common/promo';
+import { waitForAsync } from '@angular/core/testing';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,7 +25,10 @@ export class CheckoutComponent implements OnInit {
 
   userDetails:UserDetailsComponent;
 
-
+  promo: Promo = {
+    promoCode: "",
+    discount: 0
+  };
   invoices?:Invoice[];
   invoice: Invoice = {};  
   address?:Address[];  
@@ -36,7 +43,7 @@ export class CheckoutComponent implements OnInit {
   name?: string;
   paymentHandler:any = null;
 
-  constructor(private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
+  constructor(private toastr: ToastrService, private promoService: PromoServiceTsService, private invoiceService: InvoiceService, private addressService: AddressService , @Inject(OKTA_AUTH) public oktaAuth: OktaAuth, public userService: UserService) { 
 
   }
 
@@ -118,10 +125,20 @@ export class CheckoutComponent implements OnInit {
 
 
  
+  setPromocode(){
+    alert('Your promo code has been applied to checkout');
+    this.promoService.findByPromoName(this.promo.promoCode).subscribe({
+      next: (data) => {
+        this.promo = data;
+        console.log(this.promo);
+        
+      },
+      error: (e) => console.error(e)
+    });
+  };
 
 
-
-  initializePayment(amount: number | undefined) {
+  initializePayment(amount: number | undefined, code: string | undefined) {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51LhETxEgAjpp2DzimLBoNsy75SlfLYDR9vRq2HfRKIncxa939QQM7a72SaTIofHqonNrhfwy8SFWy7KTP7gbV7Ze00qlTexV2u',
       locale: 'auto',
@@ -130,12 +147,15 @@ export class CheckoutComponent implements OnInit {
         alert('your order has been placed check your email for a confirmation!');
       }
     });
-
+    console.log(this.promo.promoCode);
+    
+    
+    console.log(Number(this.promo.discount));
     paymentHandler.open({
       image: 'https://res.cloudinary.com/du6vcjz7b/image/upload/v1663189011/peach-removebg-preview_dyy9jx.png',
       name: 'Fruitilicious',
       description: 'Exotic fruits',
-      amount: Number(amount) * 100
+      amount: Number(amount) * 100 * (1-Number(this.promo.discount))
 
     });
   }

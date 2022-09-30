@@ -12,14 +12,16 @@ import { ShoppingCart } from '../common/shopping-cart';
 export class InvoiceService {
 
    getCheckout(id: any): Observable<Invoice> {
-    return this.http.post<Invoice>(`http://localhost:8082/invoice/checkout/${id}`, id);
+    return this.http.post<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/checkout/${id}`, id);
    }
 
 
 
   private invoiceUrl: string;
   constructor(private http:HttpClient) {
-    this.invoiceUrl = 'http://localhost:8082/invoice/all';
+
+    this.invoiceUrl = 'https://fruitilicious-backend.azurewebsites.net/invoice/all';
+
   }
 
   getInvoiceList(): Observable<Invoice[]> {
@@ -27,18 +29,20 @@ export class InvoiceService {
   }
 
   getInvoice(id: any): Observable<Invoice> {
-    return this.http.get<Invoice>(`http://localhost:8082/invoice/get/${id}`);
+    return this.http.get<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/get/${id}`);
   }
 
   deleteProduct(invoice_id: any, cartId: any): Observable<Invoice> {
-    return this.http.get<Invoice>(`http://localhost:8082/invoice/product/delete/${invoice_id}/${cartId}`);
+
+    return this.http.get<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/product/delete/${invoice_id}/${cartId}`);
+
   }
 
   postInvoiceUpdate(updateCartDto: any): Observable<ShoppingCart> {
-    return this.http.post<ShoppingCart>(`http://localhost:8082/invoice/product/update`, updateCartDto);
+    return this.http.post<ShoppingCart>(`https://fruitilicious-backend.azurewebsites.net/invoice/product/update`, updateCartDto);
   }
 
   createUserInvoice(user_id: any): Observable<Invoice> {
-    return this.http.post<Invoice>(`http://localhost:8082/invoice/create/${user_id}`, user_id);
+    return this.http.post<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/create/${user_id}`, user_id);
   }
 }

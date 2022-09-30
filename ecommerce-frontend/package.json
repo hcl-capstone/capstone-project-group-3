@@ -23,6 +23,8 @@
     "@okta/okta-angular": "^5.2.0",
     "@okta/okta-auth-js": "^6.8.1",
     "bootstrap": "^5.2.0",
+    "jquery": "^3.6.1",
+    "ngentest": "^1.4.4",
     "ngx-toastr": "^15.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",

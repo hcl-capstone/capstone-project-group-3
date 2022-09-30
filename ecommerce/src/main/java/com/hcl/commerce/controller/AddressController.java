@@ -18,8 +18,8 @@ import com.hcl.commerce.service.address.AddressService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-//@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
+
 @RestController
 public class AddressController {
 
