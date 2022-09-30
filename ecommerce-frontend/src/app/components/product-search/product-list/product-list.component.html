@@ -3,11 +3,12 @@
     <h2> Product List </h2>
     <p>Tropical Fruits on Sale!</p>
     <div class = "product-container">
-      <div class = "product-display" *ngFor = "let product of products">
+      <div class = "product-display" *ngFor = "let product of products" >
         <img src = "{{product.image_url}}">
         <div class = "product-detail">
           <h5>{{product.productName}}</h5>
           <h4>{{product.unitPrice}}</h4>
+          <h5>{{product.ratings}}</h5>
         </div>
       </div>
     </div>

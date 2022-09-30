@@ -19,7 +19,9 @@ export class UserService {
   }
 
   getByEmail(email: string): Observable<User> {
+
     return this.http.get(`https://fruitilicious-backend.azurewebsites.net/user/get/${email}`);
+
   }
 
 
@@ -46,7 +48,9 @@ export class UserService {
   }
 
   getUserByIdNumber( id : number) : Observable<User>{
+
     return this.http.get(`https://fruitilicious-backend.azurewebsites.net/user/get/${id}`);
+
   }
 
 }

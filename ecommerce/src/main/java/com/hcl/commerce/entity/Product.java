@@ -2,6 +2,8 @@ package com.hcl.commerce.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -51,4 +54,37 @@ public class Product {
 	@ManyToOne
     @JoinColumn(name = "category_id")
     private ProductCategory category;
+	
+	@OneToMany
+	@JoinColumn(name="product_id")
+	private List<Rating> ratings = new ArrayList<>();
+	
+	@Column(name = "avgrating")
+	private Double avgrating;
+	
+	public void addRating(Rating rating) {
+		this.ratings.add(rating);
+	}
+	
+	public void deleteRating(Rating rating) {
+		this.ratings.remove(rating);
+	}
+	
+	public void updateAverageRating() {
+		Double avg = (double) 5;
+		int totalRating = 0;
+		int ratingCount = 0;
+		for( Rating rating : ratings) {
+			totalRating += rating.getRating();
+			ratingCount++;
+		}
+		if(ratingCount == 0) {
+			ratingCount = 1;
+		}
+		avg = (double) (totalRating/ratingCount);
+		if(avg == 0) {
+			avg = (double) 5;
+		}
+		this.avgrating = avg;
+	}
 }

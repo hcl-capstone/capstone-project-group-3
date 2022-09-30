@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Invoice } from '../common/invoice';
 import { Observable } from 'rxjs';
+import { UpdateCartDto } from '../common/update-cart-dto';
 import { ShoppingCart } from '../common/shopping-cart';
 
 
@@ -18,7 +19,9 @@ export class InvoiceService {
 
   private invoiceUrl: string;
   constructor(private http:HttpClient) {
+
     this.invoiceUrl = 'https://fruitilicious-backend.azurewebsites.net/invoice/all';
+
   }
 
   getInvoiceList(): Observable<Invoice[]> {
@@ -30,7 +33,9 @@ export class InvoiceService {
   }
 
   deleteProduct(invoice_id: any, cartId: any): Observable<Invoice> {
+
     return this.http.get<Invoice>(`https://fruitilicious-backend.azurewebsites.net/invoice/product/delete/${invoice_id}/${cartId}`);
+
   }
 
   postInvoiceUpdate(updateCartDto: any): Observable<ShoppingCart> {

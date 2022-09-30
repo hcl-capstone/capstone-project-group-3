@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.commerce.InventoryDTO.InventoryDTO;
 import com.hcl.commerce.dto.product.ProductAddDTO;
+import com.hcl.commerce.dto.rating.RatingCreateDTO;
+import com.hcl.commerce.dto.rating.RatingDeleteDTO;
+import com.hcl.commerce.dto.rating.RatingUpdateDTO;
 import com.hcl.commerce.entity.Product;
+import com.hcl.commerce.entity.Rating;
 
 @Service
 public interface ProductService {
@@ -25,4 +29,11 @@ public interface ProductService {
 
 	Product updateProductInventory(ProductAddDTO dto, InventoryDTO inventoryDTO);
 
+	List<Rating> getRatings(Long id);
+
+	Product addRating(RatingCreateDTO dto);
+
+	Rating deleteRating(RatingDeleteDTO dto);
+
+	Rating updateRating(RatingUpdateDTO dto);
 }

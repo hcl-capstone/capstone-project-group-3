@@ -368,7 +368,7 @@ footer .install img{
     width: 250px;
 }
 #cart table td:nth-child(1){
-    width: 100px;
+    width: 150px;
     text-align: center;
     
     
@@ -379,21 +379,21 @@ footer .install img{
     transition: 0.3s ease;
 }
 #cart table td:nth-child(2){
-    width: 300px;
+    width: 150px;
     text-align: center;
 }
 #cart table td:nth-child(3){
-    width: 400px;
+    width: 500px;
     text-align: center;
 }
 #cart table td:nth-child(4),
 #cart table td:nth-child(5){
-    width: 200px;
+    width: 250px;
     text-align: center;
 }
 #cart table td:nth-child(5) input{
     width: 70px;
-    padding: 20px 0px 10px 15px;
+    padding: 10px 5px 10px 15px;
 }
 #cart table thead {
     border: 1px solid #e2e9e1;
@@ -433,4 +433,36 @@ footer .install img{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
     font-size: xx-large;
+}
+/* contact us */
+#form-details form{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#form-details form span{
+    font-family: 12px;
+}
+#form-details form h2{
+    font-size: 26px;
+    line-height: 35px;
+    padding: 20px 0;
+}
+#form-details form input,
+#form-details form textarea,
+#form-details form select{
+    width: 100%;
+    padding: 12px 15px;
+    outline: none;
+    margin-bottom: 20px;
+    border: 1px solid #e1e1e1;
+}
+#form-details{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    padding: 80px;
+    border: 1px solid #e1e1e1;
+
 }
