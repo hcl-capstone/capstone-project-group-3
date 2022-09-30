@@ -126,7 +126,7 @@ export class CheckoutComponent implements OnInit {
 
  
   setPromocode(){
-    this.toastr.success("Discount Applied at Checkout!:)");
+    alert('Your promo code has been applied to checkout');
     this.promoService.findByPromoName(this.promo.promoCode).subscribe({
       next: (data) => {
         this.promo = data;
