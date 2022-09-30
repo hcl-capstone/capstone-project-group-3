@@ -6,7 +6,7 @@ import { RatingUpdateDto } from '../common/rating/rating-update-dto';
 import { Observable } from 'rxjs';
 import { RatingDeleteDto } from '../common/rating/rating-delete-dto';
 
-const baseUrl = 'http://localhost:8082/product';
+const baseUrl = 'https://fruitilicious-backend.azurewebsites.net/product';
 
 @Injectable({
   providedIn: 'root'

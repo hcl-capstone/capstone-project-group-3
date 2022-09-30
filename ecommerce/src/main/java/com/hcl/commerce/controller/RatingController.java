@@ -14,7 +14,7 @@ import com.hcl.commerce.dto.rating.RatingUpdateDTO;
 import com.hcl.commerce.entity.Rating;
 import com.hcl.commerce.service.rating.RatingService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://fruitilicious-frontend.azurewebsites.net")
 @RestController
 public class RatingController {
 	
