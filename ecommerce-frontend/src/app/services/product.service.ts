@@ -12,8 +12,8 @@ export class ProductService {
   private productAddUrl: string;
   
   constructor(private http:HttpClient) {
-    this.productUrl = 'https://fruitilicious-backend.azurewebsites.net/product/all';
-    this.productAddUrl = 'https://fruitilicious-backend.azurewebsites.net/product/add';
+    this.productUrl = 'http://localhost:8082/product/all';
+    this.productAddUrl = 'http://localhost:8082/product/add';
   }
 
   getProductList(): Observable<Product[]> {
@@ -21,24 +21,24 @@ export class ProductService {
   }
 
   delete(data: any): Observable<Product> {
-    console.log(`https://fruitilicious-backend.azurewebsites.net/product/delete/${data}`);
-    return this.http.delete(`https://fruitilicious-backend.azurewebsites.net/product/delete/${data}`);
+    console.log(`http://localhost:8082/product/delete/${data}`);
+    return this.http.delete(`http://localhost:8082/product/delete/${data}`);
   }
 
   findByProductName(productName: any): Observable<Product[]>  {
-    return this.http.get<Product[]>(`https://fruitilicious-backend.azurewebsites.net/product/get/byName?name=${productName}`);
+    return this.http.get<Product[]>(`http://localhost:8082/product/get/byName?name=${productName}`);
   }
 
 
   findByProductId(productId: any): Observable<Product>{
-    return this.http.get<Product>(`https://fruitilicious-backend.azurewebsites.net/product/get/${productId}`);
+    return this.http.get<Product>(`http://localhost:8082/product/get/${productId}`);
   }
 
   add(data: any): Observable<Product> {
-    return this.http.post<Product>(`https://fruitilicious-backend.azurewebsites.net/product/add`, data);
+    return this.http.post<Product>(`http://localhost:8082/product/add`, data);
   }
 
   update(id: any, data: any): Observable<any> {
-    return this.http.post(`https://fruitilicious-backend.azurewebsites.net/product/update/${id}`, data)
+    return this.http.post(`http://localhost:8082/product/update/${id}`, data)
   }
 }

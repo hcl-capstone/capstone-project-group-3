@@ -12,8 +12,8 @@ export class PromoServiceTsService {
   private PromoAddUrl: string;
   
   constructor(private http:HttpClient) {
-    this.PromoUrl = 'https://fruitilicious-backend.azurewebsites.net/Promo/all';
-    this.PromoAddUrl = 'https://fruitilicious-backend.azurewebsites.net/Promo/add';
+    this.PromoUrl = 'http://localhost:8082/Promo/all';
+    this.PromoAddUrl = 'http://localhost:8082/Promo/add';
   }
 
   getPromoList(): Observable<Promo[]> {
@@ -21,12 +21,12 @@ export class PromoServiceTsService {
   }
 
   delete(data: any): Observable<Promo> {
-    console.log(`https://fruitilicious-backend.azurewebsites.net/Promo/delete/${data}`);
-    return this.http.delete(`https://fruitilicious-backend.azurewebsites.net/Promo/delete/${data}`);
+    console.log(`http://localhost:8082/Promo/delete/${data}`);
+    return this.http.delete(`http://localhost:8082/Promo/delete/${data}`);
   }
 
   findByPromoName(PromoName: any): Observable<Promo>  {
-    return this.http.get<Promo>(`https://fruitilicious-backend.azurewebsites.net/promo/get/${PromoName}`);
+    return this.http.get<Promo>(`http://localhost:8082/promo/get/${PromoName}`);
   }
 
 
