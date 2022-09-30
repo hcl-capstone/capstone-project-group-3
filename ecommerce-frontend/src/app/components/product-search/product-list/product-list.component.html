@@ -2,7 +2,6 @@
   <section id = "product1" class = "section-p1">
     <h2> Product List </h2>
     <p>Tropical Fruits on Sale!</p>
-    <h1>adfadsf</h1>
     <div class = "product-container">
       <div class = "product-display" *ngFor = "let product of products" >
         <img src = "{{product.image_url}}">
@@ -10,13 +9,8 @@
           <h5>{{product.productName}}</h5>
           <h4>{{product.unitPrice}}</h4>
           <h5>{{product.ratings}}</h5>
-          
         </div>
-       
       </div>
-      
     </div>
-    
   </section>
- 
 </body>
